@@ -1,7 +1,7 @@
-<html>
-<body>
+
 
 <?php
+
 	//list file extenion here
 	$extension = array('html');
 
@@ -26,21 +26,38 @@
 						'END:STANDARD'."\n".
 						'END:VTIMEZONE'."\n"
 			);
-			
-			
+	
+		
 	//upload form here
+	
 	$target_dir = "uploads/";
 	$target_file = $target_dir . basename($_FILES['jadwalsiak']['name']);
 	$uploaded = $_FILES['jadwalsiak']['tmp_name'];
+
+	//error handling
+	if (@file_get_contents($uploaded) == NULL)
+	{
+		echo '<script language="javascript">';
+		echo 'alert("Please insert your file")';
+		echo '</script>';
+		include_once ('home.php');
+		exit();
+	
+	}
+	
+	
 	$file_extension = pathinfo($target_file, PATHINFO_EXTENSION);
 	$content = file_get_contents($uploaded);
+
+	
 	
 	if(!in_array($file_extension, $extension))		//invalid format
 	{
 		echo '<script language="javascript">';
 		echo 'alert("Invalid File Format")';
 		echo '</script>';
-		include_once ('test.php');
+		include_once ('home.php');
+		exit();
 	
 	}
 	else		//valid format 
@@ -75,16 +92,17 @@
 					echo '<strong>Senin</strong>'.'<br/>';
 					$string = $matkul->item($inc)->nodeValue;
 					$final_string = explode ('Ruang:', $string);
-					echo 'Mata Kuliah: '.$final_string[0].'<br/>';
-					echo 'Ruang: '.$final_string[1].'<br/>';
+					$ruang = str_replace(' ', '', $final_string[1]);
+					//echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+					//echo 'Ruang: '.$final_string[1].'<br/>';
 					$jam_temp = $jam->item($inc)->nodeValue;
 					$f_jam = explode(' - ', $jam_temp);
 					$mulai = explode('.', $f_jam[0]);
 					$selesai = explode('.', $f_jam[1]);
 					$mulai = $mulai[0].$mulai[1];
 					$selesai = $selesai[0].$selesai[1];
-					echo 'Mulai: '.$mulai.'<br/>';
-					echo 'Selesai: '.$selesai.'<br/><br/>';
+					//echo 'Mulai: '.$mulai.'<br/>';
+					//echo 'Selesai: '.$selesai.'<br/><br/>';
 					
 					fwrite($handle,	'BEGIN:VEVENT'."\n".
 									'DTSTART;TZID=Indian/Christmas:20191028T'.$mulai.'00'."\n".
@@ -92,7 +110,7 @@
 									'RRULE:FREQ=WEEKLY;BYDAY=MO'."\n".
 									'CREATED:19000101T120000Z'."\n".
 									'DESCRIPTION:'."\n".
-									'LOCATION:'.$final_string[1]."\n".
+									'LOCATION:'.$ruang."\n".
 									'SEQUENCE:0'."\n".
 									'STATUS:CONFIRMED'."\n".
 									'SUMMARY:'.$final_string[0]."\n".
@@ -110,16 +128,17 @@
 					echo '<strong>Selasa</strong>'.'<br/>';
 					$string = $matkul->item($inc)->nodeValue;
 					$final_string = explode ('Ruang:', $string);
-					echo 'Mata Kuliah: '.$final_string[0].'<br/>';
-					echo 'Ruang: '.$final_string[1].'<br/>';
+					$ruang = str_replace(' ', '', $final_string[1]);
+					//echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+					//echo 'Ruang: '.$final_string[1].'<br/>';
 					$jam_temp = $jam->item($inc)->nodeValue;
 					$f_jam = explode(' - ', $jam_temp);
 					$mulai = explode('.', $f_jam[0]);
 					$selesai = explode('.', $f_jam[1]);
 					$mulai = $mulai[0].$mulai[1];
 					$selesai = $selesai[0].$selesai[1];
-					echo 'Mulai: '.$mulai.'<br/>';
-					echo 'Selesai: '.$selesai.'<br/><br/>';
+					//echo 'Mulai: '.$mulai.'<br/>';
+					//echo 'Selesai: '.$selesai.'<br/><br/>';
 					
 					fwrite($handle,	'BEGIN:VEVENT'."\n".
 									'DTSTART;TZID=Indian/Christmas:20191029T'.$mulai.'00'."\n".
@@ -127,7 +146,7 @@
 									'RRULE:FREQ=WEEKLY;BYDAY=TU'."\n".
 									'CREATED:19000101T120000Z'."\n".
 									'DESCRIPTION:'."\n".
-									'LOCATION:'.$final_string[1]."\n".
+									'LOCATION:'.$ruang."\n".
 									'SEQUENCE:0'."\n".
 									'STATUS:CONFIRMED'."\n".
 									'SUMMARY:'.$final_string[0]."\n".
@@ -146,16 +165,17 @@
 					echo '<strong>Rabu</strong>'.'<br/>';
 					$string = $matkul->item($inc)->nodeValue;
 					$final_string = explode ('Ruang:', $string);
-					echo 'Mata Kuliah: '.$final_string[0].'<br/>';
-					echo 'Ruang: '.$final_string[1].'<br/>';
+					$ruang = str_replace(' ', '', $final_string[1]);
+					//echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+					//echo 'Ruang: '.$final_string[1].'<br/>';
 					$jam_temp = $jam->item($inc)->nodeValue;
 					$f_jam = explode(' - ', $jam_temp);
 					$mulai = explode('.', $f_jam[0]);
 					$selesai = explode('.', $f_jam[1]);
 					$mulai = $mulai[0].$mulai[1];
 					$selesai = $selesai[0].$selesai[1];
-					echo 'Mulai: '.$mulai.'<br/>';
-					echo 'Selesai: '.$selesai.'<br/><br/>';
+					//echo 'Mulai: '.$mulai.'<br/>';
+					//echo 'Selesai: '.$selesai.'<br/><br/>';
 					
 					fwrite($handle,	'BEGIN:VEVENT'."\n".
 									'DTSTART;TZID=Indian/Christmas:20191030T'.$mulai.'00'."\n".
@@ -163,7 +183,7 @@
 									'RRULE:FREQ=WEEKLY;BYDAY=WE'."\n".
 									'CREATED:19000101T120000Z'."\n".
 									'DESCRIPTION:'."\n".
-									'LOCATION:'.$final_string[1]."\n".
+									'LOCATION:'.$ruang."\n".
 									'SEQUENCE:0'."\n".
 									'STATUS:CONFIRMED'."\n".
 									'SUMMARY:'.$final_string[0]."\n".
@@ -182,16 +202,17 @@
 					echo '<strong>Kamis</strong>'.'<br/>';
 					$string = $matkul->item($inc)->nodeValue;
 					$final_string = explode ('Ruang:', $string);
-					echo 'Mata Kuliah: '.$final_string[0].'<br/>';
-					echo 'Ruang: '.$final_string[1].'<br/>';
+					$ruang = str_replace(' ', '', $final_string[1]);
+					//echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+					//echo 'Ruang: '.$final_string[1].'<br/>';
 					$jam_temp = $jam->item($inc)->nodeValue;
 					$f_jam = explode(' - ', $jam_temp);
 					$mulai = explode('.', $f_jam[0]);
 					$selesai = explode('.', $f_jam[1]);
 					$mulai = $mulai[0].$mulai[1];
 					$selesai = $selesai[0].$selesai[1];
-					echo 'Mulai: '.$mulai.'<br/>';
-					echo 'Selesai: '.$selesai.'<br/><br/>';
+					//echo 'Mulai: '.$mulai.'<br/>';
+					//echo 'Selesai: '.$selesai.'<br/><br/>';
 					
 					fwrite($handle,	'BEGIN:VEVENT'."\n".
 									'DTSTART;TZID=Indian/Christmas:20191031T'.$mulai.'00'."\n".
@@ -199,7 +220,7 @@
 									'RRULE:FREQ=WEEKLY;BYDAY=TH'."\n".
 									'CREATED:19000101T120000Z'."\n".
 									'DESCRIPTION:'."\n".
-									'LOCATION:'.$final_string[1]."\n".
+									'LOCATION:'.$ruang."\n".
 									'SEQUENCE:0'."\n".
 									'STATUS:CONFIRMED'."\n".
 									'SUMMARY:'.$final_string[0]."\n".
@@ -218,16 +239,17 @@
 					echo '<strong>Jumat</strong>'.'<br/>';
 					$string = $matkul->item($inc)->nodeValue;
 					$final_string = explode ('Ruang:', $string);
-					echo 'Mata Kuliah: '.$final_string[0].'<br/>';
-					echo 'Ruang: '.$final_string[1].'<br/>';
+					$ruang = str_replace(' ', '', $final_string[1]);
+					//echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+					//echo 'Ruang: '.$final_string[1].'<br/>';
 					$jam_temp = $jam->item($inc)->nodeValue;
 					$f_jam = explode(' - ', $jam_temp);
 					$mulai = explode('.', $f_jam[0]);
 					$selesai = explode('.', $f_jam[1]);
 					$mulai = $mulai[0].$mulai[1];
 					$selesai = $selesai[0].$selesai[1];
-					echo 'Mulai: '.$mulai.'<br/>';
-					echo 'Selesai: '.$selesai.'<br/><br/>';
+					//echo 'Mulai: '.$mulai.'<br/>';
+					//echo 'Selesai: '.$selesai.'<br/><br/>';
 					
 					fwrite($handle,	'BEGIN:VEVENT'."\n".
 									'DTSTART;TZID=Indian/Christmas:20191101T'.$mulai.'00'."\n".
@@ -235,7 +257,7 @@
 									'RRULE:FREQ=WEEKLY;BYDAY=FR'."\n".
 									'CREATED:19000101T120000Z'."\n".
 									'DESCRIPTION:'."\n".
-									'LOCATION:'.$final_string[1]."\n".
+									'LOCATION:'.$ruang."\n".
 									'SEQUENCE:0'."\n".
 									'STATUS:CONFIRMED'."\n".
 									'SUMMARY:'.$final_string[0]."\n".
@@ -254,6 +276,7 @@
 					echo '<strong>Sabtu</strong>'.'<br/>';
 					$string = $matkul->item($inc)->nodeValue;
 					$final_string = explode ('Ruang:', $string);
+					$ruang = str_replace(' ', '', $final_string[1]);
 					echo 'Mata Kuliah: '.$final_string[0].'<br/>';
 					echo 'Ruang: '.$final_string[1].'<br/>';
 					$jam_temp = $jam->item($inc)->nodeValue;
@@ -271,7 +294,7 @@
 									'RRULE:FREQ=WEEKLY;BYDAY=SA'."\n".
 									'CREATED:19000101T120000Z'."\n".
 									'DESCRIPTION:'."\n".
-									'LOCATION:'.$final_string[1]."\n".
+									'LOCATION:'.$ruang."\n".
 									'SEQUENCE:0'."\n".
 									'STATUS:CONFIRMED'."\n".
 									'SUMMARY:'.$final_string[0]."\n".
@@ -282,17 +305,41 @@
 									'END:VALARM'."\n".
 									'END:VEVENT'."\n"
 							);		
-					
+						
 					$inc = $inc + 1;
 				}
+				echo 'Mata Kuliah: '.$final_string[0].'</br>';
+				echo 'Ruang: '.$ruang.'</br>';
+				echo 'Waktu: '.$jam_temp.'</br></br>';
 			}
+			
+		
+				
 			$inc_hari = $inc_hari + 1;
 		}
-		fwrite($handle,	'END:VCALENDAR');	
+		fwrite($handle,	'END:VCALENDAR');
+		/*if (file_exists($file)) 
+		{
+		  header('Content-Description: File Transfer');
+			header('Content-Type: application/octet-stream');
+			header('Content-Disposition: attachment; filename='.basename($file));
+			header('Content-Transfer-Encoding: binary');
+			header('Expires: 0');
+			header('Cache-Control: must-revalidate');
+			header('Pragma: public');
+			header('Content-Length: ' . filesize($file));
+			ob_clean();
+			flush();
+			readfile($file);
+			exit;
+		}*/
 	}
 	
 	
 ?>
 
+<html>
+<body>
+<a href="Calender_SIAK.ics">Download ICS here</a>
 </body>
 </html> 
