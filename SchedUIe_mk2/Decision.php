@@ -1,8 +1,23 @@
+<?php	
+$role = '';
+  
+  if (empty($_POST["role"]))
+  {
+	  $role_error = "Role is required";
+  }
+  else
+  {
+	  $role = test_input($_POST["role"]);
+  }
+  
+  function test_input($data) 
+  {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+  }
 
-
-<?php
-require_once 'home.php';
-	
 	if (isset($role) && $role == "mahasiswa")
 	{
 		include_once('output_mahasiswa.php');
@@ -15,8 +30,8 @@ require_once 'home.php';
 	{
 		echo '<script language="javascript">';
 		echo 'alert("Please select your role")';
+		echo 'window.location.replace("home.php")';
 		echo '</script>';
-		include_once ('home.php');
 		exit();
 	}
 ?>
