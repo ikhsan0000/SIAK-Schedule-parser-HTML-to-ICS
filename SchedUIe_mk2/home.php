@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php
-  $role = '';
-  
-  if (empty($_POST["role"]))
-  {
-	  $role_error = "Role is required";
-  }
-  else
-  {
-	  $role = test_input($_POST["role"]);
-  }
-  
-  function test_input($data) 
-  {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-  }
-  ?>
+
 <head>
   <meta charset="utf-8">
   <title>SchedUIe by IGS</title>
@@ -120,7 +101,7 @@
 		value="dosen" style="color:white;"> <span style="color:white;">Dosen</span>
 			
 			<div class="mt-3">
-				<button type="submit" class="btn btn-dark" value="submit" name="submit">Upload</button>
+				<button type="submit" class="btn btn-dark" value="submit" name="submit">Convert</button>
 			</div>
 			</form>
 	   </div>
