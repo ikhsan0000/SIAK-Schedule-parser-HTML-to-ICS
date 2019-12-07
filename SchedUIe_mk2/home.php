@@ -133,10 +133,12 @@
 		<div class="container">
         <div class="row team">
           <div class="span12">
+			  <div class="aligncenter">
             <h4>Developer's Profile</h4>
           </div>
+		</div>
 
-          <div class="span4">
+          <div class="span3">
             <div class="team-box">
               <a href="#" class="thumbnail"><img src="img/dummies/Ikhsan Firdauz.jpg" alt="" /></a>
               <div class="roles aligncenter">
@@ -148,7 +150,7 @@
               </div>
             </div>
           </div>
-          <div class="span4">
+          <div class="span3">
             <div class="team-box">
               <a href="#" class="thumbnail"><img src="img/dummies/team4.jpg" alt="" /></a>
               <div class="roles aligncenter">
@@ -159,7 +161,7 @@
               </div>
             </div>
           </div>
-          <div class="span4">
+          <div class="span3">
             <div class="team-box">
               <a href="#" class="thumbnail"><img src="img/dummies/team2.jpg" alt="" /></a>
               <div class="roles aligncenter">
