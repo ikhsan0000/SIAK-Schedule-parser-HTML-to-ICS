@@ -2,7 +2,7 @@
 
 <?php
 	//list file extenion here
-	$extension = array('html','mhtml');
+	$extension = array('html','mhtml','htm');
 
 	
 	
@@ -37,9 +37,9 @@
 	if (@file_get_contents($uploaded) == NULL)
 	{
 		echo '<script language="javascript">';
-		echo 'alert("Please insert your file")';
+		echo 'alert("Please insert your file");';
+		echo 'window.location="home.php";';
 		echo '</script>';
-		include_once ('home.php');
 		exit();
 	
 	}
@@ -320,21 +320,7 @@
 					$inc_hari = $inc_hari + 1;
 				}
 				fwrite($handle,	'END:VCALENDAR');
-				/*if (file_exists($file)) 
-				{
-				  header('Content-Description: File Transfer');
-					header('Content-Type: application/octet-stream');
-					header('Content-Disposition: attachment; filename='.basename($file));
-					header('Content-Transfer-Encoding: binary');
-					header('Expires: 0');
-					header('Cache-Control: must-revalidate');
-					header('Pragma: public');
-					header('Content-Length: ' . filesize($file));
-					ob_clean();
-					flush();
-					readfile($file);
-					exit;
-				}*/
+				
 			}
 			else
 			{	
@@ -354,6 +340,22 @@
 			exit();
 		}
 	}
+	
+	if (file_exists($file)) 
+		{
+			header('Content-Description: File Transfer');
+			header('Content-Type: application/octet-stream');
+			header('Content-Disposition: attachment; filename='.basename($file));
+			header('Content-Transfer-Encoding: binary');
+			header('Expires: 0');
+			header('Cache-Control: must-revalidate');
+			header('Pragma: public');
+			header('Content-Length: ' . filesize($file));
+			ob_clean();
+			flush();
+			readfile($file);
+			exit;
+		}
 	
 	
 ?>
