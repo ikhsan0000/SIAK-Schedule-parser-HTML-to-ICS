@@ -86,7 +86,7 @@
 
         <h2>Welcome to Sched<span style="color:yellow">UI</span>e</h2>
         <h3>SchedUIe adalah layanan web yang dibuat untuk civitas academica Universitas Indonesia. Website ini akan mengubah HTML jadwal <a href="https://academic.ui.ac.id/main/Authentication/" target="_blank"> SIAK </a>anda menjadi format yang dapat diupload ke <a href="https://calendar.google.com/calendar/" target="_blank">Google Calendar</a></h3>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/watch?v=4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 	   <div class="container mt-3" id="mainprog">
 			<form action="Decision.php" method="POST" enctype="multipart/form-data">
@@ -117,7 +117,7 @@
       <div class="container">
         <div class="aligncenter">
 		  <h4>Tutorial Menggunakan SchedUIe<br></h4>
-		  <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		  <iframe width="560" height="315" src="https://www.youtube.com/watch?v=AEW47ThLDOA&t=2s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <br><br>
 		  </div>
         </div>
