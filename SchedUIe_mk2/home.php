@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" type="img/png" href="img/favicon2.png">
 
   <!-- Theme skin -->
   <link id="t-colors" href="color/default.css" rel="stylesheet" />
@@ -208,6 +209,7 @@
             <div class="span12">
               <div class="copyright">
                 <p><span>&copy; Remember Inc. All right reserved</span></p>
+                <p><span><a href="https://icons8.com/icon/13184/report-card">Report Card icon by Icons8</a></span></p>
 
 
 
