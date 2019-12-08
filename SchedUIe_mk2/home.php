@@ -18,9 +18,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="shortcut icon" type="img/png" href="img/favicon2.png">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Theme skin -->
   <link id="t-colors" href="color/default.css" rel="stylesheet" />
 
@@ -86,7 +85,7 @@
       <div class="intro-content">
 
         <h2>Welcome to Sched<span style="color:yellow">UI</span>e</h2>
-        <h3>SchedUIe adalah layanan web yang dibuat untuk civitas academica Universitas Indonesia. Website ini akan mengubah HTML jadwal siak anda menjadi format yang dapat diupload ke Google Calendar</h3>
+        <h3>SchedUIe adalah layanan web yang dibuat untuk civitas academica Universitas Indonesia. Website ini akan mengubah HTML jadwal <a href="https://academic.ui.ac.id/main/Authentication/" target="_blank"> SIAK </a>anda menjadi format yang dapat diupload ke <a href="https://calendar.google.com/calendar/" target="_blank">Google Calendar</a></h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 	   <div class="container mt-3" id="mainprog">
@@ -143,7 +142,7 @@
 
           <div class="span3">
             <div class="team-box">
-              <a href="#" class="thumbnail"><img src="img/dummies/Ikhsan Firdauz.jpg" alt="" /></a>
+              <a href="#profile" class="thumbnail"><img src="img/dummies/Ikhsan Firdauz.jpg" alt="" /></a>
               <div class="roles aligncenter">
                 <p class="lead"><strong>Ikhsan Firdauz</strong></p><br>
                 <p>
@@ -155,7 +154,7 @@
           </div>
           <div class="span3">
             <div class="team-box">
-              <a href="#" class="thumbnail"><img src="img/dummies/team4.jpg" alt="" /></a>
+              <a href="#profile" class="thumbnail"><img src="img/dummies/team4.jpg" alt="" /></a>
               <div class="roles aligncenter">
                 <p class="lead"><strong>Galih Damar Jati</strong></p><br>
                 <p>
@@ -166,7 +165,7 @@
           </div>
           <div class="span3">
             <div class="team-box">
-              <a href="#" class="thumbnail"><img src="img/dummies/team2.jpg" alt="" /></a>
+              <a href="#profile" class="thumbnail"><img src="img/dummies/team2.jpg" alt="" /></a>
               <div class="roles aligncenter">
                 <p class="lead"><strong>Achmad Faiz Siraj</strong></p><br>
                 <p>
@@ -210,7 +209,7 @@
             <div class="span12">
               <div class="copyright">
                 <p><span>&copy; Remember Inc. All right reserved</span></p>
-                <p><span><a href="https://icons8.com/icon/13184/report-card">Report Card icon by Icons8</a></span></p>
+                <p><span>Report Card icon by <a href="https://icons8.com/icon/13184/report-card">Icons8</a></span></p>
 
 
 
