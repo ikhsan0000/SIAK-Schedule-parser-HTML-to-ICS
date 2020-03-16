@@ -8,7 +8,7 @@ Waktu_mulai INT NOT NULL,
 Waktu_selesai INT NOT NULL,
 Sent BOOLEAN);
 
-CREATE TABLE User(
+CREATE TABLE User_List(
 Nama TEXT NOT NULL,
 ID INT PRIMARY KEY,
 Username TEXT NOT NULL,
