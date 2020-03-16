@@ -91,29 +91,45 @@
         <h3>Mau event-mu lebih ramai? SchedUIe bisa mengirimkan email pemberitahuan event untuk mengundang beberapa potential visitor ke event-mu</h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-    <form>
-     <label for="fname">Organisasi:</label><br>
-     <input type="text" id="org" name="org"><br>
-     <label for="lname">Nama acara:</label><br>
-     <input type="text" id="e_name" name="e_name"><br>
+        <form>
+     <div class="form-group input-group-lg">
+         <label for="fname">Organisasi:</label><br>
+         <input type="text" id="org" name="org" class="form-control form-control-lg"><br>
+     </div>
+     <div class="form-group input-group-lg">
+         <label for="lname">Nama acara:</label><br>
+         <input type="text" id="e_name" name="e_name" class="form-control form-control-lg">
+        </div>
+     <div class="form-group">
+         <label for="e_desc">Deskripsi acara:</label>
+         <textarea class="form-control" rows="5" id="e_desc"></textarea>
+         </div>
+     <div class="form-group input-group-lg">
      <label for="fname">Tanggal:</label><br>
-     <input type="text" id="e_date" name="e_date"><br>
-     <label for="lname">Hari:</label><br>
-     <select id="hari" name="hari" placeholder='Pilih Hari'>
-     <option value="senin">Senin</option>
-     <option value="selasa">Selasa</option>
-     <option value="rabu">Rabu</option>
-     <option value="kamis">Kamis</option>
-     <option value="jumat">Jumat</option>
-     <option value="sabtu">Sabtu</option>
-     <option value="minggu">Minggu</option>
-     </select><br><br>
-     <label for="lname">Waktu mulai:</label><br>
-     <input type="text" id="start_time" name="start_time"><br>
-     <label for="lname">Waktu selesai:</label><br>
-     <input type="text" id="end_time" name="end_time">
-     <center><input type="submit" class="btn btn-primary btn-lg" value="Submit"></center>
-   </form>
+         <input type="text" id="e_date" name="e_date" class="form-control form-control-lg"><br>
+         <label for="lname">Hari:</label><br>
+        </div>
+     <div class="form-group input-group-lg">
+     <select id="hari" name="hari" placeholder='Pilih Hari' class="form-control form-control-lg">
+         <option value="senin">Senin</option>
+         <option value="selasa">Selasa</option>
+         <option value="rabu">Rabu</option>
+         <option value="kamis">Kamis</option>
+         <option value="jumat">Jumat</option>
+         <option value="sabtu">Sabtu</option>
+         <option value="minggu">Minggu</option>
+         </select>
+     </div>
+     <div class="form-group input-group-lg">
+         <label for="lname">Waktu mulai:</label><br>
+         <input type="text" id="start_time" name="start_time" class="form-control form-control-lg"><br>
+        </div>
+     <div class="form-group input-group-lg">
+      <label for="lname">Waktu selesai:</label><br>
+         <input type="text" id="end_time" name="end_time" class="form-control form-control-lg">
+     </div>
+         <center><input type="submit" class="btn btn-primary btn-lg" value="Submit"></center>
+       </form>
 
 
 
