@@ -187,7 +187,7 @@
           <div class="span4">
             <div class="widget">
               <div class="footer_logo">
-                <h3><a href="index.html">Sched<span style="color:yellow">UI</span>e</a></h3>
+                <h3><a href="home.php">Sched<span style="color:yellow">UI</span>e</a></h3>
               </div>
               <address>
 							  <strong>IGS</strong><br>
