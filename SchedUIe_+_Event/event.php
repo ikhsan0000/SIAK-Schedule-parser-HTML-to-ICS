@@ -66,7 +66,7 @@
           <div class="span4">
             <div class="logo">
               <h1>
-                <a href="home.php">Sched<span style="color:yellow">UI</span>e </a>+
+                <a href="home.php" target="_blank">Sched<span style="color:yellow">UI</span>e </a>+
                 <a href="event.php">Event</a>
               </h1>
             </div>
@@ -105,12 +105,12 @@
          <textarea class="form-control" rows="5" id="e_desc"></textarea>
          </div>
      <div class="form-group input-group-lg">
-     <label for="fname">Tanggal:</label><br>
+     <label for="e_date">Tanggal:</label><br>
          <input type="text" id="e_date" name="e_date" class="form-control form-control-lg"><br>
-         <label for="lname">Hari:</label><br>
+         <label for="e_day">Hari:</label><br>
         </div>
      <div class="form-group input-group-lg">
-     <select id="hari" name="hari" placeholder='Pilih Hari' class="form-control form-control-lg">
+     <select id="hari" name="hari" class="form-control form-control-lg">
          <option value="senin">Senin</option>
          <option value="selasa">Selasa</option>
          <option value="rabu">Rabu</option>
@@ -121,11 +121,11 @@
          </select>
      </div>
      <div class="form-group input-group-lg">
-         <label for="lname">Waktu mulai:</label><br>
+         <label for="e_start">Waktu mulai:</label><br>
          <input type="text" id="start_time" name="start_time" class="form-control form-control-lg"><br>
         </div>
      <div class="form-group input-group-lg">
-      <label for="lname">Waktu selesai:</label><br>
+      <label for="e_end">Waktu selesai:</label><br>
          <input type="text" id="end_time" name="end_time" class="form-control form-control-lg">
      </div>
          <center><input type="submit" class="btn btn-primary btn-lg" value="Submit"></center>
@@ -215,7 +215,6 @@
               <address>
 							  <strong>IGS</strong><br>
   							Teknik Komputer Universitas Indonesia 2017<br>
-  							RPL 02-2019
 			  </address>
               <p>For more information and support please contact:<br>
                 <i class="icon-envelope-alt"></i> scheduiebyigs@gmail.com
