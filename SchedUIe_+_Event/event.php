@@ -102,7 +102,7 @@
         </div>
      <div class="form-group">
          <label for="e_desc">Deskripsi acara:</label>
-         <textarea class="form-control" rows="5" id="e_desc"></textarea>
+         <input type="text" id="e_desc" name="e_desc" class="form-control form-control-lg">
          </div>
      <div class="form-group input-group-lg">
      <label for="e_date">Tanggal:</label><br>
