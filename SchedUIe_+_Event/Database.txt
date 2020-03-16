@@ -6,8 +6,8 @@ Nama_acara TEXT NOT NULL,
 Deskripsi TEXT NOT NULL,
 Tanggal TEXT NOT NULL,
 Hari TEXT NOT NULL,
-Waktu_mulai INT NOT NULL,
-Waktu_selesai INT NOT NULL,
+Waktu_mulai TEXT NOT NULL,
+Waktu_selesai TEXT NOT NULL,
 Sent BOOLEAN);
 
 CREATE TABLE User_List(
