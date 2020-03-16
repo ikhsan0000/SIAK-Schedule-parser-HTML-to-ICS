@@ -3,6 +3,7 @@ CREATE DATABASE Scheduie
 CREATE TABLE Acara(
 Org TEXT NOT NULL,
 Nama_acara TEXT NOT NULL,
+Deskripsi TEXT NOT NULL,
 Tanggal TEXT NOT NULL,
 Hari TEXT NOT NULL,
 Waktu_mulai INT NOT NULL,
