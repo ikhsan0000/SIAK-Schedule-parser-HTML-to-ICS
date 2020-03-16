@@ -8,7 +8,7 @@ Tanggal TEXT NOT NULL,
 Hari TEXT NOT NULL,
 Waktu_mulai TEXT NOT NULL,
 Waktu_selesai TEXT NOT NULL,
-Sent BOOLEAN);
+Sent INT);
 
 CREATE TABLE User_List(
 Nama TEXT NOT NULL,
