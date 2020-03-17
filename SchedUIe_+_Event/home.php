@@ -52,6 +52,7 @@
 				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
 				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
 				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
+				<li><a href=event.php>Iklankan Acaramu</a>&nbsp;&nbsp;</li>
 				<li><a href=#profile>About</a></li>
               </ul>
             </div>
@@ -65,7 +66,10 @@
         <div class="row nomargin">
           <div class="span4">
             <div class="logo">
-              <h1><a href="home.php">Sched<span style="color:yellow">UI</span>e</a></h1>
+              <h1>
+                <a href="home.php">Sched<span style="color:yellow">UI</span>e </a>+
+                <a href="event.php">Event</a>
+              </h1>
             </div>
           </div>
           <div class="span8">
