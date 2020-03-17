@@ -44,6 +44,7 @@
                 <li><a href="home.php">Home</a>&nbsp;&nbsp;</li>
 				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
 				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
+				<li><a href=event.php>Iklankan Acaramu</a>&nbsp;&nbsp;</li>
 				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
 				<li><a href=#profile>About</a></li>
               </ul>
@@ -80,25 +81,25 @@
         <h2>Event<span style="color:yellow"> UI</span></h2>
         <h3>Mau event-mu lebih ramai? SchedUIe bisa mengirimkan email pemberitahuan event untuk mengundang beberapa potential visitor ke event-mu</h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <form action ="insert_acara.php" method='post'>
+		<form action ="insert_acara.php" method='post'>
      <div class="form-group input-group-lg">
-         <label for="fname">Organisasi:</label><br>
+         <label for="fname"><font color="white">Organisasi:</font></label><br>
          <input type="text" id="org" name="org" class="form-control form-control-lg"><br>
      </div>
      <div class="form-group input-group-lg">
-         <label for="lname">Nama acara:</label><br>
+         <label for="lname"><font color="white">Nama acara:</font></label><br>
          <input type="text" id="e_name" name="e_name" class="form-control form-control-lg">
         </div>
      <div class="form-group input-group-lg">
-         <label for="e_desc">Deskripsi acara:</label>
+         <label for="e_desc"><font color="white">Deskripsi acara:</font></label>
 		 <input type="text" name="e_desc" class="form-control form-control-lg>
          </div>
      <div class="form-group input-group-lg">
-     <label for="fname">Tanggal:</label><br>
-         <input type="text" id="e_date" name="e_date" class="form-control form-control-lg"><br>
-         <label for="lname">Hari:</label><br>
+		 <label for="fname"><font color="white">Tanggal:</font></label><br>
+		 <input type="text" id="e_date" name="e_date" class="form-control form-control-lg"><br>
         </div>
      <div class="form-group input-group-lg">
+	 <label for="lname"><font color="white">Hari:</font></label><br>
      <select id="hari" name="hari" placeholder='Pilih Hari' class="form-control form-control-lg">
          <option value="senin">Senin</option>
          <option value="selasa">Selasa</option>
@@ -110,11 +111,11 @@
          </select>
      </div>
      <div class="form-group input-group-lg">
-         <label for="lname">Waktu mulai:</label><br>
+         <label for="lname"><font color="white">Waktu mulai:</font></label><br>
          <input type="text" id="start_time" name="start_time" class="form-control form-control-lg"><br>
         </div>
      <div class="form-group input-group-lg">
-      <label for="lname">Waktu selesai:</label><br>
+      <label for="lname"><font color="white">Waktu selesai:</font></label><br>
          <input type="text" id="end_time" name="end_time" class="form-control form-control-lg">
      </div>
          <center><input type="submit" class="btn btn-primary btn-dark btn-lg" value="Submit"></center>
