@@ -52,7 +52,6 @@
 				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
 				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
 				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
-				<li><a href=event.php>Iklankan Acaramu</a>&nbsp;&nbsp;</li>
 				<li><a href=#profile>About</a></li>
               </ul>
             </div>
@@ -68,7 +67,7 @@
             <div class="logo">
               <h1>
                 <a href="home.php">Sched<span style="color:yellow">UI</span>e </a>+
-                <a href="event.php">Event</a>
+                <a href="event.php" target="_blank">Event</a>
               </h1>
             </div>
           </div>
@@ -92,7 +91,12 @@
         <h3>SchedUIe adalah layanan web yang dibuat untuk civitas academica Universitas Indonesia. Website ini akan mengubah HTML jadwal <a href="https://academic.ui.ac.id/main/Authentication/" target="_blank"> SIAK </a>anda menjadi format yang dapat diupload ke <a href="https://calendar.google.com/calendar/" target="_blank">Google Calendar</a></h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-	   <div class="container mt-3" id="mainprog">
+     <div class="form-group input-group-lg">
+        <br><label for="fname" style="color:white">Username:</label>
+        <input type="text" id="org" name="org" class="form-control form-control-lg">
+     </div>
+
+     <div class="container mt-3" id="mainprog">
 			<form action="Decision.php" method="POST" enctype="multipart/form-data">
 			<p style="color:white;">Upload disini:</p>
 			<div class="custom-file mb-3 col-4">
@@ -196,7 +200,6 @@
               <address>
 							  <strong>IGS</strong><br>
   							Teknik Komputer Universitas Indonesia 2017<br>
-  							RPL 02-2019
 			  </address>
               <p>For more information and support please contact:<br>
                 <i class="icon-envelope-alt"></i> scheduiebyigs@gmail.com
