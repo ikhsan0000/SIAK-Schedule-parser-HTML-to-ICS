@@ -108,7 +108,7 @@
 				}
 				
 				//QUERY KE TABLE USER_LIST
-				$query_user_list = "INSERT INTO user_list VALUES ('$nama_mahasiswa', '$npm_final', '$user_name')";
+				$query_user_list = "INSERT INTO user_list VALUES ('$nama_mahasiswa', '$npm_final', '$user_name@ui.ac.id')";
 				pg_query($query_user_list);
 				
 				//Parsing here
