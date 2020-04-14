@@ -1,0 +1,24 @@
+CREATE DATABASE Scheduie
+
+CREATE TABLE Acara(
+Org TEXT NOT NULL,
+Nama_acara TEXT NOT NULL,
+Deskripsi TEXT NOT NULL,
+Tanggal TEXT NOT NULL,
+Hari TEXT NOT NULL,
+Waktu_mulai TEXT NOT NULL,
+Waktu_selesai TEXT NOT NULL,
+Sent INT);
+
+CREATE TABLE User_List(
+Nama TEXT NOT NULL,
+ID INT PRIMARY KEY,
+Username TEXT NOT NULL,
+Fakultas TEXT NOT NULL);
+
+CREATE TABLE Jadwal(
+ID INT NOT NULL REFERENCES User_List(ID),
+Hari TEXT NOT NULL,
+Waktu_mulai INT NOT NULL,
+Waktu_selesai INT NOT NULL,
+Nama_matkul TEXT NOT NULL);
