@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $posted = true;
         $organisasi = $_POST["org"];
         $nama_acara = $_POST["e_name"];
-	$desc = $_POST["e_desc"];
+		$desc = $_POST["e_desc"];
         $tanggal = $_POST["e_date"];
         $hari = $_POST["hari"];
         $waktu_mulai = $_POST["start_time"];

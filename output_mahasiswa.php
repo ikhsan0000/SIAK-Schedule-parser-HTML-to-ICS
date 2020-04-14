@@ -1,6 +1,8 @@
 
 
 <?php
+	require_once "decision.php";
+	require_once "config_database.php";
 	//list file extenion here
 	$extension = array('html','mhtml','htm');
 
@@ -75,8 +77,40 @@
 				@$dom->loadHTML($second[0]);
 				
 				$dom->preserveWhiteSpace = false;
-
-									
+				
+				//get user name
+				$user_name = $_POST['e_name'];
+				
+				
+				//extract NPM here
+				$get_npm_step_1 = explode('<div id="ti_m1">', $content);
+				$get_npm_step_2 = explode('<div class="tab">', $get_npm_step_1[1]);
+				
+				$dom_npm = new DOMDocument();
+				
+				@$dom_npm->loadHTML($get_npm_step_2[0]);
+				
+				$dom_npm->preserveWhiteSpace = false;
+				
+				$get_npm_step_3 = $dom_npm->getElementsByTagName('h3');
+				$npm_string = $get_npm_step_3->item(0)->nodeValue;
+				$stop_nama = strpos($npm_string, ",");
+				$i_npm;	//variable iterasi untuk mengambil NPM & Nama
+				$npm_final = "";	//inisiasi variable NPM
+				$nama_mahasiswa = ""; //inisiasi variable nama
+				for ($i_npm = 1; $i_npm < 11; $i_npm++)
+				{
+					$npm_final = $npm_final.$npm_string[$i_npm];
+				}
+				for ($i_npm = 13; $i_npm < $stop_nama; $i_npm++)
+				{
+					$nama_mahasiswa = $nama_mahasiswa.$npm_string[$i_npm];
+				}
+				
+				//QUERY KE TABLE USER_LIST
+				$query_user_list = "INSERT INTO user_list VALUES ('$nama_mahasiswa', '$npm_final', '$user_name')";
+				pg_query($query_user_list);
+				
 				//Parsing here
 				$hari = $dom->getElementsByTagName('td');
 				$inc_hari = 0;
@@ -321,6 +355,7 @@
 				}
 				fwrite($handle,	'END:VCALENDAR');
 				
+				
 			}
 			else
 			{	
@@ -340,7 +375,7 @@
 			exit();
 		}
 	}
-	
+	/*
 	if (file_exists($file)) 
 		{
 			header('Content-Description: File Transfer');
@@ -356,7 +391,7 @@
 			readfile($file);
 			exit;
 		}
-	
+	*/
 	
 ?>
 

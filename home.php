@@ -91,13 +91,14 @@
         <h3>SchedUIe adalah layanan web yang dibuat untuk civitas academica Universitas Indonesia. Website ini akan mengubah HTML jadwal <a href="https://academic.ui.ac.id/main/Authentication/" target="_blank"> SIAK </a>anda menjadi format yang dapat diupload ke <a href="https://calendar.google.com/calendar/" target="_blank">Google Calendar</a></h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-     <div class="form-group input-group-lg">
-        <br><label for="fname" style="color:white">Username:</label>
-        <input type="text" id="org" name="org" class="form-control form-control-lg">
-     </div>
+
 
      <div class="container mt-3" id="mainprog">
 			<form action="Decision.php" method="POST" enctype="multipart/form-data">
+			<div class="form-group input-group-lg">
+				<br><label for="fname" style="color:white">Username:</label>
+				<input type="text" id="org" name="e_name" class="form-control form-control-lg">
+			</div>
 			<p style="color:white;">Upload disini:</p>
 			<div class="custom-file mb-3 col-4">
 				<input type="file" class="custom-file-input" id="customFile" name="jadwalsiak">

@@ -1,9 +1,11 @@
 <?php	
 $role = '';
-  
-
+session_start();
+	//Get the user name
+	$user_name = $_POST['e_name'];
 	if (isset($_POST['role']) && $_POST['role'] == "mahasiswa")
 	{
+
 		include_once('output_mahasiswa.php');
 	}
 	elseif (isset($_POST['role']) && $_POST['role'] == "dosen")
