@@ -21,5 +21,3 @@ Hari TEXT NOT NULL,
 Waktu_mulai INT NOT NULL,
 Waktu_selesai INT NOT NULL,
 Nama_matkul TEXT NOT NULL);
-
-Test, test 2
