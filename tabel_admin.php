@@ -38,6 +38,6 @@ table, th, td {
   }
   ?>
 </table><br>
-<button type="button" onclick="alert('Hello world!')">Click Me!</button>
+<button type="button" onclick="alert('Email has been sent!')">Send Email!</button>
 </body>
 </html>
