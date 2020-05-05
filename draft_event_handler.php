@@ -32,7 +32,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 	$mail->Port = '587';
 	$mail->isHTML();
 	$mail->Username = 'scheduiebyigs@gmail.com';
-	$mail->Password = 'tekkom2017';
+	$mail->Password = '*********'; //change this to our password
 	$mail->SetFrom('scheduiebyigs-no_reply@gmail.com');
 	$mail->Subject = 'Hello World!!';
 	$mail->Body = $content;
