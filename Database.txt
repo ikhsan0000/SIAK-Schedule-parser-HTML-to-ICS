@@ -30,7 +30,7 @@ INSERT INTO acara VALUES
 ('Org 2','Acara 2', 'consectetur adipiscing elit. Aenean accumsan sit amet elit sit amet hendrerit. Proin pretium nisi eros, in dapibus nulla gravida et. Proin in diam massa. Vestibulum id commodo erat, porta semper magna. Suspendisse potenti. Nullam pretium cursus auctor. Aenean vitae congue libero.', '9-5-2020', 'Sabtu', '800', '1000', 0),
 ('Org 3','Acara 3', 'Sed blandit consequat nibh ac malesuada. ', '11-5-2020', 'Senin', '1800', '2100', 0),
 ('Org 4','Acara 4', 'Etiam in hendrerit nisi. Pellentesque quam velit, ', '28-5-2020', 'Kamis', '1425', '1426', 0),
-('Org 5','Acara 5', 'Pellentesque vel turpis tristique, viverra ex eu, sagittis enim.', '29-5-2020', 'Jumat', '0700', '0759', 0)
+('Org 5','Acara 5', 'Pellentesque vel turpis tristique, viverra ex eu, sagittis enim.', '29-5-2020', 'Jumat', '0700', '0759', 0),
 ('Org 6', 'Acara 6', 'Nulla convallis lobortis orci vel rutrum. Nulla venenatis, lacus quis tristique accumsan,', '1-5-2020', 'Jumat', '900', '1200', 0),
 ('Org 7', 'Acara 7', 'sapien maximus rhoncus. Sed pellentesque eros a velit semper scelerisque. Phasellus eget nisi in justo volutpat interdum. ', '4-5-2020', 'Senin', '1100', '1500', 0),
 ('Org 8', 'Acara 8', 'Etiam in ipsum quis augue imperdiet interdum.', '19-5-2020', 'Selasa', '1600', '2000', 0),
