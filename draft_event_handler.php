@@ -24,7 +24,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 	
 	$mail = new PHPMailer();
 	$mail->isSMTP();
-	$mail->SMTPDebug = 3;
+	$mail->SMTPDebug = 3;		//change value to 3 to debug
 	$mail->SMTPAuth = true;
 	$mail->SMPTSecure = 'ssl';
 	$mail->Host = 'smtp.gmail.com';
@@ -32,7 +32,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 	$mail->Port = '587';
 	$mail->isHTML();
 	$mail->Username = 'scheduiebyigs@gmail.com';
-	$mail->Password = '*********'; //change this to our password
+	$mail->Password = 'tekkom2017';			//change to password email
 	$mail->SetFrom('scheduiebyigs-no_reply@gmail.com');
 	$mail->Subject = 'Hello World!!';
 	$mail->Body = $content;
@@ -161,9 +161,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 					}
 						
 				}
-
-				
-				if($e_mulai > $k_mulai && $e_selesai > $k_mulai)
+				elseif($e_mulai > $k_mulai && $e_selesai > $k_mulai)
 				{
 					if($e_mulai > $k_selesai && $e_selesai > $k_selesai)
 					{
@@ -174,10 +172,26 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 						$true_flag = 0;
 					}
 				}
+				else
+				{
+					$true_flag = 0;
+				}
+
+				/*
+				if($e_mulai >= $k_mulai && $e_selesai >= $k_mulai)
+				{
+					if($e_mulai >= $k_selesai && $e_selesai >= $k_selesai)
+					{
+						$flag_passed = 1;
+					}
+					else
+					{
+						$true_flag = 0;
+					}
+				}*/
 
 			}
 	
-			echo "<br>";
 			echo "after check true_flag = " . $true_flag;
 			echo "<br>";
 			
@@ -186,10 +200,13 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 			{
 				
 				//block test
+				echo "<br>";
 				echo $current_name;
 				echo " IS VALID TO SEND";
 				echo "<br>";
-				sendMail($current_email, $current_name, $nama_event, $hari_event, $tanggal_event, $e_mulai_final, $e_selesai_final);
+				//!!!!!!!!!!! sending problem !!!!!!!!!!!!!!!!!!!!!!! uncomment below code to test
+				//sendMail($current_email, $current_name, $nama_event, $hari_event, 
+				//$tanggal_event, $e_mulai_final, $e_selesai_final);
 				echo "<br>";
 				echo "<br>";
 				//block test
