@@ -63,24 +63,33 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 		//end time of current event
 		$tanggal_event = $row_e['tanggal'];
 		
-		
+		$e_mulai_fixed = "";
+		$e_selesai_fixed = "";
 		//block to fix time format (ex: from 1800 to 18:00)
 		//fix start event time
 		if(strlen($e_mulai) == 3)
 		{
 			$e_mulai_fixed = "0" . $e_mulai;
 		}
-		$e_mulai_fixed = str_split($e_mulai,2);
-		$e_mulai_final = $e_mulai[0] . ":" . $e_mulai[1];
+		else
+		{
+			$e_mulai_fixed = $e_mulai;
+		}
+		$e_mulai_fixed = str_split($e_mulai_fixed);
+		$e_mulai_final = $e_mulai_fixed[0].$e_mulai_fixed[1].":".$e_mulai_fixed[2].$e_mulai_fixed[3];
+		
 		
 		//fix end event time
 		if(strlen($e_selesai) == 3)
 		{
 			$e_selesai_fixed = "0" . $e_selesai;
 		}
-		$e_selesai_fixed = str_split($e_selesai,2);
-		$e_selesai_final = $e_selesai[0] . ":" . $e_selesai[1];
-		
+		else
+		{
+			$e_selesai_fixed = $e_selesai;
+		}
+		$e_selesai_fixed = str_split($e_selesai_fixed);
+		$e_selesai_final = $e_selesai_fixed[0].$e_selesai_fixed[1].":".$e_selesai_fixed[2].$e_selesai_fixed[3];
 		
 		
 		//test block
@@ -176,20 +185,6 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 				{
 					$true_flag = 0;
 				}
-
-				/*
-				if($e_mulai >= $k_mulai && $e_selesai >= $k_mulai)
-				{
-					if($e_mulai >= $k_selesai && $e_selesai >= $k_selesai)
-					{
-						$flag_passed = 1;
-					}
-					else
-					{
-						$true_flag = 0;
-					}
-				}*/
-
 			}
 	
 			echo "after check true_flag = " . $true_flag;
