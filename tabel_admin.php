@@ -46,7 +46,7 @@ table, th, td {
       <td><?php echo $data['waktu_selesai']; ?></td>
       <td><?php echo $data['sent'];
           if($data['sent'] == 0){echo "FALSE";}else{echo "TRUE";}?></td>
-	         <td><button type="button" onclick="alert('Email has been sent!')">Send !</button></td>
+	         <td><button type="button" onclick="alert('Email has been sent!')">Send!</button></td>
       <td><?php echo $data['id']; ?></td>
     </tr>
     <?php
