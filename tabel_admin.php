@@ -20,6 +20,7 @@ table, th, td {
 
 <table style="width:100%">
   <tr>
+    <th>ID</th>
     <th>Org</th>
     <th>Nama_acara</th>
     <th>Deskripsi</th>
@@ -29,7 +30,6 @@ table, th, td {
     <th>waktu_selesai</th>
     <th>Sent</th>
     <th>Send Button</th>
-    <th>ID</th>
   </tr>
   <?php
   $init = pg_query("SELECT * FROM acara");
@@ -37,6 +37,7 @@ table, th, td {
   {
     ?>
     <tr>
+      <td><?php echo $data['id']; ?></td>
       <td><?php echo $data['org']; ?></td>
       <td><?php echo $data['nama_acara']; ?></td>
       <td><?php echo $data['deskripsi']; ?></td>
@@ -47,7 +48,6 @@ table, th, td {
       <td><?php echo $data['sent'];
           if($data['sent'] == 0){echo "FALSE";}else{echo "TRUE";}?></td>
 	         <td><button type="button" onclick="alert('Email has been sent!')">Send!</button></td>
-      <td><?php echo $data['id']; ?></td>
     </tr>
     <?php
   }
