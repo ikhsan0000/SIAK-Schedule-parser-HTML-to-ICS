@@ -95,9 +95,9 @@
 
      <div class="container mt-3" id="mainprog">
 			<form action="Decision.php" method="POST" enctype="multipart/form-data">
+			<p style="color:white;">Username:</p>
 			<div class="form-group input-group-lg">
-				<br><label for="fname" style="color:white">Username:</label>
-				<input type="text" id="org" name="e_name" class="form-control form-control-lg">
+				<input type="text" id="username" name="e_name" class="form-control">
 			</div>
 			<p style="color:white;">Upload disini:</p>
 			<div class="custom-file mb-3 col-4">
