@@ -51,7 +51,7 @@
                 <li><a href="home.php">Home</a>&nbsp;&nbsp;</li>
 				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
 				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
-				<li><a href=#org_form>Main Program</a>&nbsp;&nbsp;</li>
+				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
 				<li><a href=#profile>About</a></li>
               </ul>
             </div>
@@ -91,8 +91,8 @@
         <h3>Mau event-mu lebih ramai? SchedUIe bisa mengirimkan email pemberitahuan event untuk mengundang beberapa potential visitor ke event-mu</h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-        <form action="insert_acara.php" method="POST" enctype="multipart/form-data"><br>
-     <div class="form-group input-group-lg" id="org_form">
+        <form class="container col-3" action="insert_acara.php" method="POST" enctype="multipart/form-data">
+     <div class="form-group input-group-lg">
          <label for="fname" style="color:white">Organisasi:</label><br>
          <input type="text" id="org" name="org" class="form-control form-control-lg"><br>
      </div>
@@ -102,7 +102,7 @@
         </div>
      <div class="form-group">
          <label for="e_desc" style="color:white">Deskripsi acara:</label><br>
-         <textarea id="e_desc" name="e_desc" placeholder="Deskripsikan acaranya.." style="height:200px"></textarea>
+         <textarea class="form-control" id="e_desc" name="e_desc" placeholder="Deskripsikan acaranya.." style="height:200px"></textarea>
          </div>
      <div class="form-group input-group-lg">
      <label for="e_date" style="color:white">Tanggal:</label><br>
