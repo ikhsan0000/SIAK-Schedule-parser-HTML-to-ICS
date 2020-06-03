@@ -93,14 +93,14 @@
 
 
 
-     <div class="container mt-3" id="mainprog">
+     <div class="container mt-3 col-3" id="mainprog">
 			<form action="Decision.php" method="POST" enctype="multipart/form-data">
 			<p style="color:white;">Username:</p>
 			<div class="form-group input-group-lg">
 				<input type="text" id="username" name="e_name" class="form-control">
 			</div>
 			<p style="color:white;">Upload disini:</p>
-			<div class="custom-file mb-3 col-4">
+			<div class="custom-file mb-3">
 				<input type="file" class="custom-file-input" id="customFile" name="jadwalsiak">
 				<label class="custom-file-label" for="customFile">Choose file</label>
 			</div>
