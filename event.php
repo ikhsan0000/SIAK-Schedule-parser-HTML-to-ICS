@@ -92,22 +92,25 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
         <form class="container col-3" action="insert_acara.php" method="POST" enctype="multipart/form-data">
-     <div class="form-group input-group-lg">
-         <label for="fname" style="color:white">Organisasi:</label><br>
+     <div class="form-group input-group-lg" id="mainprog">
+         <br><p style="color:white">Organisasi:</p>
          <input type="text" id="org" name="org" class="form-control form-control-lg"><br>
      </div>
+
      <div class="form-group input-group-lg">
-         <label for="lname" style="color:white">Nama acara:</label><br>
+         <p style="color:white">Nama Acara:</p>
          <input type="text" id="e_name" name="e_name" class="form-control form-control-lg">
         </div>
+
      <div class="form-group">
-         <label for="e_desc" style="color:white">Deskripsi acara:</label><br>
+         <p style="color:white">Deskripsi Acara:</p>
          <textarea class="form-control" id="e_desc" name="e_desc" placeholder="Deskripsikan acaranya.." style="height:200px"></textarea>
          </div>
+
      <div class="form-group input-group-lg">
-     <label for="e_date" style="color:white">Tanggal:</label><br>
+         <p style="color:white">Tanggal:</p>
          <input type="text" id="e_date" name="e_date" class="form-control form-control-lg"><br>
-         <label for="e_day" style="color:white">Hari:</label><br>
+         <p style="color:white">Hari:</p>
         </div>
      <div class="form-group input-group-lg">
      <select id="hari" name="hari" class="form-control form-control-lg">
@@ -121,14 +124,28 @@
          <option value="minggu">Minggu</option>
          </select>
      </div>
-     <div class="form-group input-group-lg">
-         <label for="e_start" style="color:white">Waktu mulai:</label><br>
-         <input type="text" id="start_time" name="start_time" class="form-control form-control-lg"><br>
-        </div>
-     <div class="form-group input-group-lg">
-      <label for="e_end" style="color:white">Waktu selesai:</label><br>
-         <input type="text" id="end_time" name="end_time" class="form-control form-control-lg">
-     </div>
+
+     <p style="color:white">Waktu mulai:</p>
+       <div class = "form-row">
+       <div class="col">
+         <input type="number" class="form-control" id="start_time" name="start_time" class="form-control form-control-lg" min="0" max="23">
+       </div>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="color:white">:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <div class="col">
+         <input type="number" class="form-control" id="start_time_2" name="start_time_2" class="form-control form-control-lg" min="0" max="59"><br>
+       </div>
+       </div>
+
+       <p style="color:white">Waktu Selesai:</p>
+         <div class = "form-row">
+         <div class="col">
+           <input type="number" class="form-control" id="end_time" name="end_time" class="form-control form-control-lg" min="0" max="23">
+         </div>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="color:white">:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <div class="col">
+           <input type="number" class="form-control" id="end_time_2" name="end_time_2" class="form-control form-control-lg" min="0" max="59"><br>
+         </div>
+         </div>
          <center><input type="submit" class="btn btn-primary btn-lg" value="Submit"></center>
        </form>
 
@@ -140,9 +157,9 @@
     <section id="content">
       <div class="container">
         <div class="aligncenter">
-		  <h4>Tutorial Menggunakan SchedUIe<br></h4>
+		  <h4>Tutorial Menggunakan Fitur Event SchedUIe<br></h4>
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/AEW47ThLDOA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <br><br>
+          <br><br><br>
 		  </div>
         </div>
 	  </section>
