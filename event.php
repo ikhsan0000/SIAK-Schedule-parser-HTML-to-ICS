@@ -131,12 +131,12 @@
      </div>
 
      <p style="color:white">Waktu mulai:</p>
-       <div class = "form-row">
-       <div class="col">
+       <div class = "form-group row">
+       <div class="col input-group-lg">
          <input type="number" class="form-control" id="start_time" name="start_time" class="form-control form-control-lg" min="0" max="23" required>
        </div>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="color:white">:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <div class="col">
+       <div class="col input-group-lg">
          <input type="number" class="form-control" id="start_time_2" name="start_time_2" class="form-control form-control-lg" min="0" max="59" required><br>
        </div>
 	   <div class="invalid-feedback">Example invalid feedback text</div>
@@ -144,11 +144,11 @@
 
        <p style="color:white">Waktu Selesai:</p>
          <div class = "form-row">
-         <div class="col">
+         <div class="col input-group-lg">
            <input type="number" class="form-control" id="end_time" name="end_time" class="form-control form-control-lg" min="0" max="23" required>
          </div>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="color:white">:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <div class="col">
+         <div class="col input-group-lg">
            <input type="number" class="form-control" id="end_time_2" name="end_time_2" class="form-control form-control-lg" min="0" max="59" required><br>
          </div>
 		 <div class="invalid-feedback">Example invalid feedback text</div>
