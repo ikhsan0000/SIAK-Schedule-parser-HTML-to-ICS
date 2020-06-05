@@ -12,9 +12,8 @@ Language used: HTML5, PHP, CSS, JavaScript, and PostgreSQL 10.10
 In order to run and/or develop this program, you need to setup the required environment first. Below are the steps:
 1. Install XAMPP that supports PHP5 and above (e.g XAMPP v3.2.4).
 2. Install PostgreSQL version 10.10 or above.
-3. Create database and the required tables in PostgreSQL (refer to [database.txt](Database.txt))
+3. Create the required database and tables in PostgreSQL (refer to [database.txt](Database.txt))
 4. Adjust the database name, user name, and password you made with the one on [config_database.php](config_database.php).
-5. 
 
 
 
