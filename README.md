@@ -23,7 +23,6 @@ In order to run and/or develop this program, you need to setup the required envi
 ![home](images/Home.png)
 
 
-### Lorem Ipsum
 
 ## License
 <details>
