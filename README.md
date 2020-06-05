@@ -3,9 +3,10 @@ Created by Galih Damar Jati, Ikhsan Firdauz, and Achmad Faiz Siraj
 
 ## Description
 SchedUIe is a web-based application SIAK HTML schedule parser and converter to ICS. This application parses a SIAK HTML page for important components and then converts it into ICS that is uploadable to Google Calendar. SchedUIe also has an event feature in which users can input an event description they held. SchedUIe will sent an email notification about the event to other SchedUIe users eligible to attend the event.
+
 Programs used: XAMPP
 Language used: HTML5, PHP, CSS, JavaScript, and and PostgreSQL 10.10
-https://getbootstrap.com/
+
 ## Installation
 In order to run and/or develop this program, you need to setup the required environment first. Below are the steps:
 1. Install XAMPP that supports PHP5 and above (e.g XAMPP v3.2.4).
