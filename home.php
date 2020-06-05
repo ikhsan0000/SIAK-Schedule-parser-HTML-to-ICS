@@ -112,7 +112,7 @@
 		value="dosen" style="color:white;"> <span style="color:white;">Dosen</span>
 
 			<div class="mt-3">
-				<button type="submit" class="btn btn-dark" value="submit" name="submit">Convert</button>
+				<button type="submit" class="btn-lg btn-block btn-dark" value="submit" name="submit">Convert</button>
 			</div>
 			</form>
 	   </div>
