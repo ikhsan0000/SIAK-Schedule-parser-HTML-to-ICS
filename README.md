@@ -14,7 +14,11 @@ In order to run and/or develop this program, you need to setup the required envi
 2. Install PostgreSQL version 10.10 or above.
 3. Create the required database and tables in PostgreSQL (refer to [database.txt](Database.txt))
 4. Adjust the database name, user name, and password you made with the one on [config_database.php](config_database.php).
-
+5. Navigate to local directory of XAMPP (the default directory is C:\xampp\htdocs).
+6. Make a new folder and name it "SchedUIe".
+7. Download all the files in this repository into the SchedUIe folder.
+8. Run XAMPP and start the Apache module.
+9. Type http://localhost/SchedUIe/ on your browser URL bar.
 
 
 ### Lorem Ipsum
