@@ -19,6 +19,7 @@ In order to run and/or develop this program, you need to setup the required envi
 7. Download all the files in this repository into the SchedUIe folder.
 8. Run XAMPP and start the Apache module.
 9. Type http://localhost/SchedUIe/ on your browser URL bar.
+10. Below is the expected output.
 
 
 ### Lorem Ipsum
