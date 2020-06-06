@@ -95,25 +95,25 @@
      <div class="form-group input-group-lg" id="mainprog">
          <br><p style="color:white">Organisasi:</p>
          <input type="text" id="org" name="org" class="form-control form-control-lg" required><br>
-		 <div class="invalid-feedback">Example invalid feedback text</div>
+		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
      </div>
 
      <div class="form-group input-group-lg">
          <p style="color:white">Nama Acara:</p>
          <input type="text" id="e_name" name="e_name" class="form-control form-control-lg" required>
-		 <div class="invalid-feedback">Example invalid feedback text</div>
+		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
         </div>
 
      <div class="form-group">
          <p style="color:white">Deskripsi Acara:</p>
          <textarea class="form-control" id="e_desc" name="e_desc" placeholder="Deskripsikan acaranya.." style="height:200px" required></textarea>
-		 <div class="invalid-feedback">Example invalid feedback text</div>
+		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
          </div>
 
      <div class="form-group input-group-lg">
          <p style="color:white">Tanggal:</p>
          <input type="text" id="e_date" name="e_date" class="form-control form-control-lg" required><br>
-		 <div class="invalid-feedback">Example invalid feedback text</div>
+		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
          <p style="color:white">Hari:</p>
         </div>
      <div class="form-group input-group-lg">
@@ -127,32 +127,36 @@
          <option value="sabtu">Sabtu</option>
          <option value="minggu">Minggu</option>
          </select>
-	 <div class="invalid-feedback">Example invalid feedback text</div>
+	 <div class="invalid-feedback" style="color:orange">*Required Field</div>
      </div>
 
      <p style="color:white">Waktu mulai:</p>
        <div class = "form-group row">
        <div class="col input-group-lg">
-         <input type="number" class="form-control" id="start_time" name="start_time" class="form-control form-control-lg" min="0" max="23" required>
+         <input type="number" class="form-control" id="start_time" name="start_time" class="form-control form-control-lg" min="0" max="23" placeholder="Jam" required>
        </div>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="color:white">:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 style="color:white">:</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        <div class="col input-group-lg">
-         <input type="number" class="form-control" id="start_time_2" name="start_time_2" class="form-control form-control-lg" min="0" max="59" required><br>
+         <input type="number" class="form-control" id="start_time_2" name="start_time_2" class="form-control form-control-lg" min="0" max="59" placeholder="Menit" required><br>
        </div>
-	   <div class="invalid-feedback">Example invalid feedback text</div>
+	   <div class="invalid-feedback" style="color:orange">*Required Field</div>
        </div>
+	   
+
 
        <p style="color:white">Waktu Selesai:</p>
-         <div class = "form-row">
+         <div class = "form-group row">
          <div class="col input-group-lg">
-           <input type="number" class="form-control" id="end_time" name="end_time" class="form-control form-control-lg" min="0" max="23" required>
+           <input type="number" class="form-control" id="end_time" name="end_time" class="form-control form-control-lg" min="0" max="23" placeholder="Jam" required>
          </div>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="color:white">:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 style="color:white">:</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <div class="col input-group-lg">
-           <input type="number" class="form-control" id="end_time_2" name="end_time_2" class="form-control form-control-lg" min="0" max="59" required><br>
+           <input type="number" class="form-control" id="end_time_2" name="end_time_2" class="form-control form-control-lg" min="0" max="59" placeholder="Menit" required><br>
          </div>
-		 <div class="invalid-feedback">Example invalid feedback text</div>
+		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
          </div>
+
+		 
          <center><input type="submit" class="btn btn-dark btn-lg btn-block mt-3 " value="Submit"></center>
        </form>
 
