@@ -49,10 +49,13 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 	$execute = pg_query($kueri_row);
 	
 	//Loop trough all events in table acara (SELECT * FROM acara)
-	$kueri_e = "SELECT * FROM acara";
+	$kueri_e = "SELECT * FROM acara WHERE sent = 0";
 	$execute_e = pg_query($kueri_e);
 	while($row_e = pg_fetch_assoc($execute_e))
 	{
+		//id of current event
+		$e_id = $row_e['id'];
+		
 		$hari_event = $row_e['hari'];
 		//day of current event
 		$nama_event = $row_e['nama_acara'];
@@ -218,6 +221,8 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 			}
 			
 		}
+		$kueri_update_sent = "UPDATE acara SET sent = 1 WHERE id = '$e_id'";
+		pg_query($kueri_update_sent);
 		//reset the pointer for pg_fetch user & user's subject
 		pg_result_seek($execute,0);
 		pg_result_seek($execute2,0);
