@@ -16,6 +16,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 	$content = "Halo $user_name!<br>
 				Kami dari SchedUIe mengajak anda untuk hadir dalam <br><br>
 				Acara : $event_name<br>
+				Deskripsi acara: $description<br>
 				Hari : $day<br>
 				Tanggal : $date<br>
 				Pukul : $start - $end<br><br>
