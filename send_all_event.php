@@ -24,7 +24,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 	
 	$mail = new PHPMailer();
 	$mail->isSMTP();
-	$mail->SMTPDebug = 3;		//change value to 3 to debug, default 0
+	$mail->SMTPDebug = 0;		//change value to 3 to debug, default 0
 	$mail->SMTPAuth = true;
 	$mail->SMPTSecure = 'ssl';
 	$mail->Host = 'smtp.gmail.com';
