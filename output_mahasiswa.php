@@ -83,15 +83,18 @@
 				
 				
 				//extract NPM here
+				//explode HTML get the important part
 				$get_npm_step_1 = explode('<div id="ti_m1">', $content);
 				$get_npm_step_2 = explode('<div class="tab">', $get_npm_step_1[1]);
 				
+				//initiate DOM documents here
 				$dom_npm = new DOMDocument();
 				
 				@$dom_npm->loadHTML($get_npm_step_2[0]);
 				
 				$dom_npm->preserveWhiteSpace = false;
 				
+				//parse for NPM here
 				$get_npm_step_3 = $dom_npm->getElementsByTagName('h3');
 				$npm_string = $get_npm_step_3->item(0)->nodeValue;
 				$stop_nama = strpos($npm_string, ",");
@@ -107,11 +110,25 @@
 					$nama_mahasiswa = $nama_mahasiswa.$npm_string[$i_npm];
 				}
 				
-				//QUERY KE TABLE USER_LIST
-				$query_user_list = "INSERT INTO user_list VALUES ('$nama_mahasiswa', '$npm_final', '$user_name@ui.ac.id')";
-				pg_query($query_user_list);
 				
-				//Parsing here
+				//check already existing user
+				$already_exist = 0;
+				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE id = '$npm_final'";
+				$query_check_execute = pg_query($query_check_already_exist);
+				$row_check = pg_fetch_row($query_check_execute);
+				if($row_check[0] >= 1)
+				{
+					$already_exist = 1;
+				}
+				
+				//QUERY KE TABLE USER_LIST
+				if($already_exist == 0)
+				{
+					$query_user_list = "INSERT INTO user_list VALUES ('$nama_mahasiswa', '$npm_final', '$user_name@ui.ac.id')";
+					pg_query($query_user_list);
+				}
+				
+				//Parsing everything here
 				$hari = $dom->getElementsByTagName('td');
 				$inc_hari = 0;
 				foreach ($hari as $h)
@@ -355,11 +372,13 @@
 						echo 'Waktu: '.$jam_temp.'</br></br>';
 						
 						//QUERY KE TABLE JADWAL
-						$query_jadwal = "INSERT INTO jadwal VALUES ('$npm_final', '$query_hari', $mulai, $selesai, '$final_string[0]')";
-						pg_query($query_jadwal);
+						if($already_exist == 0)
+						{
+							$query_jadwal = "INSERT INTO jadwal VALUES ('$npm_final', '$query_hari', $mulai, $selesai, '$final_string[0]')";
+							pg_query($query_jadwal);
+						}
 					}
 					
-				
 						
 					$inc_hari = $inc_hari + 1;
 				}
@@ -385,7 +404,7 @@
 			exit();
 		}
 	}
-	/*
+
 	if (file_exists($file)) 
 		{
 			header('Content-Description: File Transfer');
@@ -401,7 +420,7 @@
 			readfile($file);
 			exit;
 		}
-	*/
+	
 	
 ?>
 
