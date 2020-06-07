@@ -9,22 +9,22 @@ if($link === false){
 	require_once('phpmailer/PHPMailerAutoload.php');
 //Functoin PHPMailer
 //source: https://github.com/PHPMailer/PHPMailer/tree/5.2-stable
-function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end)
+function sendMail($recipient, $user_name, $event_name, $day, $description, $date, $start, $end)
 {
 
 
 	$content = "Halo $user_name\n
-				Kami dari SchedUIe mengajak antum untuk hadir dalam \n\n
-				Acara : $event_name\n
-				Hari : $day\n
-				Tanggal : $date\n
-				Pukul : $start - $end\n\n
-				Tiada kesan tanpa kehadiranmu kawan!\n
+				Kami dari SchedUIe mengajak antum untuk hadir dalam <br><br>
+				Acara : $event_name<br>
+				Hari : $day<br>
+				Tanggal : $date<br>
+				Pukul : $start - $end<br>
+				Tiada kesan tanpa kehadiranmu kawan!<br>
 				Salam --IGS";
 	
 	$mail = new PHPMailer();
 	$mail->isSMTP();
-	$mail->SMTPDebug = 0;		//change value to 3 to debug, default 0
+	$mail->SMTPDebug = 3;		//change value to 3 to debug, default 0
 	$mail->SMTPAuth = true;
 	$mail->SMPTSecure = 'ssl';
 	$mail->Host = 'smtp.gmail.com';
@@ -58,6 +58,8 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 		//day of current event
 		$nama_event = $row_e['nama_acara'];
 		//name of current event
+		$e_deskripsi = $row_e['deskripsi'];
+		//description of current event
 		$e_mulai = $row_e['waktu_mulai'];
 		//start time of current event
 		$e_selesai = $row_e['waktu_selesai'];
@@ -202,8 +204,8 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 				echo " IS VALID TO SEND";
 				echo "<br>";
 				//!!!!!!!!!!! sending problem !!!!!!!!!!!!!!!!!!!!!!! uncomment below code to test
-				//sendMail($current_email, $current_name, $nama_event, $hari_event, 
-				//$tanggal_event, $e_mulai_final, $e_selesai_final);
+				sendMail($current_email, $current_name, $nama_event, $hari_event, $e_deskripsi,
+				$tanggal_event, $e_mulai_final, $e_selesai_final);
 				echo "<br>";
 				echo "<br>";
 				//block test
