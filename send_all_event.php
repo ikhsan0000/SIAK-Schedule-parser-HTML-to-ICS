@@ -13,13 +13,13 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 {
 
 
-	$content = "Halo $user_name\n
-				Kami dari SchedUIe mengajak antum untuk hadir dalam \n\n
-				Acara : $event_name\n
-				Hari : $day\n
-				Tanggal : $date\n
-				Pukul : $start - $end\n\n
-				Tiada kesan tanpa kehadiranmu kawan!\n
+	$content = "Halo $user_name!<br>
+				Kami dari SchedUIe mengajak anda untuk hadir dalam <br><br>
+				Acara : $event_name<br>
+				Hari : $day<br>
+				Tanggal : $date<br>
+				Pukul : $start - $end<br><br>
+				Tiada kesan tanpa kehadiranmu kawan!<br><br>
 				Salam --IGS";
 	
 	$mail = new PHPMailer();
