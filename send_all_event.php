@@ -1,6 +1,6 @@
 <?php
 /* Attempt to connect to database */
-$link = pg_connect("host=localhost dbname=scheduie user=postgres password=password");
+$link = pg_connect("host=localhost dbname=scheduie user=postgres password=passwordmu");
 //check connection
 if($link === false){
     die("ERROR: Could not connect. " . "Error");
@@ -9,7 +9,7 @@ if($link === false){
 	require_once('phpmailer/PHPMailerAutoload.php');
 //Functoin PHPMailer
 //source: https://github.com/PHPMailer/PHPMailer/tree/5.2-stable
-function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end)
+function sendMail($recipient, $user_name, $event_name, $day, $description, $date, $start, $end)
 {
 
 
@@ -24,7 +24,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 	
 	$mail = new PHPMailer();
 	$mail->isSMTP();
-	$mail->SMTPDebug = 0;		//change value to 3 to debug, default 0
+	$mail->SMTPDebug = 3;		//change value to 3 to debug, default 0
 	$mail->SMTPAuth = true;
 	$mail->SMPTSecure = 'ssl';
 	$mail->Host = 'smtp.gmail.com';
@@ -53,13 +53,14 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 	$execute_e = pg_query($kueri_e);
 	while($row_e = pg_fetch_assoc($execute_e))
 	{
-		//id of current event
 		$e_id = $row_e['id'];
-		
+		//id of current event
 		$hari_event = $row_e['hari'];
 		//day of current event
 		$nama_event = $row_e['nama_acara'];
 		//name of current event
+		$e_deskripsi = $row_e['deskripsi'];
+		//description of current event
 		$e_mulai = $row_e['waktu_mulai'];
 		//start time of current event
 		$e_selesai = $row_e['waktu_selesai'];
@@ -204,8 +205,8 @@ function sendMail($recipient, $user_name, $event_name, $day, $date, $start, $end
 				echo " IS VALID TO SEND";
 				echo "<br>";
 				//!!!!!!!!!!! sending problem !!!!!!!!!!!!!!!!!!!!!!! uncomment below code to test
-				//sendMail($current_email, $current_name, $nama_event, $hari_event, 
-				//$tanggal_event, $e_mulai_final, $e_selesai_final);
+				sendMail($current_email, $current_name, $nama_event, $hari_event, $e_deskripsi,
+				$tanggal_event, $e_mulai_final, $e_selesai_final);
 				echo "<br>";
 				echo "<br>";
 				//block test
