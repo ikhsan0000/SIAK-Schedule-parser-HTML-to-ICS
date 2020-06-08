@@ -126,7 +126,7 @@
       <div class="container">
         <div class="aligncenter">
 		  <h4>Tutorial Menggunakan SchedUIe<br></h4>
-		  <iframe width="560" height="315" src="https://www.youtube.com/embed/AEW47ThLDOA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		  <iframe width="560" height="315" src="https://www.youtube.com/embed/VufqcjG2g3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <br><br><br>
 		  </div>
         </div>
