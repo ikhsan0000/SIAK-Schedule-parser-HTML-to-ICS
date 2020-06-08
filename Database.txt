@@ -1,6 +1,7 @@
 CREATE DATABASE Scheduie
 
 CREATE TABLE Acara(
+id SERIAL PRIMARY KEY,
 Org TEXT NOT NULL,
 Nama_acara TEXT NOT NULL,
 Deskripsi TEXT NOT NULL,
@@ -9,9 +10,6 @@ Hari TEXT NOT NULL,
 Waktu_mulai INT NOT NULL,
 Waktu_selesai INT NOT NULL,
 Sent INT);
-
-ALTER TABLE ACARA
-ADD COLUMN id SERIAL;
 
 CREATE TABLE User_List(
 Nama TEXT NOT NULL,
@@ -28,7 +26,7 @@ Nama_matkul TEXT NOT NULL);
 
 /*to flood table acara*/
 
-INSERT INTO acara VALUES
+INSERT INTO acara (org, nama_acara, deskripsi, tanggal, hari, waktu_mulai, waktu_selesai, sent) VALUES
 ('Org 1','Acara 1', 'Lorem ipsum dolor sit amet', '7-5-2020', 'Kamis', '800', '2000', 0),
 ('Org 2','Acara 2', 'consectetur adipiscing elit. Aenean accumsan sit amet elit sit amet hendrerit. Proin pretium nisi eros, in dapibus nulla gravida et. Proin in diam massa. Vestibulum id commodo erat, porta semper magna. Suspendisse potenti. Nullam pretium cursus auctor. Aenean vitae congue libero.', '9-5-2020', 'Sabtu', '800', '1000', 0),
 ('Org 3','Acara 3', 'Sed blandit consequat nibh ac malesuada. ', '11-5-2020', 'Senin', '1800', '2100', 0),
