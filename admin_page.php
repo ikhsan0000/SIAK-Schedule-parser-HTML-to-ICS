@@ -10,12 +10,8 @@ table, th, td {
 <body>
 <?php
 /* Attempt to connect to database */
-$link = pg_connect("host=localhost dbname=scheduie user=postgres password=passwordmu");
-//check connection
-if($link === false){
-    die("ERROR: Could not connect. " . "Error");
+require_once "config_database.php";
 
-}
 ?>
 
 <table style="width:100%">

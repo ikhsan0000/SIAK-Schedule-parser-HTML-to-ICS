@@ -1,11 +1,7 @@
 <?php
 /* Attempt to connect to database */
-$link = pg_connect("host=localhost dbname=scheduie user=postgres password=passwordmu");
-//check connection
-if($link === false){
-    die("ERROR: Could not connect. " . "Error");
+require_once "config_database.php";
 
-}
 	require_once('phpmailer/PHPMailerAutoload.php');
 //Functoin PHPMailer
 //source: https://github.com/PHPMailer/PHPMailer/tree/5.2-stable
@@ -25,7 +21,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 	
 	$mail = new PHPMailer();
 	$mail->isSMTP();
-	$mail->SMTPDebug = 3;		//change value to 3 to debug, default 0
+	$mail->SMTPDebug = 0;		//change value to 3 to debug, default 0
 	$mail->SMTPAuth = true;
 	$mail->SMPTSecure = 'ssl';
 	$mail->Host = 'smtp.gmail.com';
@@ -229,7 +225,11 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 		pg_result_seek($execute2,0);
 	}
 	echo "<br>";
-
+	echo '<script language="javascript">';
+	echo 'alert("Email Sent !");';
+	echo 'window.location="admin_page.php";';
+	echo '</script>';
+	exit();
 
 
 ?>
