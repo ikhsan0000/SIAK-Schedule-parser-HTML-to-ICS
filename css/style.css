@@ -172,6 +172,7 @@ header .logo h1 a {
 }
 header .logo h1 a:hover {
 	text-decoration:none;
+	color:yellow;
 }
 /* --- top area --- */
 
@@ -192,7 +193,7 @@ ul.topmenu li a {
   font-weight:600;
 }
 ul.topmenu li a:hover {
-	color:red;
+	color:#ffff00;
 }
 
 
@@ -227,11 +228,12 @@ header ul.nav li {
 header ul.nav li a {
 	border:none;
 	font-weight:400;
+	color:yellow
 }
 .navbar .nav > li > a {
 	font-size:13px;
-  color: #fdfdfd;
   text-shadow: none;
+  color:yellow;
 }
 
 header ul.nav li a i {
@@ -240,10 +242,12 @@ header ul.nav li a i {
 
 .navbar .nav a:hover {
 	background:none;
+	color:yellow;
 }
 
 .navbar .nav > .active > a,.navbar .nav > .active > a:hover {
 	font-weight:600;
+	color=yellow;
 }
 
 .navbar .nav > .active > a:active,.navbar .nav > .active > a:focus {
