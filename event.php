@@ -21,7 +21,7 @@
   <link rel="shortcut icon" type="img/png" href="img/favicon2.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Theme skin -->
-  <link id="t-colors" href="color/default.css" rel="stylesheet" />
+  <link id="t-colors" href="color/scheduie.css" rel="stylesheet" />
 
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png" />
