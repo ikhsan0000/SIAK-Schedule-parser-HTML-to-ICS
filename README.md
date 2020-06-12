@@ -6,7 +6,7 @@ SchedUIe is a web-based application SIAK HTML schedule parser and converter to I
 
 Programs used: XAMPP
 
-Language used: HTML5, PHP, CSS, JavaScript, and PostgreSQL 10.10
+Based on: HTML5, PHP, CSS, JavaScript, and PostgreSQL 10.10
 
 ## Installation
 In order to run and/or develop this program, you need to setup the required environment first. Below are the steps:
