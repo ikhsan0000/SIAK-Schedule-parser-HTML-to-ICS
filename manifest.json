@@ -1,0 +1,50 @@
+{
+    "name": "SchedUIe",
+    "short_name": "SchedUIe",
+    "start_url": "http://127.0.0.1:5500/home.html",
+    "display": "standalone",
+    "background_color": "#454545",
+    "theme_color": "#454545",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "images/logo144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "images/logo192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "images/logo512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+
+    "share_target": 
+    {
+        "action": "/Decision.php",
+        "method": "POST",
+        "enctype": "multipart/form-data",
+        "params": 
+        {
+          "title": "name",
+          "text": "description",
+          "url": "link",
+          "files": 
+          [
+            {
+              "name": "jadwalsiak",
+              "accept": ["text/csv", ".html"]
+            },
+            {
+              "name": "graphs",
+              "accept": "image/svg+xml"
+            }
+          ]
+        }
+    }
+}
