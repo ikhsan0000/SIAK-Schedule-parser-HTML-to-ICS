@@ -1,7 +1,8 @@
 const buttonPush = document.querySelector("#push");
+const sendPush = document.querySelector("#send-push");
 
-const publicKey = `BIldUkr0kQ_hlQOUFSCpVQeleXS7pErhkUQNOrJX9lXyAGIPFxf1IdxDm_gjIZbNwhK1nKC4gzD4D7mqXxM2KTM`
-// private key sQxIz5gxC4UYPMo12GU8Rafv4So-LA-OqTsVuu7d9c
+const publicKey = `BAbYNfFpKahAqgknAeLfokoC2g2lwYBz9mraqhr4JN--zwFYC2jYZ6Fq7v0LFEvGOLyDan-aYr9gZBSdgdlN1Cg`
+// const privateKey = 'S9CO1QHicojnUp5t5cJfyWyiHc_xYnKKvdM3d5zQB6U'
 
 //source https://github.com/GoogleChromeLabs/web-push-codelab/blob/master/app/scripts/main.js
 function urlB64ToUint8Array(base64String) 
@@ -23,7 +24,7 @@ function urlB64ToUint8Array(base64String)
 
 if('serviceWorker' in navigator && 'PushManager' in window) //check browser support SW
 {
-    navigator.serviceWorker.register('sw.js')
+    navigator.serviceWorker.register('../sw.js')
         .then((reg) => 
         {
             console.log('SW registered', reg)
@@ -42,7 +43,7 @@ function initializeIU()
         buttonPush.disabled = true;
         if(isSubscribed)
         {
-            
+            unsubscribeUser();
         }
         else
         {
@@ -106,6 +107,26 @@ function subscribeUser()
     });
 }
 
+function unsubscribeUser()
+{
+    navigator.serviceWorker.ready.then(function(reg)
+    {
+        reg.pushManager.getSubscription()
+        .then(function(subscription){
+            subscription.unsubscribe()
+            .then(function(success){
+                console.log("succussfuly unsubscribed", success)
+                //delete user on server
+                isSubscribed = false;
+                updatePushButton();
+            })
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+    });
+}
+
 function updateSubscriptionOnServer(subscription)
 {
     const subscriptionJSON = document.querySelector('#subscription-json');   
@@ -114,3 +135,4 @@ function updateSubscriptionOnServer(subscription)
         subscriptionJSON.textContent = JSON.stringify(subscription);
     }
 }
+

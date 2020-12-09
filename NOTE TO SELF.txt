@@ -1,0 +1,5 @@
+di app.js
+
+[28] navigator.serviceWorker.register('sw.js') -> navigator.serviceWorker.register('../sw.js')
+
+karena bikin subfolder push, jadi sw error di root directory

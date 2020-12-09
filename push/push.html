@@ -12,26 +12,26 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   
   <!-- css -->
-  <link href="css/bootstrap.css" rel="stylesheet" />
-  <link href="css/bootstrap-responsive.css" rel="stylesheet" />
-  <link href="css/prettyPhoto.css" rel="stylesheet" />
+  <link href="../css/bootstrap.css" rel="stylesheet" />
+  <link href="../css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="../css/prettyPhoto.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet"> 
+  <link href="../css/style.css" rel="stylesheet"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link rel="shortcut icon" type="img/png" href="img/favicon2.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Theme skin -->
-  <link id="t-colors" href="color/scheduie.css" rel="stylesheet" />
+  <link id="t-colors" href="../color/scheduie.css" rel="stylesheet" />
   <!-- Fav and touch icons -->
 
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png" />
-  <link rel="stylesheet" href="css/mystyle.css">
-  <link rel="manifest" href="manifest.json"> 
+  <link rel="stylesheet" href="../css/mystyle.css">
+  <link rel="manifest" href="../manifest.json"> 
 
   <!-- =======================================================
     Theme Name: Remember
@@ -42,7 +42,7 @@
 </head>
 
 <body>
-
+ 
   <div id="wrapper">
     <!-- start header -->
     <header>
@@ -100,6 +100,10 @@
 
     <div class="container mt-3 col-3 mb-5" id="mainprog">
         <button type="submit" class="btn-lg btn-block btn-dark" value="submit" name="push" id="push" style="height: 80px; width: 400px; font-size: x-large;" disabled >Your Browser Does not support Push</button>
+        <br>
+        <form action="pushAction.php">
+          <button type="submit" class="btn-lg btn-block btn-dark" value="submit" name="send" id="send-push" style="height: 80px; width: 400px; font-size: x-large;"  >Send Push</button>
+        </form>
     </div>
 
 
@@ -238,7 +242,7 @@
   <script src="js/portfolio/setting.js"></script>
   <script src="js/animate.js"></script>
   <script src="js/custom.js"></script> -->
-  <script src="app.js"></script>
+  <script src="../app.js"></script>
   
 </body>
 
