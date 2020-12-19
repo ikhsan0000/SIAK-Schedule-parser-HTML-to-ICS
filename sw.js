@@ -45,7 +45,7 @@ self.addEventListener('push', e =>
 
     const title = "Hey, SchedUIe here!";
     const option = {
-        body: 'Test Push Notification',
+        body: 'Tanggal Cuti Bersama Direvisi loh!',
         icon: 'images/logo192.png',
         badge: 'images/logo144.png'
     };
