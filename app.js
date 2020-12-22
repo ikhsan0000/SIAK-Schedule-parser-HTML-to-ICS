@@ -109,6 +109,35 @@ function subscribeUser()
 
 function unsubscribeUser()
 {
+     //Unsub Server
+     swRegisteration.pushManager.getSubscription()
+     .then(function(subscription){
+         if(subscription)
+         {
+             const key = subscription.getKey('p256dh');
+             const token = subscription.getKey('auth');
+             fetch('push.php',{
+                 method: 'post',
+                 headers: new Headers({
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify({
+                    endpoint: subscription.endpoint,
+                    key: key ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : null,
+                    token : token ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))) : null,
+                    axn: 'unsubscribe'
+                })
+             }).then(function(response){
+                 return response.text();
+             }).then(function(response){
+                 console.log(response);
+             }).catch(function(e){
+                 console.log('remove from db error', e);
+             });
+         }
+     })
+
+     //Unsub local
     navigator.serviceWorker.ready.then(function(reg)
     {
         reg.pushManager.getSubscription()
@@ -116,23 +145,46 @@ function unsubscribeUser()
             subscription.unsubscribe()
             .then(function(success){
                 console.log("succussfuly unsubscribed", success)
-                //delete user on server
                 isSubscribed = false;
                 updatePushButton();
             })
         })
         .catch(function(err){
-            console.log(err)
+            console.log('error to unsub', err)
         })
     });
 }
 
 function updateSubscriptionOnServer(subscription)
 {
-    const subscriptionJSON = document.querySelector('#subscription-json');   
+    const subscriptionJSON = document.querySelector('#subscription-json'); 
+    
     if(subscription)
     {
-        subscriptionJSON.textContent = JSON.stringify(subscription);
+        subscriptionJSON.textContent = JSON.stringify(subscription); //print subsctiption details ke front
+
+        const key = subscription.getKey('p256dh');
+        const token = subscription.getKey('auth');
+
+        fetch('push.php', {
+            method: 'post',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({
+                endpoint: subscription.endpoint,
+                key: key ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : null,
+                token : token ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))) : null,
+                axn: 'subscribe'
+            })
+        })
+        .then(function(response){
+            return response.text();
+        }).then(function(response){
+            console.log(response);
+        }).catch(function(e){
+            console.log('error', e);
+        })
     }
 }
 

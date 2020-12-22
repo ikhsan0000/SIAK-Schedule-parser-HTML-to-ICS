@@ -1,3 +1,40 @@
+<?php
+require_once "../config_database.php";
+
+$_POST = json_decode(file_get_contents('php://input'),true);
+
+$endpoint = $_POST['endpoint'];
+$key = $_POST['key'];
+$auth = $_POST['token'];
+$key_len = strlen($key);
+$auth_len = strlen($auth);
+$key = substr($key, 0, ($key_len - 1));     //hapus sama dengan ("=") di akhir string
+$auth = substr($auth, 0, ($auth_len - 2));  //hapus sama dengan ("==") di akhir string
+
+
+if(isset($_POST['axn']) && $_POST['axn'] != NULL)
+{
+  $output = '';
+  switch($_POST['axn'])
+  {
+    case "subscribe":
+      $sql = "INSERT INTO subscriber (endpoints, p256dh, auth) VALUES ('$endpoint', '$key', '$auth')";
+      $link->query($sql);
+    break;
+
+    case "unsubscribe":
+      $sql = "DELETE FROM subscriber WHERE endpoints = '$endpoint'";
+      $link->query($sql);
+    break;
+
+    default:
+
+  }
+  exit;
+}
+?> 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +88,7 @@
           <div class="row">
             <div class="span6">
               <ul class="topmenu">
-                <li><a href="home.php">Home</a>&nbsp;&nbsp;</li>
+                <li><a href="../home.html">Home</a>&nbsp;&nbsp;</li>
 				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
 				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
 				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
@@ -70,7 +107,7 @@
           <div class="span4">
             <div class="logo">
               <h1>
-                <a href="home.php">Sched<span style="color:yellow">UI</span>e </a>+
+                <a href="../home.html">Sched<span style="color:yellow">UI</span>e </a>+
                 <a href="event.php" target="_blank">Event</a>
               </h1>
             </div>

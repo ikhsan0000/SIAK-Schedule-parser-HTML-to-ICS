@@ -45,7 +45,7 @@ self.addEventListener('push', e =>
 
     const title = "Hey, SchedUIe here!";
     const option = {
-        body: 'Tanggal Cuti Bersama Direvisi loh!',
+        body: 'Tanggal Cuti Bersama Direvisi A!',
         icon: 'images/logo192.png',
         badge: 'images/logo144.png'
     };
