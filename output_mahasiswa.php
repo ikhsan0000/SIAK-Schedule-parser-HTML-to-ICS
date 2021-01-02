@@ -2,7 +2,7 @@
 
 <?php
 	require_once "decision.php";
-	require_once "config_database.php";
+	// require_once "config_database.php";
 	//list file extenion here
 	$extension = array('html','mhtml','htm');
 
@@ -40,7 +40,7 @@
 	{
 		echo '<script language="javascript">';
 		echo 'alert("Please insert your file");';
-		echo 'window.location="home.php";';
+		echo 'window.location="home.html";';
 		echo '</script>';
 		exit();
 	
@@ -57,7 +57,7 @@
 		echo '<script language="javascript">';
 		echo 'alert("Invalid File Format")';
 		echo '</script>';
-		include_once ('home.php');
+		include_once ('home.html');
 		exit();
 	
 	}
@@ -110,7 +110,7 @@
 					$nama_mahasiswa = $nama_mahasiswa.$npm_string[$i_npm];
 				}
 				
-				
+				/*
 				//check already existing user
 				$already_exist = 0;
 				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE id = '$npm_final'";
@@ -127,6 +127,7 @@
 					$query_user_list = "INSERT INTO user_list VALUES ('$nama_mahasiswa', '$npm_final', '$user_name@ui.ac.id')";
 					pg_query($query_user_list);
 				}
+				*/
 				
 				//Parsing everything here
 				$hari = $dom->getElementsByTagName('td');
@@ -372,11 +373,11 @@
 						echo 'Waktu: '.$jam_temp.'</br></br>';
 						
 						//QUERY KE TABLE JADWAL
-						if($already_exist == 0)
-						{
-							$query_jadwal = "INSERT INTO jadwal VALUES ('$npm_final', '$query_hari', $mulai, $selesai, '$final_string[0]')";
-							pg_query($query_jadwal);
-						}
+						// if($already_exist == 0)
+						// {
+						// 	$query_jadwal = "INSERT INTO jadwal VALUES ('$npm_final', '$query_hari', $mulai, $selesai, '$final_string[0]')";
+						// 	pg_query($query_jadwal);
+						// }
 					}
 					
 						
@@ -391,7 +392,7 @@
 				echo '<script language="javascript">';
 				echo 'alert("Wrong SIAK page")';
 				echo '</script>';
-				include_once ('home.php');
+				include_once ('home.html');
 				exit();
 			}
 		}
@@ -400,7 +401,7 @@
 			echo '<script language="javascript">';
 			echo 'alert("Wrong html content")';
 			echo '</script>';
-			include_once ('home.php');
+			include_once ('home.html');
 			exit();
 		}
 	}

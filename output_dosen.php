@@ -37,7 +37,7 @@
 	{
 		echo '<script language="javascript">';
 		echo 'alert("Please insert your file");';
-		echo 'window.location="home.php";';
+		echo 'window.location="home.html";';
 		echo '</script>';
 		exit();
 	
@@ -52,7 +52,7 @@
 		echo '<script language="javascript">';
 		echo 'alert("Invalid File Format")';
 		echo '</script>';
-		include_once ('home.php');
+		include_once ('home.html');
 		exit();
 	}
 	
@@ -1098,7 +1098,7 @@
 				echo '<script language="javascript">';
 				echo 'alert("Wrong SIAK page")';
 				echo '</script>';
-				include_once ('home.php');
+				include_once ('home.html');
 				exit();
 			}
 		}
@@ -1108,7 +1108,7 @@
 			echo '<script language="javascript">';
 			echo 'alert("Wrong html content")';
 			echo '</script>';
-			include_once ('home.php');
+			include_once ('home.html');
 			exit();
 		}
 	
