@@ -68,7 +68,7 @@
 			if(strpos($content, 'title="Ganti Role">Mahasiswa') !== false)
 			{
 				//HTML explode here
-				$first = explode('<p class="hour" style="text-align:center;height:30px;color:#888;">17.30</p>', $content);
+				$first = explode('<td style="padding:5px 0;vertical-align:top;text-align:center;width:4em">', $content);
 				$second = explode('<td style="width: 0;"></td>', $first[1]);
 				
 				//initiate DOM documents here

@@ -42,6 +42,7 @@
 </head>
 
 <body>
+  <button class="trigger hidden">Click here to trigger the modal!</button>
 
   <div id="wrapper">
     <!-- start header -->
@@ -51,7 +52,7 @@
           <div class="row">
             <div class="span6">
               <ul class="topmenu">
-                <li><a href="home.php">Home</a>&nbsp;&nbsp;</li>
+                <li><a href="home.html">Home</a>&nbsp;&nbsp;</li>
 				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
 				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
 				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
@@ -66,12 +67,24 @@
         </div>
       </div>
       <div class="container">
+            <!-- Modal box -->
+        <div class="mymodal">
+          <div class="mymodal-content">
+              <span class="close-button">×</span>
+              <br>
+              Nyalakan Push Notification untuk menerima berita, notifikasi dapat dimatikan lewat halaman Scheduie "Push Notification" di atas
+              <div class="d-flex justify-content-around">
+                <button class="btn btn-success mt-3 mb-1" style="align-items: center; display: flex;">Enable Push Notification</button>
+
+              </div>
+          </div>
+        </div>
         <div class="row nomargin">
           <div class="span4">
             <div class="logo">
               <h1>
-                <a href="home.php">Sched<span style="color:yellow">UI</span>e </a>
-                <!-- <a href="event.php" target="_blank">Event</a> -->
+                <a href="home.php">Sched<span style="color:yellow">UI</span>e</a> + 
+                <a href="event.php" target="_blank">Event</a>
               </h1>
             </div>
           </div>
@@ -269,7 +282,38 @@
 	$(".custom-file-input").on("change", function() {
 	var fileName = $(this).val().split("\\").pop();
 	$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-	});
+  });
+  
+  // Modalbox
+  var modal = document.querySelector(".mymodal");
+  var trigger = document.querySelector(".trigger");
+  var closeButton = document.querySelector(".close-button");
+  
+  if (!sessionStorage.alreadyClicked) {
+    $(document).ready(function(){
+		modal.classList.toggle("show-modal");
+    });
+    sessionStorage.alreadyClicked = 1;
+}
+
+    $(document).ready(function(){
+		modal.classList.toggle("show-modal");
+    });
+
+  function toggleModal() {
+      modal.classList.toggle("show-modal");
+  }
+
+  function windowOnClick(event) {
+      if (event.target === modal) {
+          toggleModal();
+      }
+  }
+
+  trigger.addEventListener("click", toggleModal);
+  closeButton.addEventListener("click", toggleModal);
+  window.addEventListener("click", windowOnClick);
+
 	</script>
 
 </body>

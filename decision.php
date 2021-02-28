@@ -3,7 +3,6 @@ $role = '';
 	//Get the user name
 	if (isset($_POST['role']) && $_POST['role'] == "mahasiswa")
 	{
-
 		include_once('output_mahasiswa.php');
 	}
 	elseif (isset($_POST['role']) && $_POST['role'] == "dosen")

@@ -2,6 +2,7 @@
 const staticCacheName = 'static';
 const assets = [
     '/home.html',
+    '/index.html',
     '/app.js', 
     'css/style.css',
     'img/header-pattern-150.png'

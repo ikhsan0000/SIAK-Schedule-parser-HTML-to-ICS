@@ -3,3 +3,15 @@ di app.js
 [28] navigator.serviceWorker.register('sw.js') -> navigator.serviceWorker.register('../sw.js')
 
 karena bikin subfolder push, jadi sw error di root directory
+
+
+
+
+!!!IMPORTANT!!!
+Seminar Notes:
+
+1. pembahasan fitur PWA yang ingin diimplementasi naik ke setelah menjelaskan SchedUIe
+2. Kembalikan fitur event mailing
+3. extract npm / nama / apapun yang bisa dijadikan identifier (Primary Key) subscription details saat user convert jadwal ke database 
+4. pisahkan page push message menjadi admin only + ada option untuk broadcast dan multicast
+5. kategori multicast bisa dari angkatan dll
