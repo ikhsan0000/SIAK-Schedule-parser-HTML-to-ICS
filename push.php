@@ -1,7 +1,10 @@
 <?php
-require_once "../config_database.php";
+require_once "config_database.php";
+session_start();
 
 $_POST = json_decode(file_get_contents('php://input'),true);
+
+$npmUser = $_SESSION['npm_user'];
 
 $endpoint = $_POST['endpoint'];
 $key = $_POST['key'];
@@ -18,7 +21,7 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL)
   switch($_POST['axn'])
   {
     case "subscribe":
-      $sql = "INSERT INTO subscriber (endpoints, p256dh, auth) VALUES ('$endpoint', '$key', '$auth')";
+      $sql = "INSERT INTO subscriber (endpoints, p256dh, auth, ID) VALUES ('$endpoint', '$key', '$auth', '$npmUser')";
       $link->query($sql);
     break;
 
@@ -34,7 +37,6 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL)
 }
 ?> 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,26 +51,26 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL)
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   
   <!-- css -->
-  <link href="../css/bootstrap.css" rel="stylesheet" />
-  <link href="../css/bootstrap-responsive.css" rel="stylesheet" />
-  <link href="../css/prettyPhoto.css" rel="stylesheet" />
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="css/prettyPhoto.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <link href="../css/style.css" rel="stylesheet"> 
+  <link href="css/style.css" rel="stylesheet"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link rel="shortcut icon" type="img/png" href="img/favicon2.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Theme skin -->
-  <link id="t-colors" href="../color/scheduie.css" rel="stylesheet" />
+  <link id="t-colors" href="color/scheduie.css" rel="stylesheet" />
   <!-- Fav and touch icons -->
 
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png" />
-  <link rel="stylesheet" href="../css/mystyle.css">
-  <link rel="manifest" href="../manifest.json"> 
+  <link rel="stylesheet" href="css/mystyle.css">
+  <link rel="manifest" href="manifest.json"> 
 
   <!-- =======================================================
     Theme Name: Remember
@@ -88,7 +90,7 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL)
           <div class="row">
             <div class="span6">
               <ul class="topmenu">
-                <li><a href="../home.html">Home</a>&nbsp;&nbsp;</li>
+                <li><a href="home.php">Home</a>&nbsp;&nbsp;</li>
 				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
 				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
 				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
@@ -107,7 +109,7 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL)
           <div class="span4">
             <div class="logo">
               <h1>
-                <a href="../home.html">Sched<span style="color:yellow">UI</span>e </a>+
+                <a href="home.php">Sched<span style="color:yellow">UI</span>e </a>+
                 <a href="event.php" target="_blank">Event</a>
               </h1>
             </div>
@@ -138,7 +140,7 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL)
     <div class="container mt-3 col-3 mb-5" id="mainprog">
         <button type="submit" class="btn-lg btn-block btn-dark" value="submit" name="push" id="push" style="height: 80px; width: 400px; font-size: x-large;" disabled >Your Browser Does not support Push</button>
         <br>
-        <form action="pushAction.php">
+        <form action="push/pushAction.php">
           <button type="submit" class="btn-lg btn-block btn-dark" value="submit" name="send" id="send-push" style="height: 80px; width: 400px; font-size: x-large;"  >Send Push</button>
         </form>
     </div>
@@ -279,7 +281,7 @@ if(isset($_POST['axn']) && $_POST['axn'] != NULL)
   <script src="js/portfolio/setting.js"></script>
   <script src="js/animate.js"></script>
   <script src="js/custom.js"></script> -->
-  <script src="../app.js"></script>
+  <script src="app.js"></script>
   
 </body>
 

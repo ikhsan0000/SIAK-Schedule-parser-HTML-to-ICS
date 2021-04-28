@@ -38,15 +38,16 @@ self.addEventListener('fetch', e =>
     )
 });
 
+
 // Push notification
 self.addEventListener('push', e =>
 {
     console.log('SW Push Received');
-    console.log('SW Push this: "${event.data.text()}"');
+    console.log('SW Push this: ' + e.data.text());
 
     const title = "Hey, SchedUIe here!";
     const option = {
-        body: 'Tanggal Cuti Bersama Direvisi A!',
+        body: e.data.text(),
         icon: 'images/logo192.png',
         badge: 'images/logo144.png'
     };

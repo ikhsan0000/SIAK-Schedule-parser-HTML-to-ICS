@@ -1,59 +1,15 @@
-<?php
-/* Attempt to connect to database */
-require_once "config_database.php";
 
-	require_once('phpmailer/PHPMailerAutoload.php');
-//Functoin PHPMailer
-//source: https://github.com/PHPMailer/PHPMailer/tree/5.2-stable
-function sendMail($recipient, $user_name, $event_name, $day, $description, $date, $start, $end)
-{
+<?php 
 
+    require_once "config_database.php";
 
-	$content = "Halo $user_name!<br>
-				Kami dari SchedUIe mengajak anda untuk hadir dalam <br><br>
-				Acara : $event_name<br>
-				Deskripsi acara: $description<br>
-				Hari : $day<br>
-				Tanggal : $date<br>
-				Pukul : $start - $end<br>
-				Tiada kesan tanpa kehadiranmu kawan!<br><br>
-				Salam --IGS";
-	
-	$mail = new PHPMailer();
-	$mail->isSMTP();
-	$mail->SMTPDebug = 0;		//change value to 3 to debug, default 0
-	$mail->SMTPAuth = true;
-	$mail->SMPTSecure = 'ssl';
-	$mail->Host = 'smtp.gmail.com';
-	$mail->Mailer   = "smtp";
-	$mail->Port = '587';
-	$mail->isHTML();
-	$mail->Username = 'scheduiebyigs@gmail.com';
-	$mail->Password = 'tekkom2017';			//change to password email
-	$mail->SetFrom('scheduiebyigs-no_reply@gmail.com');
-	$mail->Subject = 'Hello World!!';
-	$mail->Body = $content;
-	$mail->AddAddress($recipient);
-
-
-	$mail->Send();
-	echo "mail sent!";
-
-}
-
-function mail_log($link, $recipient, $user_name, $event_name, $day, $description, $date, $start, $end)
-{
-	$log_sql = "INSERT INTO email_log (recipient, user_name, event_name, day, description, date, start_time, end_time) VALUES ('$recipient', '$user_name', '$event_name', '$day', '$description', '$date', '$start', '$end')";
-	mysqli_query($link, $log_sql);
-}
-
-	$e_id =  $_POST['id'];
+    $e_id =  $_POST['eIdPush'];
 
 	$kueri_row = "SELECT * FROM user_list";
 	$execute = mysqli_query($link, $kueri_row);
 	
 	//Loop trough all events in table acara (SELECT * FROM acara)
-	$kueri_e = "SELECT * FROM acara WHERE id = $e_id AND sent = 0";
+	$kueri_e = "SELECT * FROM acara WHERE id = $e_id AND push_sent = 0";
 	$execute_e = mysqli_query($link, $kueri_e);
 	while($row_e = mysqli_fetch_assoc($execute_e))
 	{
@@ -97,19 +53,6 @@ function mail_log($link, $recipient, $user_name, $event_name, $day, $description
 		$e_selesai_fixed = str_split($e_selesai_fixed);
 		$e_selesai_final = $e_selesai_fixed[0].$e_selesai_fixed[1].":".$e_selesai_fixed[2].$e_selesai_fixed[3];
 		
-		
-		//test block
-		echo "<br>";
-		echo $nama_event;
-		echo "<br>";
-		echo $hari_event;
-		echo "<br>";
-		echo $e_mulai;
-		echo "<br>";
-		echo $e_selesai;
-		echo "<br>";
-		echo "<br>";
-		//test block
 		
 		//Loop trough all users in table user_list (SELECT * FROM user_list) for all Events
 
@@ -200,22 +143,8 @@ function mail_log($link, $recipient, $user_name, $event_name, $day, $description
 			//if every checked subject on current user is passing the condition, then send email
 			if($true_flag == 1)
 			{
-				
-				//block test
-				echo "<br>";
-				echo $current_name;
-				echo " IS VALID TO SEND";
-				echo "<br>";
-				//!!!!!!!!!!! sending problem !!!!!!!!!!!!!!!!!!!!!!! uncomment below code to test
-				// sendMail($current_email, $current_name, $nama_event, $hari_event, $e_deskripsi,
-				// $tanggal_event, $e_mulai_final, $e_selesai_final);
-				if (!mail_log($link, $current_email, $current_name, $nama_event, $hari_event, $e_deskripsi, $tanggal_event, $e_mulai_final, $e_selesai_final)) {
-					echo("Error description: " . mysqli_error($link));
-				  }
-				mail_log($link, $current_email, $current_name, $nama_event, $hari_event, $e_deskripsi, $tanggal_event, $e_mulai_final, $e_selesai_final);
-				echo "<br>";
-				echo "<br>";
-				//block test
+
+                include "push/pushAction.php";
 			}
 			else
 			{
@@ -228,19 +157,10 @@ function mail_log($link, $recipient, $user_name, $event_name, $day, $description
 			}
 			
 		}
-		$kueri_update_sent = "UPDATE acara SET sent = 1 WHERE id = '$e_id'";
+		$kueri_update_sent = "UPDATE acara SET push_sent = 1 WHERE id = '$e_id'";
 		mysqli_query($link, $kueri_update_sent);
 		//reset the pointer for pg_fetch user & user's subject
 		// pg_result_seek($execute,0);
 		// pg_result_seek($execute2,0);
 	}
-	echo "<br>";
-	echo '<script language="javascript">';
-	echo 'alert("Email Sent !");';
-	echo 'window.location="admin_page.php";';
-	echo '</script>';
-	exit();
-
-
 ?>
-

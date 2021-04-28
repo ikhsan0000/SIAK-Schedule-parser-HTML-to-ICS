@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>SchedUIe by IGS</title>
@@ -57,7 +56,7 @@
 				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
 				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
         <li><a href=#profile>About</a>&nbsp;&nbsp;</li>
-        <li><a href="push/push.php">Push Notification</a>&nbsp;&nbsp;</li>
+        <li><a href="push.php">Push Notification</a>&nbsp;&nbsp;</li>
               </ul>
             </div>
             <div class="span6">
@@ -74,8 +73,7 @@
               <br>
               Nyalakan Push Notification untuk menerima berita, notifikasi dapat dimatikan lewat halaman Scheduie "Push Notification" di atas
               <div class="d-flex justify-content-around">
-                <button class="btn btn-success mt-3 mb-1" style="align-items: center; display: flex;">Enable Push Notification</button>
-
+                <button class="btn btn-success mt-3 mb-1" name="push" id="push" style="align-items: center; display: flex;">Enable Push Notification</button>
               </div>
           </div>
         </div>
@@ -112,26 +110,22 @@
 
      <div class="container mt-3 col-3" id="mainprog">
 			<form action="Decision.php" method="POST" enctype="multipart/form-data">
-			<!-- <p style="color:white;">Username:</p>
+			<p style="color:white;">Username UI:</p>
 			<div class="form-group input-group-lg">
-				<input type="text" id="username" name="e_name" class="form-control">
-			</div> -->
+				<input type="text" id="username" name="e_name" class="form-control" placeholder="Kosongkan jika tidak ingin menerima E-mail">
+			</div>
 			<p style="color:white;">Upload disini:</p>
 			<div class="custom-file mb-3">
 				<input type="file" class="custom-file-input" id="customFile" name="jadwalsiak">
 				<label class="custom-file-label" for="customFile">Choose file</label>
 			</div>
 			<br>
-		<span style="color:white;">Role:</span>
-		<input type="radio" name="role"
-		value="mahasiswa"><span style="color:white;"> Mahasiswa</span>
-		<input type="radio" name="role"
-		value="dosen" style="color:white;"> <span style="color:white;">Dosen</span>
 
 			<div class="mt-3">
-				<button type="submit" class="btn-lg btn-block btn-dark" value="submit" name="submit">Convert</button>
+				<button type="submit" id="convert" class="btn-lg btn-block btn-dark" value="submit" name="submit">Convert</button>
 			</div>
 			</form>
+
 	   </div>
 
 
@@ -283,24 +277,47 @@
 	var fileName = $(this).val().split("\\").pop();
 	$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
   });
+
+  //Cookie handling
   
+  function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+  var modalShown = getCookie('modal');
+  var visitorAlready = getCookie('visitor');
+
   // Modalbox
   var modal = document.querySelector(".mymodal");
   var trigger = document.querySelector(".trigger");
   var closeButton = document.querySelector(".close-button");
+  var convertButton = document.querySelector("#convert");
   
-  if (!sessionStorage.alreadyClicked) {
-    $(document).ready(function(){
-		modal.classList.toggle("show-modal");
-    });
-    sessionStorage.alreadyClicked = 1;
-}
+  $(document).ready(function(){
+    if(visitorAlready === 'already' && modalShown === undefined)
+    { 
+      modal.classList.toggle("show-modal");
+      document.cookie = "modal=shown;expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
+    }
+  });
 
-    $(document).ready(function(){
-		modal.classList.toggle("show-modal");
+  $(document).ready(function(){
+    convertButton.addEventListener("click", function(event) {
+      if(modalShown === undefined)
+      {
+        modal.classList.toggle("show-modal");
+        document.cookie = "modal=shown;expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
+      }
     });
+  });
 
-  function toggleModal() {
+ 
+
+  console.log('Cookie Modal : ' + getCookie('modal'));
+  console.log('Cookie Visitor : ' + getCookie('visitor'));
+    function toggleModal() {
       modal.classList.toggle("show-modal");
   }
 

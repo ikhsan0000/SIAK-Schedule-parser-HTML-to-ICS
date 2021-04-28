@@ -1,6 +1,7 @@
 
 
 <?php
+	session_start();
 	require_once "decision.php";
 	// require_once "config_database.php";
 	//list file extenion here
@@ -110,12 +111,12 @@
 					$nama_mahasiswa = $nama_mahasiswa.$npm_string[$i_npm];
 				}
 				
-				/*
+				
 				//check already existing user
 				$already_exist = 0;
 				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE id = '$npm_final'";
-				$query_check_execute = pg_query($query_check_already_exist);
-				$row_check = pg_fetch_row($query_check_execute);
+				$query_check_execute = mysqli_query($link, $query_check_already_exist);
+				$row_check = mysqli_fetch_row($query_check_execute);
 				if($row_check[0] >= 1)
 				{
 					$already_exist = 1;
@@ -125,9 +126,9 @@
 				if($already_exist == 0)
 				{
 					$query_user_list = "INSERT INTO user_list VALUES ('$nama_mahasiswa', '$npm_final', '$user_name@ui.ac.id')";
-					pg_query($query_user_list);
+					mysqli_query($link, $query_user_list);
 				}
-				*/
+				
 				
 				//Parsing everything here
 				$hari = $dom->getElementsByTagName('td');
@@ -371,13 +372,15 @@
 						echo 'Mata Kuliah: '.$final_string[0].'</br>';
 						echo 'Ruang: '.$ruang.'</br>';
 						echo 'Waktu: '.$jam_temp.'</br></br>';
-						
-						//QUERY KE TABLE JADWAL
-						// if($already_exist == 0)
-						// {
-						// 	$query_jadwal = "INSERT INTO jadwal VALUES ('$npm_final', '$query_hari', $mulai, $selesai, '$final_string[0]')";
-						// 	pg_query($query_jadwal);
-						// }
+
+						$_SESSION['npm_user'] = $npm_final;
+
+						// QUERY KE TABLE JADWAL
+						if($already_exist == 0)
+						{
+							$query_jadwal = "INSERT INTO jadwal VALUES ('$npm_final', '$query_hari', $mulai, $selesai, '$final_string[0]')";
+							mysqli_query($link, $query_jadwal);
+						}
 					}
 					
 						
@@ -408,6 +411,17 @@
 
 	if (file_exists($file)) 
 		{
+
+			//Create cookie to save that this user already used this web
+			if(!isset($_COOKIE['visitor'])) 
+			{
+				setcookie(
+					"visitor",	//Cookie name
+					"already",	//Cookie value
+					time() + (10 * 365 * 24 * 60 * 60) //10 Years
+				  );
+			} 
+			//Download dialogue
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');
 			header('Content-Disposition: attachment; filename='.basename($file));
@@ -420,13 +434,7 @@
 			flush();
 			readfile($file);
 			exit;
+		
 		}
-	
-	
 ?>
 
-<html>
-<body>
-<a href="Calender_SIAK.ics">Download ICS here</a>
-</body>
-</html> 

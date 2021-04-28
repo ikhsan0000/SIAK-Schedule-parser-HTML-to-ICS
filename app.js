@@ -24,7 +24,7 @@ function urlB64ToUint8Array(base64String)
 
 if('serviceWorker' in navigator && 'PushManager' in window) //check browser support SW
 {
-    navigator.serviceWorker.register('../sw.js')
+    navigator.serviceWorker.register('sw.js')
         .then((reg) => 
         {
             console.log('SW registered', reg)
@@ -157,11 +157,11 @@ function unsubscribeUser()
 
 function updateSubscriptionOnServer(subscription)
 {
-    const subscriptionJSON = document.querySelector('#subscription-json'); 
+    //const subscriptionJSON = document.querySelector('#subscription-json'); 
     
     if(subscription)
     {
-        subscriptionJSON.textContent = JSON.stringify(subscription); //print subsctiption details ke front
+        //subscriptionJSON.textContent = JSON.stringify(subscription); //print subsctiption details ke front
 
         const key = subscription.getKey('p256dh');
         const token = subscription.getKey('auth');

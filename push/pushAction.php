@@ -3,9 +3,37 @@ require __DIR__ . '/vendor/autoload.php';
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
 
-require_once "../config_database.php";
+//cookie method
+$namaAcara = $_COOKIE['namaAcara'];
+$deskripsi = $_COOKIE['deskripsi'];
+$waktuMulai = $_COOKIE['waktuMulai'];
+$waktuSelesai = $_COOKIE['waktuSelesai'];
 
-$sql = "SELECT * FROM subscriber";
+if(strlen($waktuMulai) == 3)
+{
+    $waktuMulai = $waktuMulai[0].":".$waktuMulai[1].$waktuMulai[2];
+}
+else
+{
+    $waktuMulai = $waktuMulai[0].$waktuMulai[1].":".$waktuMulai[2].$waktuMulai[3];
+}
+
+if(strlen($waktuSelesai) == 3)
+{
+    $waktuSelesai = $waktuSelesai[0].":".$waktuSelesai[1].$waktuSelesai[2];
+}
+else
+{
+    $waktuSelesai = $waktuSelesai[0].$waktuSelesai[1].":".$waktuSelesai[2].$waktuSelesai[3];
+}
+
+// fetch POST
+// $namaAcara = $_POST['namaAcara'];
+// $deskripsi = $_POST['deskripsi'];
+// $waktuMulai = $_POST['waktuMulai'];
+// $waktuSelesai = $_POST['waktuSelesai'];
+
+$sql = "SELECT * FROM subscriber WHERE ID = $current_user";
 $result = mysqli_query($link, $sql);
 $subscriptions = [];
 
@@ -15,9 +43,9 @@ while($row = mysqli_fetch_assoc($result))
     $subscriptions[] = Subscription::create(json_decode($endpoints, true));
 }
 
-$payload = 'Tanggal Cuti Bersama Direvisi!';
-//subscribtion masih hardcoded
+$payload = $namaAcara .' mulai jam '. $waktuMulai . ' - ' . $waktuSelesai;
 
+//subscribtion masih hardcoded
 //Multiple Endpoints
 // $endpoint_1 = '{"endpoint":"https://fcm.googleapis.com/fcm/send/eNdGm-uxrs0:APA91bFzU7-0XWEPVDWlwpRa9ucCx7L3nqw03ZGYmuGeUwcqSz2E2JHTLomjuNsNblVCPfLq9xk7uvfCBIpqyOsMnrIWgoNdGEgLgArGNERX94mH1bdxVOsCqZv9PxrMq7b3A1fGigOX","expirationTime":null,"keys":{"p256dh":"BEFggd33kdauoJcKfjdovPym2T2WH5vXa44rHGCo938yFLuLTIy27CvgDL7si9ZptlFNKLIYBwRIV0TEL_erOEk","auth":"92n-4JqXuEIo7jotdupCiw"}}';
 // $endpoint_2 = '{"endpoint":"https://updates.push.services.mozilla.com/wpush/v2/gAAAAABf2GWMMLD9VFZ15BlE80ZWWOGBWrv5Uipg2RwCxtuzQUq1zR6Gy3_O_z_jay3vS9yTnmmbrsZ9HM4QUshGYns7fyyH4hVHe3RH5BnD_Z3RdvQ-PkjErkE-r8M6mfI_U6FmiWOn5RUSsh32lS8BnLsoq39bS-P51vRQ_TuRXuWwOoxd08g","keys":{"auth":"f2boP5GUcDcglBfKvH4PcQ","p256dh":"BA9oq5USTdOxTKt-qopTjaX2AKIyRsbNfs19C0fDX5VTb4pFp9sbrM_reJkogpYWh9CS4cxt1BPS16yb8E4BUgo"}}';
@@ -42,6 +70,7 @@ $auth = [
 
 $webPush = new WebPush($auth);
 
+
 // Send to one Endpoint
 // $res = $webPush->sendOneNotification($subscription, $payload, ['TTL' => 5000]);
 
@@ -58,7 +87,7 @@ foreach ($webPush->flush() as $report) {
     if ($report->isSuccess()) {
         echo "[v] Message sent successfully for subscription {$endpoint}. <br>";
     } else {
-        echo "[x] Message failed to sent for subscription {$endpoint}: {$report->getReason()}";
+        echo "[x] Message failed to sent for subscription {$endpoint}: {$report->getReason()}. <br>";
     }
 }
 

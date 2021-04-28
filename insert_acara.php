@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		else
 		{
 			$insert = "INSERT INTO acara (org, nama_acara, deskripsi, tanggal, hari, waktu_mulai, waktu_selesai, sent) VALUES ('$organisasi', '$nama_acara', '$desc', '$tanggal', '$hari', '$waktu_mulai', '$waktu_selesai', 0)";
-			pg_query($insert);
+			mysqli_query($link, $insert);
 		
             echo ("<script>
             alert('Acara telah disubmit ^o^');

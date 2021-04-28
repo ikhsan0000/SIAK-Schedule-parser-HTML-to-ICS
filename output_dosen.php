@@ -1115,6 +1115,16 @@
 	}
 	if (file_exists($file)) 
 		{
+			//Create cookie to save that this user already used this web
+			if(!isset($_COOKIE['visitor'])) 
+			{
+				setcookie(
+					"visitor",	//Cookie name
+					"already",	//Cookie value
+					time() + (10 * 365 * 24 * 60 * 60) //10 Years
+				  );
+			} 
+
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');
 			header('Content-Disposition: attachment; filename='.basename($file));
