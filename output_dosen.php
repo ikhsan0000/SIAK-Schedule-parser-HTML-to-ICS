@@ -75,6 +75,28 @@
 				$tag_tr = $dom->getElementsByTagName('form');
 				$important_content = $tag_tr->item(1)->getElementsByTagName('td');		//all <td> content (raw material)
 				$inc = 0;
+
+				//get name
+				$get_name_step_1 = explode('<a href="/main/Authentication/Status" title="Detail"><img style="vertical-align:bottom" src="/main-www/themes/img/icon/role2.png" class="png16" alt="person"/>', $content);
+				$get_name_step_2 = explode('<a href="/main/Authentication/ChangeRole?role=Dosen" title="Ganti Role">Dosen</a> ', $get_name_step_1[1]);
+				$name = substr($get_name_step_2[0],4,-10);
+				
+				//check already existing user
+				$already_exist = 0;
+				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE Nama = '$name'";
+				$query_check_execute = mysqli_query($link, $query_check_already_exist);
+				$row_check = mysqli_fetch_row($query_check_execute);
+				if($row_check[0] >= 1)
+				{
+					$already_exist = 1;
+				}
+
+				//QUERY KE TABLE USER_LIST
+				if($already_exist == 0)
+				{
+					$query_user_list = "INSERT INTO user_list (Nama, ID, Email, Dosen) VALUES ('$name', 0, NULL, '1')";
+					mysqli_query($link, $query_user_list);
+				}
 				
 				foreach ($important_content as $i)
 				{
@@ -1125,18 +1147,18 @@
 				  );
 			} 
 
-			header('Content-Description: File Transfer');
-			header('Content-Type: application/octet-stream');
-			header('Content-Disposition: attachment; filename='.basename($file));
-			header('Content-Transfer-Encoding: binary');
-			header('Expires: 0');
-			header('Cache-Control: must-revalidate');
-			header('Pragma: public');
-			header('Content-Length: ' . filesize($file));
-			ob_clean();
-			flush();
-			readfile($file);
-			exit;
+			// header('Content-Description: File Transfer');
+			// header('Content-Type: application/octet-stream');
+			// header('Content-Disposition: attachment; filename='.basename($file));
+			// header('Content-Transfer-Encoding: binary');
+			// header('Expires: 0');
+			// header('Cache-Control: must-revalidate');
+			// header('Pragma: public');
+			// header('Content-Length: ' . filesize($file));
+			// ob_clean();
+			// flush();
+			// readfile($file);
+			// exit;
 		}
 	
 	

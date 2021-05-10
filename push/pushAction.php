@@ -33,8 +33,17 @@ else
 // $waktuMulai = $_POST['waktuMulai'];
 // $waktuSelesai = $_POST['waktuSelesai'];
 
-$sql = "SELECT * FROM subscriber WHERE ID = $current_user";
-$result = mysqli_query($link, $sql);
+if(isset($nama_dosen))
+{
+    $sql = "SELECT * FROM subscriber WHERE ID = 0";
+    $result = mysqli_query($link, $sql);
+}
+else
+{
+    $sql = "SELECT * FROM subscriber WHERE ID = $current_user";
+    $result = mysqli_query($link, $sql);
+}
+
 $subscriptions = [];
 
 while($row = mysqli_fetch_assoc($result))

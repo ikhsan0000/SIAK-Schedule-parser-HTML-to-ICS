@@ -69,3 +69,14 @@ Notes:
 - Bab 3 jadi studi literatur
 - Bab 4 jadi bab 3 yang sebelumnya
 - Bab 5 eksperimen, hasil, dan desain kuisioner
+
+3/5/2021
+
+Notes:
+- buat use case diagram (step step kemungkinan yg bisa user lakukan pada diagram tree)
+- list yang dapat mengakibatkan subscribe by id tidak terjadi
+- buat deskripsi saat prompt allow notification
+- tujuan studi literatur agar pembaca menyadari bahwa kita expert pada bidang itu (kita tau cutting edgenya) bahasan sub-bab per topik seperti paper x menggunakan offline caching seperti yang
+- metric bisa diukur dari chrome dev tools
+- kuisioner min 30 recipient
+- at least 2 browser major supported
