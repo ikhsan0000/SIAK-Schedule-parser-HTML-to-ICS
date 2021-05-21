@@ -15,6 +15,7 @@
   <link href="css/bootstrap-responsive.css" rel="stylesheet" />
   <link href="css/prettyPhoto.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet"> 
   <link href="css/style.css" rel="stylesheet"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -107,7 +108,7 @@
 
         <div class="container mt-2 col-3" id="mainprog">
 			    <div class="mt-1">
-				    <a href="ics/<?=$file;?>" class="btn-lg btn-block btn-dark mb-4">Download Here</a>
+				    <a href="ics/<?=$file;?>" class="btn-lg btn-block btn-dark mb-4" id="download">Download Here</a>
           </div>
 			  </div>
 	     </div>
@@ -237,7 +238,53 @@
 
 
   <script src="app.js"></script>
+  <script>
   
+  
+  //Cookie handling
+
+  function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  var modalShown = getCookie('modal');
+  var visitorAlready = getCookie('visitor');
+
+  // Modalbox
+  var modal = document.querySelector(".mymodal");
+  var trigger = document.querySelector(".trigger");
+  var closeButton = document.querySelector(".close-button");
+  var downloadButton = document.querySelector("#download");
+
+  function toggleModal() {
+      modal.classList.toggle("show-modal");
+  }
+
+  function windowOnClick(event) {
+      if (event.target === modal) {
+          toggleModal();
+      }
+  }
+
+  trigger.addEventListener("click", toggleModal);
+  closeButton.addEventListener("click", toggleModal);
+  window.addEventListener("click", windowOnClick);
+
+  $(document).ready(function(){
+    downloadButton.addEventListener("click", function(event) {
+      if(modalShown === undefined)
+      {
+        modal.classList.toggle("show-modal");
+        document.cookie = "modal=shown;expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
+      }
+    });
+  });
+
+
+
+  </script>
   
 </body>
 
