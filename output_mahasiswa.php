@@ -6,28 +6,6 @@
 	// require_once "config_database.php";
 	//list file extenion here
 	$extension = array('html','mhtml','htm');
-
-	
-	
-	//create file handling here
-	$file = 'Calender_SIAK.ics';
-	$handle = fopen($file,'w') or die('Cannot open file: '.$file);
-	fwrite ($handle,	'BEGIN:VCALENDAR'."\n".
-						'VERSION:2.0'."\n".
-						'METHOD:PUBLISH'."\n".
-						'X-WR-CALNAME:SIAK'."\n".
-						'X-WR-TIMEZONE:Asia/Jakarta'."\n".
-						'BEGIN:VTIMEZONE'."\n".
-						'TZID:Indian/Christmas'."\n".
-						'X-LIC-LOCATION:Indian/Christmas'."\n".
-						'BEGIN:STANDARD'."\n".
-						'TZOFFSETFROM:+0700'."\n".
-						'TZOFFSETTO:+0700'."\n".
-						'TZNAME:+07'."\n".
-						'DTSTART:19700101T000000'."\n".
-						'END:STANDARD'."\n".
-						'END:VTIMEZONE'."\n"
-			);
 	
 		
 	//upload form here
@@ -110,6 +88,27 @@
 				{
 					$nama_mahasiswa = $nama_mahasiswa.$npm_string[$i_npm];
 				}
+
+				
+				//create file handling here
+				$file = 'Calender_SIAK'.'_'.$nama_mahasiswa.'.ics';
+				$handle = fopen(__DIR__."\ics\\".$file,'w') or die('Cannot open file: '.$file);
+				fwrite ($handle,	'BEGIN:VCALENDAR'."\n".
+									'VERSION:2.0'."\n".
+									'METHOD:PUBLISH'."\n".
+									'X-WR-CALNAME:SIAK'."\n".
+									'X-WR-TIMEZONE:Asia/Jakarta'."\n".
+									'BEGIN:VTIMEZONE'."\n".
+									'TZID:Indian/Christmas'."\n".
+									'X-LIC-LOCATION:Indian/Christmas'."\n".
+									'BEGIN:STANDARD'."\n".
+									'TZOFFSETFROM:+0700'."\n".
+									'TZOFFSETTO:+0700'."\n".
+									'TZNAME:+07'."\n".
+									'DTSTART:19700101T000000'."\n".
+									'END:STANDARD'."\n".
+									'END:VTIMEZONE'."\n"
+						);
 				
 				
 				//check already existing user
@@ -437,4 +436,9 @@
 		
 		}
 ?>
+<html>
+<body>
+<a href="ics/<?=$file;?>">Download ICS here</a>
+</body>
+</html> 
 

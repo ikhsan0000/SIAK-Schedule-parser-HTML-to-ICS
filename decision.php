@@ -17,10 +17,12 @@
 	if ($role == 'mahasiswa')
 	{
 		include_once('output_mahasiswa.php');
+		include_once('download_page.php');
 	}
 	elseif ($role == 'dosen')
 	{
 		include_once('output_dosen.php');
+		include_once('download_page.php');
 	}
 	else
 	{
