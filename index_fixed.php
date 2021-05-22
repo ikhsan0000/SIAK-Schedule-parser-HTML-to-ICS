@@ -31,21 +31,21 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Introduction</a>
+                        <a class="nav-link" href="#intro">Introduction</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Features
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">SIAK Calendar Converter</a></li>
+                            <li><a class="dropdown-item" href="#main-program">SIAK Calendar Converter</a></li>
                             <li><a class="dropdown-item" href="#">Event Advertiser</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item disabled" href="#">Thanks for checking out!</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                 </ul>
             </div>
@@ -62,25 +62,50 @@
             </div>
             <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-            <div class="main-program mt-3 col-3">
+            <div class="main-program mt-4" id="main-program">
                 <form action="Decision.php" method="POST" enctype="multipart/form-data">
-                    <p style="color:white;">Username UI:</p>
-                    <div class="form-group input-group-lg">
-                        <input type="text" id="username" name="e_name" class="form-control" placeholder="Kosongkan jika tidak ingin menerima E-mail">
-                    </div>
-                    <p style="color:white;">Upload disini:</p>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Default file input example</label>
-                        <input class="form-control" type="file" id="formFile">
-                    </div>
-                    <br>
-
-                    <div class="mt-3">
-                        <button type="submit" id="convert" class="btn-lg btn-block btn-dark" value="submit" name="submit">Convert</button>
-                    </div>
+                    <span>
+                        <label for="username" class="form-label">Username UI</label>
+                        <i class="bi bi-patch-question" data-bs-toggle="tooltip" data-bs-placement="right" title="Kosongkan jika tidak ingin menerima email notifikasi"></i>
+                    </span>
+                    <input type="text" id="username" name="e_name" class="form-control mb-3 mt-2" placeholder="username.ui-mu99">
+                    <label for="formFile" class="form-label mt-3">Upload HTML SIAK mu di sini</label>
+                    <input class="form-control mt-2" type="file" id="formFile">
+                    <button type="submit" id="convert" class="btn-lg btn-block btn-dark center convert-btn" value="submit" name="submit">Convert</button>
                 </form>
-            </div>   
+            </div>
+            
+            <div class="section-end-pad"></div>
     </section> <!-- SECTION INTRO END-->
+
+    <section class="tutorial-video">
+        <h2 class="tutorial-header">Tutorial menggunakan SchedUIe</h2>
+        <iframe class="video pb-3" width="560" height="315" src="https://www.youtube.com/embed/VufqcjG2g3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+          
+    <section class="about" id="about">
+        <h2 class="about-header">Developer's Profile</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <img src="img/dummies/Ican.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Ikhsan Firdauz
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <img src="img/dummies/Galih.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Galih Damar Jati
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <img src="img/dummies/Siraj.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Achmad Faiz Siraj
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     </div> <!-- CONTAINER DIV END --> 
@@ -88,5 +113,13 @@
 
     <!-- JS IMPORT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- BOOTSTRAP TOOLTIP JS -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 </html>
