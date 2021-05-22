@@ -61,7 +61,7 @@
 
             </div>
             <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+            
             <div class="main-program mt-4" id="main-program">
                 <form action="Decision.php" method="POST" enctype="multipart/form-data">
                     <span>
@@ -80,7 +80,7 @@
 
     <section class="tutorial-video">
         <h2 class="tutorial-header">Tutorial menggunakan SchedUIe</h2>
-        <iframe class="video pb-3" width="560" height="315" src="https://www.youtube.com/embed/VufqcjG2g3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="video mb-3" width="560" height="315" src="https://www.youtube.com/embed/VufqcjG2g3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
           
     <section class="about" id="about">

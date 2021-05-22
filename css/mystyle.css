@@ -183,6 +183,9 @@ html
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
+    border: #f3f3f3 dashed;
+    border-radius: 20px;
+    padding: 20px
 }
 
 @media (max-width:577px) {
@@ -193,6 +196,11 @@ html
         margin-right: auto;
     }
     
+}
+
+iframe
+{
+    border-radius: 7px;
 }
 
 .form-label
@@ -221,7 +229,8 @@ html
 
 section.tutorial-video
 {
-    background-color: rgb(240, 132, 0);
+    background: rgb(222,128,51);
+    background: linear-gradient(180deg, rgba(222,128,51,1) 0%, rgba(251,144,28,1) 9%); 
 }
 
 .tutorial-header
@@ -250,6 +259,7 @@ section.about
 
 .profile
 {
+    border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
@@ -259,6 +269,12 @@ section.about
     align-content: center;
     align-self: center;
     align-content: center;
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.profile:hover
+{
+    transform: translateY(-10px);
 }
 
 .profile-details
