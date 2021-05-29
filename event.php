@@ -1,317 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>SchedUIe by IGS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Your page description here" />
-  <meta name="IGS" content="" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Your page description here" />
+    <meta name="IGS" content="" />
+    <title>SchedUIe by IGS</title>
 
+    <!-- CSS&BOOTSTRAP5 IMPORT -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/mystyle.css">
 
-  <!-- css -->
-  <link href="css/bootstrap.css" rel="stylesheet" />
-  <link href="css/bootstrap-responsive.css" rel="stylesheet" />
-  <link href="css/prettyPhoto.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet"> 
-  <link href="css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <link rel="shortcut icon" type="img/png" href="img/favicon2.png">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- Theme skin -->
-  <link id="t-colors" href="color/scheduie.css" rel="stylesheet" />
+    <!-- BOOTSTRAP ICON -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-  <!-- Fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png" />
-
-
-  <!-- =======================================================
-    Theme Name: Remember
-    Theme URL: https://bootstrapmade.com/remember-free-multipurpose-bootstrap-template/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
+    <!-- CDN CSS BOOTSTRAP DATEPICKER -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- TIMEPICKER -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.min.css">
 </head>
-
 <body>
-
-  <div id="wrapper">
-    <!-- start header -->
-    <header>
-      <div class="top">
-        <div class="container">
-          <div class="row">
-            <div class="span6">
-              <ul class="topmenu">
-                <li><a href="home.php">Home</a>&nbsp;&nbsp;</li>
-				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
-				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
-				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
-				<li><a href=#profile>About</a></li>
-              </ul>
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-expand-md">
+        <div class="container-fluid">
+            <i class="bi bi-calendar-week nav-icon"></i>
+            <div class="logo-text">SchedUIe</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#intro">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tutorial">Tutorial</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Features
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-recolor" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="home.php">SIAK Calendar Converter</a></li>
+                            <li><a class="dropdown-item" href="#main-program">Event Advertiser</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item disabled" href="#">Thanks for checking out!</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
             </div>
-            <div class="span6">
-
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row nomargin">
-          <div class="span4">
-            <div class="logo">
-              <h1>
-                <a href="home.php" target="_blank">Sched<span style="color:yellow">UI</span>e </a>+
-                <a href="event.php">Event</a>
-              </h1>
-            </div>
-          </div>
-          <div class="span8">
-            <div class="navbar navbar-static-top">
-              <div class="navigation">
-              </div>
-              <!-- end navigation -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- end header -->
-
-    <!-- section intro -->
+    </nav> 
+    <!-- NAVBAR END -->
+    
     <section id="intro">
-      <div class="intro-content">
+        <div id="intro-filter">
+    <div class="container">
+            <h1 class="header-text">Event UI</h1>
+            <h3 class="subheader-text">Mau event-mu lebih ramai? SchedUIe bisa mengirimkan email pemberitahuan event untuk mengundang beberapa potential visitor ke event-mu yang telah menggunakan SchedUIe</h3>
 
-        <h2>Event<span style="color:yellow"> UI</span></h2>
-        <h3>Mau event-mu lebih ramai? SchedUIe bisa mengirimkan email pemberitahuan event untuk mengundang beberapa potential visitor ke event-mu</h3>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-        <form class="container col-3 was-validated" action="insert_acara.php" method="POST" enctype="multipart/form-data">
-     <div class="form-group input-group-lg" id="mainprog">
-         <br><p style="color:white">Organisasi:</p>
-         <input type="text" id="org" name="org" class="form-control form-control-lg" required><br>
-		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
-     </div>
-
-     <div class="form-group input-group-lg">
-         <p style="color:white">Nama Acara:</p>
-         <input type="text" id="e_name" name="e_name" class="form-control form-control-lg" required>
-		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
-        </div>
-
-     <div class="form-group">
-         <p style="color:white">Deskripsi Acara:</p>
-         <textarea class="form-control" id="e_desc" name="e_desc" placeholder="Deskripsikan acaranya.." style="height:200px" required></textarea>
-		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
-         </div>
-
-     <div class="form-group input-group-lg">
-         <p style="color:white">Tanggal:</p>
-         <input type="text" id="e_date" name="e_date" class="form-control form-control-lg" required><br>
-		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
-         <p style="color:white">Hari:</p>
-        </div>
-     <div class="form-group input-group-lg">
-     <select id="hari" name="hari" class="form-control form-control-lg" required>
-         <option hidden="" value="">Pilih Hari</option>
-         <option value="Senin">Senin</option>
-         <option value="Selasa">Selasa</option>
-         <option value="Rabu">Rabu</option>
-         <option value="Kamis">Kamis</option>
-         <option value="Jumat">Jumat</option>
-         <option value="Sabtu">Sabtu</option>
-         <option value="Minggu">Minggu</option>
-         </select>
-	 <div class="invalid-feedback" style="color:orange">*Required Field</div>
-     </div>
-
-     <p style="color:white">Waktu mulai:</p>
-       <div class = "form-group row">
-       <div class="col input-group-lg">
-         <input type="number" class="form-control" id="start_time" name="start_time" class="form-control form-control-lg" min="0" max="23" placeholder="Jam" required>
-       </div>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 style="color:white">:</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <div class="col input-group-lg">
-         <input type="number" class="form-control" id="start_time_2" name="start_time_2" class="form-control form-control-lg" min="0" max="59" placeholder="Menit" required><br>
-       </div>
-	   <div class="invalid-feedback" style="color:orange">*Required Field</div>
-       </div>
-
-
-
-       <p style="color:white">Waktu Selesai:</p>
-         <div class = "form-group row">
-         <div class="col input-group-lg">
-           <input type="number" class="form-control" id="end_time" name="end_time" class="form-control form-control-lg" min="0" max="23" placeholder="Jam" required>
-         </div>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 style="color:white">:</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <div class="col input-group-lg">
-           <input type="number" class="form-control" id="end_time_2" name="end_time_2" class="form-control form-control-lg" min="0" max="59" placeholder="Menit" required><br>
-         </div>
-		 <div class="invalid-feedback" style="color:orange">*Required Field</div>
-         </div>
-
-
-         <center><input type="submit" class="btn btn-dark btn-lg btn-block mt-3 " value="Submit"></center>
-       </form>
-
-
-
-
-	  </section>
-	<!-- /section intro -->
-    <section id="content">
-      <div class="container">
-        <div class="aligncenter">
-		  <h4>Tutorial Menggunakan Fitur Event SchedUIe<br></h4>
-		  <iframe width="560" height="315" src="https://www.youtube.com/embed/6ttCHrSzTK0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <br><br><br>
-		  </div>
-        </div>
-	  </section>
-
-
-	          <!-- divider -->
-        <div class="row">
-          <div class="span12">
-            <div class="solidline"></div>
-          </div>
-        </div>
-        <!-- end divider -->
-	  <section id="profile">
-		<div class="container">
-        <div class="row team">
-          <div class="span12">
-			  <div class="aligncenter">
-            <h4>Developer's Profile</h4>
-          </div>
-		</div>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <div class="span3">
-            <div class="team-box">
-              <a href="#profile" class="thumbnail"><img src="img/dummies/Ican.jpg" alt="" /></a>
-              <div class="roles aligncenter">
-                <p class="lead"><strong>Ikhsan Firdauz</strong></p><br>
-                <p>
-                  <a href="https://id.linkedin.com/in/ikhsan-firdauz-562a50147" target="_blank"><i class="icon-linkedin icon-circled icon-bglight active"></i></a>
-                </p>
-
-              </div>
             </div>
-          </div>
-          <div class="span3">
-            <div class="team-box">
-              <a href="#profile" class="thumbnail"><img src="img/dummies/Galih.jpg" alt="" /></a>
-              <div class="roles aligncenter">
-                <p class="lead"><strong>Galih Damar Jati</strong></p><br>
-                <p>
-                  <a href="https://id.linkedin.com/in/galih-damar-jati-254499148" target="_blank"><i class="icon-linkedin icon-circled icon-bglight active"></i></a>
-                </p>
-              </div>
+            <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+            <div class="main-program mt-4" id="main-program">
+                <form class="was-validated" action="insert_acara.php" method="POST" enctype="multipart/form-data">
+                    <label for="org" class="form-label">Nama Organisasi</label>
+                    <input type="text" id="org" name="org" class="form-control mb-3 mt-2" required>
+                    
+                    <label for="e_name" class="form-label">Nama Acara</label>
+                    <input type="text" id="e_name" name="e_name" class="form-control mb-3 mt-2" required>
+                    
+                    <label for="e_desc" class="form-label">Deskripsi Acara</label>
+                    <textarea class="form-control mb-3 mt-2" id="e_desc" name="e_desc" placeholder="Deskripsikan acaranya.." style="height:200px" required></textarea>
+
+                    <label for="e_date" class="form-label">Tanggal Acara</label>
+                    <div class="input-group mb-3 mt-2">
+                        <div class="input-group-text"><i class="bi bi-calendar3"></i></div>
+                        <input type="text" class="form-control cursor-hand datepicker readonly" id="e_date" name="e_date" placeholder="Pilih Tanggal . . ." required>
+                    </div>
+
+                    <div class="row mb-3 mt-2" >
+                        <div class="col">
+                            <label for="start_time" class="form-label">Waktu Mulai</label>
+                            <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                                <div class="input-group-text"><i class="bi bi-clock"></i></div>
+                                <input type="text" class="form-control cursor-hand readonly" name="start_time" id="start_time" placeholder="..." required >
+                            </div>
+                        </div>
+                        <div class="col-md-auto hyphen-clock">
+                        -
+                        </div>
+                        <div class="col">
+                            <label for="end_time" class="form-label">Waktu Selesai</label>
+                            <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                                <div class="input-group-text"><i class="bi bi-clock"></i></div>
+                                <input type="text" class="form-control cursor-hand readonly" name="end_time" id="end_time" placeholder="..." required >
+                            </div>
+                        </div>
+                    </div>
+                    
+                                    
+                    <button type="submit" id="submit" class="btn-lg btn-block btn-dark center convert-btn" value="submit" name="submit">Submit</button>
+                </form>
+
             </div>
-          </div>
-          <div class="span3">
-            <div class="team-box">
-              <a href="#profile" class="thumbnail"><img src="img/dummies/Siraj.jpg" alt="" /></a>
-              <div class="roles aligncenter">
-                <p class="lead"><strong>Achmad Faiz Siraj</strong></p><br>
-                <p>
-                  <a href="https://id.linkedin.com/in/achmad-faiz-siraj-474497148" target="_blank"><i class="icon-linkedin icon-circled icon-bglight active"></i></a>
-                </p>
-              </div>
+            
+            <div class="section-end-pad"></div>
+    </section> <!-- SECTION INTRO END-->
+
+    <section class="tutorial-video" id="tutorial">
+        <h2 class="tutorial-header">Tutorial menggunakan Event UI</h2>
+        <iframe class="video mb-3" width="560" height="315" src="https://www.youtube.com/embed/6ttCHrSzTK0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+          
+    <section class="about" id="about">
+        <h2 class="about-header">Developer's Profile</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <img src="img/dummies/Ican.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Ikhsan Firdauz
+                </div>
             </div>
-          </div>
-		</div>
-	   </div>
+            <div class="col-md-auto">
+                <img src="img/dummies/Galih.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Galih Damar Jati
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <img src="img/dummies/Siraj.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Achmad Faiz Siraj
+                </div>
+            </div>
+        </div>
     </section>
 
 
+    </div> <!-- CONTAINER DIV END --> 
+    
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="span4">
-            <div class="widget">
-              <div class="footer_logo">
-                <h3><a href="home.php">Sched<span style="color:yellow">UI</span>e</a></h3>
-              </div>
-              <address>
-							  <strong>IGS</strong><br>
-  							Teknik Komputer Universitas Indonesia 2017<br>
-			  </address>
-              <p>For more information and support please contact:<br>
-                <i class="icon-envelope-alt"></i> scheduiebyigs@gmail.com
-              </p>
-            </div>
-          </div>
+    <!-- JS IMPORT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
+    <!-- JS&JQ BOOTSTRAP DATEPICKER -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="http://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.min.js"></script>
 
-            </div>
-          </div>
+    <script>
 
-      <div id="sub-footer">
-        <div class="container">
-          <div class="row">
-            <div class="span12">
-              <div class="copyright">
-                <p><span>&copy; Remember Inc. All right reserved</span></p>
-                <p><span>Report Card icon by <a href="https://icons8.com/icon/13184/report-card">Icons8</a></span></p>
+    $( document ).ready(function() {
+        // INITIALIZE DATEPICKER
+        $('.datepicker').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "dd-mm-yyyy"
+        });
 
+        // INITIALIZE CLOCKPICKER
+        $('.clockpicker').clockpicker({
+        placement: 'top',
+        align: 'left',
+        donetext: 'Done'
+        });
 
+        // CUSTOM READONLY
+        $(".readonly").on('keydown paste', function(e){
+            if(e.keyCode != 9) // ignore tab
+                e.preventDefault();
+        });
 
-            <div class="span6">
-              <div class="credits">
-                <!--
-                  All the links in the footer should remain intact.
-                  You can delete the links only if you purchased the pro version.
-                  Licensing information: https://bootstrapmade.com/license/
-                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Remember
-                -->
-                Created by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-              		</div>
-					</div>
-            	 </div>
-       		  </div>
-       		 </div>
-      		</div>
-		  </div>
-		</div>
-
-    </footer>
-  </div>
-  <a href="#" class="scrollup"><i class="icon-angle-up icon-rounded icon-bglight icon-2x"></i></a>
-
-  <!-- javascript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="js/jquery.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/modernizr.custom.js"></script>
-  <script src="js/toucheffects.js"></script>
-  <script src="js/google-code-prettify/prettify.js"></script>
-  <script src="js/jquery.prettyPhoto.js"></script>
-  <script src="js/portfolio/jquery.quicksand.js"></script>
-  <script src="js/portfolio/setting.js"></script>
-  <script src="js/animate.js"></script>
-  <script src="js/custom.js"></script>
-
-
-  <script>
-	// Add the following code if you want the name of the file appear on select
-	$(".custom-file-input").on("change", function() {
-	var fileName = $(this).val().split("\\").pop();
-	$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-	});
-	</script>
+        // LOADING
+        var loadingBtn = '<span class="spinner-border spinner-border-sm" style="width: 20px; height: 20px;" role="status" aria-hidden="true"></span>&nbsp;&nbsp;Submitting...'
+        $("#submit").click(function(e)
+        {
+            $("#submit").attr('disabled', 'disabled');
+            $("#submit").html(loadingBtn);
+        });
+    });
+    
+    
+    </script>
 
 </body>
-
 </html>

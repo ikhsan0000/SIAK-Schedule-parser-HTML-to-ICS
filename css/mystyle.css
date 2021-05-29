@@ -4,6 +4,11 @@
     font-weight: 400;
 }
 
+html,body
+{
+    overflow-x: hidden; 
+}
+
 html 
 {
     scroll-behavior: smooth;
@@ -42,7 +47,7 @@ html
     font-size: 15pt;
 }
 
-.dropdown-menu
+.dropdown-menu-recolor
 {
     background-color: rgb(28, 28, 31);
 }
@@ -132,10 +137,29 @@ html
     padding: 10px 50px 20px 50px;
 }
 
-@media (max-width:577px) {
+@media (max-width:450px) {
     .subheader-text
     {
-        text-align: justify;
+        font-size: 15px;
+    }
+    .header-text
+    {
+        font-size: 45px;
+    }
+    .main-program
+    {
+        max-width: 320px;
+    }
+    .form-control
+    {
+        min-height: calc(1.5em + .5rem + 2px);
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        border-radius: .2rem;
+    }
+    .tutorial-header
+    {
+        font-size: 20px;
     }
 }
 
@@ -177,13 +201,21 @@ html
     }
 }
 
+@media (max-width:450px) {
+    .video
+    {
+        width: 350px;
+        height: 220px;
+    }
+}
+
 .main-program
 {
     text-align: center;
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
-    border: #f3f3f3 dashed;
+    border: #f3f3f3 dashed 0.2em;
     border-radius: 20px;
     padding: 20px
 }
@@ -220,6 +252,7 @@ iframe
     border-radius: 10px;
     width: 200px;
     padding: 10px 0 10px 0;
+    border: none;
 }
 
 .section-end-pad
@@ -281,4 +314,45 @@ section.about
 {
     text-align: center;
     margin-bottom: 40px;
+}
+
+.hyphen-clock
+{
+    color: #f3f3f3;
+    margin-bottom: auto;
+    margin-top: 39px;
+    font-weight: 600;
+}
+
+@media (max-width:768px) {
+    .hyphen-clock
+    {
+        display: none;
+    }
+    
+}
+
+.cursor-hand:hover
+{
+    cursor: pointer;
+}
+
+a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+    color: #f3f3f3;
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+    color: #f3f3f3;
+}
+
+/* A2HS BUTTON */
+#a2hs-download
+{
+    display: none;
 }

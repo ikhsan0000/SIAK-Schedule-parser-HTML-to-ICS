@@ -1,11 +1,9 @@
 //Constants
 const staticCacheName = 'static';
 const assets = [
-    '/home.html',
-    '/index.html',
+    '/home.php',
     '/app.js', 
-    'css/style.css',
-    'img/header-pattern-150.png'
+    'css/mystyle.css',
 ];
 
 //install SW event

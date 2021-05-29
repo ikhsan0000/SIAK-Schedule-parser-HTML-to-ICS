@@ -1,7 +1,7 @@
 {
     "name": "SchedUIe",
     "short_name": "SchedUIe",
-    "start_url": "127.0.0.1/home.html",
+    "start_url": "home.php",
     "display": "standalone",
     "background_color": "#454545",
     "theme_color": "#454545",

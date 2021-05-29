@@ -4,7 +4,11 @@
 	//cek role
 	$uploaded = $_FILES['jadwalsiak']['tmp_name'];
 	$content = file_get_contents($uploaded);
-	if(strpos($content, 'title="Ganti Role">Mahasiswa') !== false)
+	if($uploaded == NULL)
+	{
+		header("Location:home.php");
+	}
+	elseif(strpos($content, 'title="Ganti Role">Mahasiswa') !== false)
 	{
 		$role = 'mahasiswa';
 	}

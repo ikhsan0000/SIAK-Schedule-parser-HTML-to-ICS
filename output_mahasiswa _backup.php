@@ -144,6 +144,7 @@
 						if ($inc_hari == 0)
 						{
 							$query_hari = "Senin";
+							echo '<strong>Senin</strong>'.'<br/>';
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
@@ -155,6 +156,9 @@
 							$selesai = explode('.', $f_jam[1]);
 							$mulai = $mulai[0].$mulai[1];
 							$selesai = $selesai[0].$selesai[1];
+							echo 'Mulai: '.$mulai.'<br/>';
+							echo 'Selesai: '.$selesai.'<br/><br/>';
+							
 							fwrite($handle,	'BEGIN:VEVENT'."\n".
 											'DTSTART;TZID=Indian/Christmas:20191028T'.$mulai.'00'."\n".
 											'DTEND;TZID=Indian/Christmas:20191028T'.$selesai.'00'."\n".
@@ -177,6 +181,7 @@
 						elseif ($inc_hari == 1)
 						{
 							$query_hari = "Selasa";
+							echo '<strong>Selasa</strong>'.'<br/>';
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
@@ -214,6 +219,7 @@
 						elseif ($inc_hari == 2)
 						{
 							$query_hari = "Rabu";
+							echo '<strong>Rabu</strong>'.'<br/>';
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
@@ -251,6 +257,7 @@
 						elseif ($inc_hari == 3)
 						{
 							$query_hari = "Kamis";
+							echo '<strong>Kamis</strong>'.'<br/>';
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
@@ -288,6 +295,7 @@
 						elseif ($inc_hari == 4)
 						{
 							$query_hari = "Jumat";
+							echo '<strong>Jumat</strong>'.'<br/>';
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
@@ -325,15 +333,20 @@
 						elseif ($inc_hari == 5)
 						{
 							$query_hari = "Sabtu";
+							echo '<strong>Sabtu</strong>'.'<br/>';
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
+							echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+							echo 'Ruang: '.$final_string[1].'<br/>';
 							$jam_temp = $jam->item($inc)->nodeValue;
 							$f_jam = explode(' - ', $jam_temp);
 							$mulai = explode('.', $f_jam[0]);
 							$selesai = explode('.', $f_jam[1]);
 							$mulai = $mulai[0].$mulai[1];
 							$selesai = $selesai[0].$selesai[1];
+							echo 'Mulai: '.$mulai.'<br/>';
+							echo 'Selesai: '.$selesai.'<br/><br/>';
 							
 							fwrite($handle,	'BEGIN:VEVENT'."\n".
 											'DTSTART;TZID=Indian/Christmas:20191102T'.$mulai.'00'."\n".
@@ -355,7 +368,9 @@
 								
 							$inc = $inc + 1;
 						}
-						
+						echo 'Mata Kuliah: '.$final_string[0].'</br>';
+						echo 'Ruang: '.$ruang.'</br>';
+						echo 'Waktu: '.$jam_temp.'</br></br>';
 
 						$_SESSION['npm_user'] = $npm_final;
 
@@ -418,5 +433,12 @@
 			flush();
 			readfile($file);
 			exit;
+		
 		}
 ?>
+<html>
+<body>
+<a href="ics/<?=$file;?>">Download ICS here</a>
+</body>
+</html> 
+

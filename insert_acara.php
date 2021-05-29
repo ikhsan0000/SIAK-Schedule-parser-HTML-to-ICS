@@ -12,23 +12,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$desc = $_POST["e_desc"];
         $tanggal = $_POST["e_date"];
         $hari = $_POST["hari"];
-        $waktu_mulai_tmp = $_POST["start_time"];
-		$waktu_mulai_tmp_2 = $_POST["start_time_2"];
-		//if minute only 1 number ex* 0, convert to 00 (13 : 0 to 13 : 00)
-		if(strlen($waktu_mulai_tmp_2) == 1)
-		{
-			$waktu_mulai_tmp_2 = 0 . $waktu_mulai_tmp_2;
-		}
-        $waktu_selesai_tmp = $_POST["end_time"];
-		$waktu_selesai_tmp_2 = $_POST["end_time_2"];
-		if(strlen($waktu_selesai_tmp_2) == 1)
-		{
-			$waktu_selesai_tmp_2 = 0 . $waktu_selesai_tmp_2;
-		}
-		$waktu_mulai = $waktu_mulai_tmp . $waktu_mulai_tmp_2;
-		$waktu_selesai = $waktu_selesai_tmp . $waktu_selesai_tmp_2;
+		$waktu_mulai = $_POST["start_time"];
+		$waktu_selesai = $_POST["end_time"];
+
 		
-        if($waktu_mulai >= $waktu_selesai)
+        if(strtotime($waktu_mulai) >= strtotime($waktu_selesai))
 		{
 			echo ("<script>
             alert('Input time invalid');
@@ -37,11 +25,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 		else
 		{
+			$dayConv = date("D", strtotime($tanggal));
+			$waktu_mulai = explode(":", $waktu_mulai);
+			$waktu_mulai = $waktu_mulai[0].$waktu_mulai[1];
+			$waktu_selesai = explode(":", $waktu_selesai);
+			$waktu_selesai = $waktu_selesai[0].$waktu_selesai[1];
+			switch($dayConv)
+			{
+				case 'Mon':
+					$hari = "Senin";
+				break;
+				case 'Tue':
+					$hari = "Selasa";
+				break;
+				case 'Wed':
+					$hari = "Rabu";
+				break;
+				case 'Thu':
+					$hari = "Kamis";
+				break;
+				case 'Fri':
+					$hari = "Jumat";
+				break;
+				case 'Sat':
+					$hari = "Sabtu";
+				break;
+				case 'Sun':
+					$hari = "Minggu";
+				break;
+			}
+
 			$insert = "INSERT INTO acara (org, nama_acara, deskripsi, tanggal, hari, waktu_mulai, waktu_selesai, sent) VALUES ('$organisasi', '$nama_acara', '$desc', '$tanggal', '$hari', '$waktu_mulai', '$waktu_selesai', 0)";
 			mysqli_query($link, $insert);
 		
             echo ("<script>
-            alert('Acara telah disubmit ^o^');
+            alert('Acara telah disubmit !');
 			window.location.href='#';
             </script>");
 		}

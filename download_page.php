@@ -1,291 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>SchedUIe by IGS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Your page description here" />
-  <meta name="IGS" content="" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Your page description here" />
+    <meta name="IGS" content="" />
+    <title>SchedUIe by IGS</title>
 
-  <!-- JQ
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-  
-  <!-- css -->
-  <link href="css/bootstrap.css" rel="stylesheet" />
-  <link href="css/bootstrap-responsive.css" rel="stylesheet" />
-  <link href="css/prettyPhoto.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet"> 
-  <link href="css/style.css" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <link rel="shortcut icon" type="img/png" href="img/favicon2.png">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- Theme skin -->
-  <link id="t-colors" href="color/scheduie.css" rel="stylesheet" />
-  <!-- Fav and touch icons -->
+    <!-- CSS&BOOTSTRAP5 IMPORT -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/mystyle.css">
 
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png" />
-  <link rel="stylesheet" href="css/mystyle.css">
-  <link rel="manifest" href="manifest.json"> 
+    <!-- BOOTSTRAP ICON -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-  <!-- =======================================================
-    Theme Name: Remember
-    Theme URL: https://bootstrapmade.com/remember-free-multipurpose-bootstrap-template/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
+    <!-- JS MANIFEST FOR PWA -->
+    <link rel="manifest" href="manifest.json"> 
+
 </head>
-
 <body>
-  <button class="trigger hidden">Click here to trigger the modal!</button>
-
-  <div id="wrapper">
-    <!-- start header -->
-    <header>
-      <div class="top">
-        <div class="container">
-          <div class="row">
-            <div class="span6">
-              <ul class="topmenu">
-                <li><a href="home.html">Home</a>&nbsp;&nbsp;</li>
-				<li><a href=#intro>Introduction</a>&nbsp;&nbsp;</li>
-				<li><a href=#content>Manual</a>&nbsp;&nbsp;</li>
-				<li><a href=#mainprog>Main Program</a>&nbsp;&nbsp;</li>
-        <li><a href=#profile>About</a>&nbsp;&nbsp;</li>
-        <li><a href="push.php">Push Notification</a>&nbsp;&nbsp;</li>
-              </ul>
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-expand-md">
+        <div class="container-fluid">
+            <i class="bi bi-calendar-week nav-icon"></i>
+            <div class="logo-text">SchedUIe</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#intro">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tutorial">Tutorial</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Features
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-recolor" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#main-program">SIAK Calendar Converter</a></li>
+                            <li><a class="dropdown-item" href="event.php">Event Advertiser</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item disabled" href="#">Thanks for checking out!</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
             </div>
-            <div class="span6">
-
-            </div>
-          </div>
         </div>
+    </nav> 
+    <!-- NAVBAR END -->
+    
+    <!-- MODAL BOX -->
+    <div class="mymodal">
+      <div class="mymodal-content">
+          <span class="close-button">×</span>
+          <br>
+          Nyalakan Push Notification untuk menerima berita, notifikasi dapat dimatikan lewat halaman Scheduie "Push Notification" di atas
+          <div class="d-flex justify-content-around">
+            <button class="btn btn-success mt-3 mb-1" name="push" id="push" style="align-items: center; display: flex;">Enable Push Notification</button>
+          </div>
       </div>
-      <div class="container">
-            <!-- Modal box -->
-        <div class="mymodal">
-          <div class="mymodal-content">
-              <span class="close-button">×</span>
-              <br>
-              Nyalakan Push Notification untuk menerima berita, notifikasi dapat dimatikan lewat halaman Scheduie "Push Notification" di atas
-              <div class="d-flex justify-content-around">
-                <button class="btn btn-success mt-3 mb-1" name="push" id="push" style="align-items: center; display: flex;">Enable Push Notification</button>
-              </div>
-          </div>
+    </div>
+    <!-- MODAL BOX END -->
+
+    <section id="intro">
+        <div id="intro-filter">
+    <div class="container">
+            <h1 class="header-text">Convert Berhasil !</h1>
         </div>
-        <div class="row nomargin">
-          <div class="span4">
-            <div class="logo">
-              <h1>
-                <a href="home.php">Sched<span style="color:yellow">UI</span>e</a> + 
-                <a href="event.php" target="_blank">Event</a>
-              </h1>
-            </div>
-          </div>
-          <div class="span8">
-            <div class="navbar navbar-static-top">
-              <div class="navigation">
+            <div class="main-program mt-4" id="main-program">
+              <p class="subheader-text" style="margin-bottom: 0;"><?php if(isset($nama_mahasiswa)){echo "Hai ".$nama_mahasiswa."<br>";}?>Silahkan download melalui button di bawah</p>
+              <div class="mb-2">
+                <a href="ics/<?=$file;?>" class="btn-lg btn-block btn-dark center convert-btn nostyle" id="download" style="padding-top: 10px; margin-top: 0;">Download Here</a>
               </div>
-              <!-- end navigation -->
             </div>
-          </div>
+
+            
+            
+            <div class="section-end-pad"></div>
+    </section> <!-- SECTION INTRO END-->
+
+    <section class="tutorial-video" id="tutorial">
+        <h2 class="tutorial-header">Tutorial menggunakan SchedUIe</h2>
+        <iframe class="video mb-3" width="560" height="315" src="https://www.youtube.com/embed/VufqcjG2g3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+          
+    <section class="about" id="about">
+        <h2 class="about-header">Developer's Profile</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <img src="img/dummies/Ican.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Ikhsan Firdauz
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <img src="img/dummies/Galih.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Galih Damar Jati
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <img src="img/dummies/Siraj.jpg" class="profile img-thumbnail img-responsive" alt="" />
+                <div class="profile-details">
+                    Achmad Faiz Siraj
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
-    <!-- end header -->
-
-    <!-- section intro -->
-    <section>
-      <div class="intro-content">
-
-        <h2>Welcome to Sched<span style="color:yellow">UI</span>e</h2>
-        <h3>Convert Berhasil !</a></h3>
-
-        <div class="container mt-2 col-3" id="mainprog">
-			    <div class="mt-1">
-				    <a href="ics/<?=$file;?>" class="btn-lg btn-block btn-dark mb-4" id="download">Download Here</a>
-          </div>
-			  </div>
-	     </div>
-	  </section>
-	<!-- /section intro -->
-    <section id="content">
-      <div class="container">
-        <div class="aligncenter">
-		  <h4>Tutorial Menggunakan SchedUIe<br></h4>
-		  <iframe width="560" height="315" src="https://www.youtube.com/embed/VufqcjG2g3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <br><br><br>
-		  </div>
-        </div>
-	  </section>
-
-
-	          <!-- divider -->
-        <div class="row">
-          <div class="span12">
-            <div class="solidline"></div>
-          </div>
-        </div>
-        <!-- end divider -->
-	  <section id="profile">
-		<div class="container">
-        <div class="row team">
-          <div class="span12">
-			  <div class="aligncenter">
-            <h4>Developer's Profile</h4>
-          </div>
-		</div>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <div class="span3">
-            <div class="team-box">
-              <a href="#profile" class="thumbnail" ><img src="img/dummies/Ican.jpg" alt="" /></a>
-              <div class="roles aligncenter">
-                <p class="lead"><strong>Ikhsan Firdauz</strong></p><br>
-                <p>
-                  <a href="https://id.linkedin.com/in/ikhsan-firdauz-562a50147" target="_blank"><i class="icon-linkedin icon-circled icon-bglight active"></i></a>
-                </p>
-
-              </div>
-            </div>
-          </div>
-          <div class="span3">
-            <div class="team-box">
-              <a href="#profile" class="thumbnail"><img src="img/dummies/Galih.jpg" alt="" /></a>
-              <div class="roles aligncenter">
-                <p class="lead"><strong>Galih Damar Jati</strong></p><br>
-                <p>
-                  <a href="https://id.linkedin.com/in/galih-damar-jati-254499148" target="_blank"><i class="icon-linkedin icon-circled icon-bglight active"></i></a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="span3">
-            <div class="team-box">
-              <a href="#profile" class="thumbnail"><img src="img/dummies/Siraj.jpg" alt="" /></a>
-              <div class="roles aligncenter">
-                <p class="lead"><strong>Achmad Faiz Siraj</strong></p><br>
-                <p>
-                  <a href="https://id.linkedin.com/in/achmad-faiz-siraj-474497148" target="_blank"><i class="icon-linkedin icon-circled icon-bglight active"></i></a>
-                </p>
-              </div>
-            </div>
-          </div>
-		</div>
-	   </div>
     </section>
 
 
+    </div> <!-- CONTAINER DIV END --> 
+    
+    <!-- MAIN JS -->
+    <script src="app.js"></script>
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="span4">
-            <div class="widget">
-              <div class="footer_logo">
-                <h3><a href="home.php">Sched<span style="color:yellow">UI</span>e</a></h3>
-              </div>
-              <address>
-							  <strong>IGS</strong><br>
-  							Teknik Komputer Universitas Indonesia 2017<br>
-			  </address>
-              <p>For more information and support please contact:<br>
-                <i class="icon-envelope-alt"></i> scheduiebyigs@gmail.com
-              </p>
-            </div>
-          </div>
+    <!-- JS IMPORT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
 
+    <!-- BOOTSTRAP TOOLTIP JS -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
 
-            </div>
-          </div>
+        var loadingBtn = '<span class="spinner-border spinner-border-sm" style="width: 20px; height: 20px;" role="status" aria-hidden="true"></span>&nbsp;&nbsp;Converting...'
+        $("#convert").click(function(e)
+        {
+            $("#convert").attr('disabled', 'disabled');
+            $("#convert").html(loadingBtn);
+        });
 
-      <div id="sub-footer">
-        <div class="container">
-          <div class="row">
-            <div class="span12">
-              <div class="copyright">
-                <p><span>&copy; Remember Inc. All right reserved</span></p>
-                <p><span>Report Card icon by <a href="https://icons8.com/icon/13184/report-card">Icons8</a></span></p>
-
-
-
-            <div class="span6">
-              <div class="credits">
-                <!--
-                  All the links in the footer should remain intact.
-                  You can delete the links only if you purchased the pro version.
-                  Licensing information: https://bootstrapmade.com/license/
-                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Remember
-                -->
-                Created by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-              		</div>
-					</div>
-            	 </div>
-       		  </div>
-       		 </div>
-      		</div>
-		  </div>
-		</div>
-
-    </footer>
-  </div>
-  <a href="#" class="scrollup"><i class="icon-angle-up icon-rounded icon-bglight icon-2x"></i></a>
-
-
-  <script src="app.js"></script>
-  <script>
-  
-  
-  //Cookie handling
-
-  function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-  }
-
-  var modalShown = getCookie('modal');
-  var visitorAlready = getCookie('visitor');
-
-  // Modalbox
-  var modal = document.querySelector(".mymodal");
-  var trigger = document.querySelector(".trigger");
-  var closeButton = document.querySelector(".close-button");
-  var downloadButton = document.querySelector("#download");
-
-  function toggleModal() {
-      modal.classList.toggle("show-modal");
-  }
-
-  function windowOnClick(event) {
-      if (event.target === modal) {
-          toggleModal();
-      }
-  }
-
-  trigger.addEventListener("click", toggleModal);
-  closeButton.addEventListener("click", toggleModal);
-  window.addEventListener("click", windowOnClick);
-
-  $(document).ready(function(){
-    downloadButton.addEventListener("click", function(event) {
-      if(modalShown === undefined)
-      {
-        modal.classList.toggle("show-modal");
-        document.cookie = "modal=shown;expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
-      }
-    });
-  });
-
-
-
-  </script>
-  
+    </script>
 </body>
-
 </html>
