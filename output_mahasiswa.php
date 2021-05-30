@@ -92,7 +92,7 @@
 				
 				//create file handling here
 				$file = 'Calender_SIAK'.'_'.$nama_mahasiswa.'.ics';
-				$handle = fopen(__DIR__."\ics\\".$file,'w') or die('Cannot open file: '.$file);
+				$handle = fopen("ics/".$file,'w') or die('Cannot open file: '.$file);
 				fwrite ($handle,	'BEGIN:VCALENDAR'."\n".
 									'VERSION:2.0'."\n".
 									'METHOD:PUBLISH'."\n".
@@ -371,7 +371,14 @@
 					$inc_hari = $inc_hari + 1;
 				}
 				fwrite($handle,	'END:VCALENDAR');
-				
+				if(!isset($_COOKIE['visitor'])) 
+				{
+					setcookie(
+						"visitor",	//Cookie name
+						"already",	//Cookie value
+						time() + (10 * 365 * 24 * 60 * 60) //10 Years
+					);
+				} 
 				
 			}
 			else
@@ -397,14 +404,7 @@
 		{
 
 			//Create cookie to save that this user already used this web
-			if(!isset($_COOKIE['visitor'])) 
-			{
-				setcookie(
-					"visitor",	//Cookie name
-					"already",	//Cookie value
-					time() + (10 * 365 * 24 * 60 * 60) //10 Years
-				  );
-			} 
+			
 			//Download dialogue
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');

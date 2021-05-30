@@ -27,8 +27,6 @@ if('serviceWorker' in navigator && 'PushManager' in window) //check browser supp
     navigator.serviceWorker.register('sw.js')
         .then((reg) => 
         {
-            var a2hsBtn = document.querySelector("#a2hs-download");
-    a2hsBtn.style.display = "block";
             console.log('SW registered', reg)
             console.log('push is supported');
             swRegisteration = reg;
@@ -192,7 +190,8 @@ function updateSubscriptionOnServer(subscription)
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 let deferredPrompt;
-var a2hsBtn = document.querySelector("#a2hs-download");
+var a2hsBtn = document.querySelector(".a2hs-download");
+a2hsBtn.style.display = "none";
 
 function showInstallPromotion()
 {
@@ -201,7 +200,7 @@ function showInstallPromotion()
 
 function hideInstallPromotion()
 {
-    // a2hsBtn.style.display = "none";
+    a2hsBtn.style.display = "none";
 }
 
 window.addEventListener('beforeinstallprompt', (e) => {

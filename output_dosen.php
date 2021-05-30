@@ -4,28 +4,6 @@
 	//list file extenion here
 	$extension = array('html','mhtml','htm');
 
-	
-	
-	//create file handling here
-	$file = 'Calender_SIAK.ics';
-	$handle = fopen($file,'w') or die('Cannot open file: '.$file);
-	fwrite ($handle,	'BEGIN:VCALENDAR'."\n".
-						'VERSION:2.0'."\n".
-						'METHOD:PUBLISH'."\n".
-						'X-WR-CALNAME:SIAK'."\n".
-						'X-WR-TIMEZONE:Asia/Jakarta'."\n".
-						'BEGIN:VTIMEZONE'."\n".
-						'TZID:Indian/Christmas'."\n".
-						'X-LIC-LOCATION:Indian/Christmas'."\n".
-						'BEGIN:STANDARD'."\n".
-						'TZOFFSETFROM:+0700'."\n".
-						'TZOFFSETTO:+0700'."\n".
-						'TZNAME:+07'."\n".
-						'DTSTART:19700101T000000'."\n".
-						'END:STANDARD'."\n".
-						'END:VTIMEZONE'."\n"
-			);
-			
 			
 	//upload form here
 	$target_dir = "uploads/";
@@ -80,7 +58,36 @@
 				$get_name_step_1 = explode('<a href="/main/Authentication/Status" title="Detail"><img style="vertical-align:bottom" src="/main-www/themes/img/icon/role2.png" class="png16" alt="person"/>', $content);
 				$get_name_step_2 = explode('<a href="/main/Authentication/ChangeRole?role=Dosen" title="Ganti Role">Dosen</a> ', $get_name_step_1[1]);
 				$name = substr($get_name_step_2[0],4,-10);
-				
+				$name = strip_tags($name);
+				$tenonet ="";
+				$name_len = strlen($name);
+				$name_len = $name_len - 15; //remove html tags
+				$name_fixed = "";
+				for($i=0; $i<$name_len; $i++)
+				{
+					$name_fixed .= $name[$i];
+				}
+				//create file handling here
+				$file = 'Calender_SIAK'.$name_fixed.'.ics';
+				$handle = fopen("ics/".$file,'w') or die('Cannot open file: '.$file);
+				fwrite ($handle,	'BEGIN:VCALENDAR'."\n".
+									'VERSION:2.0'."\n".
+									'METHOD:PUBLISH'."\n".
+									'X-WR-CALNAME:SIAK'."\n".
+									'X-WR-TIMEZONE:Asia/Jakarta'."\n".
+									'BEGIN:VTIMEZONE'."\n".
+									'TZID:Indian/Christmas'."\n".
+									'X-LIC-LOCATION:Indian/Christmas'."\n".
+									'BEGIN:STANDARD'."\n".
+									'TZOFFSETFROM:+0700'."\n".
+									'TZOFFSETTO:+0700'."\n".
+									'TZNAME:+07'."\n".
+									'DTSTART:19700101T000000'."\n".
+									'END:STANDARD'."\n".
+									'END:VTIMEZONE'."\n"
+						);
+			
+
 				//check already existing user
 				$already_exist = 0;
 				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE Nama = '$name'";
@@ -235,10 +242,10 @@
 									
 								}
 								$ruang_b_final = str_replace(' ','', $ruang_b);
-								echo '<strong>'.$hari.'</strong>'.'</br>';
-								echo 'Mata Kuliah: '.$judul.'</br>';
-								echo 'Ruang: '.$ruang_b_final.'</br>';
-								echo 'Waktu: '.$jam_final_b.'</br></br></br>';
+								// echo '<strong>'.$hari.'</strong>'.'</br>';
+								// echo 'Mata Kuliah: '.$judul.'</br>';
+								// echo 'Ruang: '.$ruang_b_final.'</br>';
+								// echo 'Waktu: '.$jam_final_b.'</br></br></br>';
 								
 								//block write file
 								fwrite($handle,	'BEGIN:VEVENT'."\n".
@@ -365,10 +372,10 @@
 										
 									}
 									
-									echo '<strong>'.$hari.'</strong>'.'</br>';
-									echo 'Mata Kuliah: '.$judul.'</br>';
-									echo 'Ruang:'.$ruang_b.'</br>';
-									echo 'Waktu: '.$jam_final_b.'</br>';
+									// echo '<strong>'.$hari.'</strong>'.'</br>';
+									// echo 'Mata Kuliah: '.$judul.'</br>';
+									// echo 'Ruang:'.$ruang_b.'</br>';
+									// echo 'Waktu: '.$jam_final_b.'</br>';
 								
 									
 									//block write file
@@ -490,10 +497,10 @@
 										$ruang_b = str_replace(' ','',$ruang_new[$hari_point+1]);
 									}
 									
-									echo '<strong>'.$hari.'</strong>'.'</br>';
-									echo 'Mata Kuliah: '.$judul.'</br>';
-									echo 'Ruang:'.$ruang_b.'</br>';
-									echo 'Waktu: '.$jam_final_b.'</br>';
+									// echo '<strong>'.$hari.'</strong>'.'</br>';
+									// echo 'Mata Kuliah: '.$judul.'</br>';
+									// echo 'Ruang:'.$ruang_b.'</br>';
+									// echo 'Waktu: '.$jam_final_b.'</br>';
 									
 									//block write file
 									fwrite($handle,	'BEGIN:VEVENT'."\n".
@@ -614,10 +621,10 @@
 										$ruang_b = str_replace(' ','',$ruang_new[$hari_point+1]);
 									}
 									
-									echo '<strong>'.$hari.'</strong>'.'</br>';
-									echo 'Mata Kuliah: '.$judul.'</br>';
-									echo 'Ruang:'.$ruang_b.'</br>';
-									echo 'Waktu: '.$jam_final_b.'</br>';
+									// echo '<strong>'.$hari.'</strong>'.'</br>';
+									// echo 'Mata Kuliah: '.$judul.'</br>';
+									// echo 'Ruang:'.$ruang_b.'</br>';
+									// echo 'Waktu: '.$jam_final_b.'</br>';
 									
 									//block write file
 									fwrite($handle,	'BEGIN:VEVENT'."\n".
@@ -738,10 +745,10 @@
 										$ruang_b = str_replace(' ','',$ruang_new[$hari_point+1]);
 									}
 									
-									echo '<strong>'.$hari.'</strong>'.'</br>';
-									echo 'Mata Kuliah: '.$judul.'</br>';
-									echo 'Ruang:'.$ruang_b.'</br>';
-									echo 'Waktu: '.$jam_final_b.'</br>';
+									// echo '<strong>'.$hari.'</strong>'.'</br>';
+									// echo 'Mata Kuliah: '.$judul.'</br>';
+									// echo 'Ruang:'.$ruang_b.'</br>';
+									// echo 'Waktu: '.$jam_final_b.'</br>';
 									
 									//block write file
 									fwrite($handle,	'BEGIN:VEVENT'."\n".
@@ -861,10 +868,10 @@
 										$ruang_b = str_replace(' ','',$ruang_new[$hari_point+1]);
 									}
 									
-									echo '<strong>'.$hari.'</strong>'.'</br>';
-									echo 'Mata Kuliah: '.$judul.'</br>';
-									echo 'Ruang:'.$ruang_b.'</br>';
-									echo 'Waktu: '.$jam_final_b.'</br>';
+									// echo '<strong>'.$hari.'</strong>'.'</br>';
+									// echo 'Mata Kuliah: '.$judul.'</br>';
+									// echo 'Ruang:'.$ruang_b.'</br>';
+									// echo 'Waktu: '.$jam_final_b.'</br>';
 									
 									//block write file
 									fwrite($handle,	'BEGIN:VEVENT'."\n".
@@ -984,10 +991,10 @@
 										$ruang_b = str_replace(' ','',$ruang_new[$hari_point+1]);
 									}
 									
-									echo '<strong>'.$hari.'</strong>'.'</br>';
-									echo 'Mata Kuliah: '.$judul.'</br>';
-									echo 'Ruang:'.$ruang_b.'</br>';
-									echo 'Waktu: '.$jam_final_b.'</br>';
+									// echo '<strong>'.$hari.'</strong>'.'</br>';
+									// echo 'Mata Kuliah: '.$judul.'</br>';
+									// echo 'Ruang:'.$ruang_b.'</br>';
+									// echo 'Waktu: '.$jam_final_b.'</br>';
 									
 									//block write file
 									fwrite($handle,	'BEGIN:VEVENT'."\n".
@@ -1014,7 +1021,7 @@
 						}
 						
 						
-						echo '</br>';	//break for each subject iteration (multiple days)
+						// echo '</br>';	//break for each subject iteration (multiple days)
 					}
 					
 					else				// 1 subject only 1 day
@@ -1100,13 +1107,13 @@
 											'END:VEVENT'."\n"
 							   );
 						
-						echo '<strong>'.$hari.'</strong>'.'</br>';
-						echo 'Mata Kuliah: '.$judul.'</br>';
-						echo 'Ruang: '.$ruang_final.'</br>';
-						echo 'Waktu: '.$jam_temp4[0].'-'.$jam_temp4[1].'</br></br>';
+						// echo '<strong>'.$hari.'</strong>'.'</br>';
+						// echo 'Mata Kuliah: '.$judul.'</br>';
+						// echo 'Ruang: '.$ruang_final.'</br>';
+						// echo 'Waktu: '.$jam_temp4[0].'-'.$jam_temp4[1].'</br></br>';
 						
 					}
-					echo '</br>';		//break for each subject iteration (one day)
+					// echo '</br>';		//break for each subject iteration (one day)
 					$pointer = $pointer + 9; 	//next matkul, each have 9 lines including the whitespace
 					
 					
@@ -1164,9 +1171,3 @@
 	
 
 ?>
-
-<html>
-<body>
-<a href="Calender_SIAK.ics">Download ICS here</a>
-</body>
-</html> 

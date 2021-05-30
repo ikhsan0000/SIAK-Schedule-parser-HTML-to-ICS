@@ -20,6 +20,8 @@
 
 </head>
 <body>
+<button class="trigger hidden">Click here to trigger the modal!</button>
+
     <!-- NAVBAR START -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-expand-md">
         <div class="container-fluid">
@@ -31,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="home.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#intro">Introduction</a>
@@ -58,7 +60,36 @@
         </div>
     </nav> 
     <!-- NAVBAR END -->
-    
+
+
+    <section id="intro">
+        <div id="intro-filter">
+    <div class="container">
+            <h1 class="header-text">Convert Berhasil !</h1>
+        </div>
+            <div class="main-program mt-4" id="main-program">
+              <p class="subheader-text" style="margin-bottom: 0;">
+              <?php
+               if(isset($nama_mahasiswa))
+               {
+                   echo "Hai ".$nama_mahasiswa."<br>";
+                }
+                elseif(isset($name))
+                {
+                    echo "Hai".$name."<br>";
+                }
+               ?>
+               Silahkan download melalui button di bawah</p>
+              <div class="mb-2">
+                <a href="ics/<?=$file;?>" class="btn-lg btn-block btn-dark center convert-btn nostyle" id="download" style="padding-top: 10px; margin-top: 0;">Download Here</a>
+              </div>
+            </div>
+
+            
+            
+            <div class="section-end-pad"></div>
+    </section> <!-- SECTION INTRO END-->
+
     <!-- MODAL BOX -->
     <div class="mymodal">
       <div class="mymodal-content">
@@ -71,24 +102,6 @@
       </div>
     </div>
     <!-- MODAL BOX END -->
-
-    <section id="intro">
-        <div id="intro-filter">
-    <div class="container">
-            <h1 class="header-text">Convert Berhasil !</h1>
-        </div>
-            <div class="main-program mt-4" id="main-program">
-              <p class="subheader-text" style="margin-bottom: 0;"><?php if(isset($nama_mahasiswa)){echo "Hai ".$nama_mahasiswa."<br>";}?>Silahkan download melalui button di bawah</p>
-              <div class="mb-2">
-                <a href="ics/<?=$file;?>" class="btn-lg btn-block btn-dark center convert-btn nostyle" id="download" style="padding-top: 10px; margin-top: 0;">Download Here</a>
-              </div>
-            </div>
-
-            
-            
-            <div class="section-end-pad"></div>
-    </section> <!-- SECTION INTRO END-->
-
     <section class="tutorial-video" id="tutorial">
         <h2 class="tutorial-header">Tutorial menggunakan SchedUIe</h2>
         <iframe class="video mb-3" width="560" height="315" src="https://www.youtube.com/embed/VufqcjG2g3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -130,18 +143,47 @@
 
     <!-- BOOTSTRAP TOOLTIP JS -->
     <script>
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
+    //Cookie handling
 
-        var loadingBtn = '<span class="spinner-border spinner-border-sm" style="width: 20px; height: 20px;" role="status" aria-hidden="true"></span>&nbsp;&nbsp;Converting...'
-        $("#convert").click(function(e)
+    function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    var modalShown = getCookie('modal');
+    var visitorAlready = getCookie('visitor');
+
+    // Modalbox
+    var modal = document.querySelector(".mymodal");
+    var trigger = document.querySelector(".trigger");
+    var closeButton = document.querySelector(".close-button");
+    var downloadButton = document.querySelector("#download");
+
+    function toggleModal() {
+        modal.classList.toggle("show-modal");
+    }
+
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal();
+        }
+    }
+
+    trigger.addEventListener("click", toggleModal);
+    closeButton.addEventListener("click", toggleModal);
+    window.addEventListener("click", windowOnClick);
+
+    $(document).ready(function(){
+        downloadButton.addEventListener("click", function(event) {
+        console.log("testtttttt");
+        if(modalShown === undefined)
         {
-            $("#convert").attr('disabled', 'disabled');
-            $("#convert").html(loadingBtn);
+            modal.classList.toggle("show-modal");
+            document.cookie = "modal=shown;expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
+        }
         });
-
+    });
     </script>
 </body>
 </html>

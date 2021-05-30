@@ -53,7 +53,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
-                    <li class="nav-item" id="a2hs-download">
+                    <li class="nav-item" id="a2hs-download" style="display: none;">
                         <a class="nav-link" href="#">Download App</a>
                     </li>
                 </ul>

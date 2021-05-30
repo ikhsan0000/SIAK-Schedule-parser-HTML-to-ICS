@@ -351,8 +351,13 @@ a.nostyle:visited {
     color: #f3f3f3;
 }
 
+.hidden
+{
+    display: none;
+}
+
 /* A2HS BUTTON */
-#a2hs-download
+.a2hs-download
 {
     display: none;
 }
