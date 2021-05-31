@@ -9,7 +9,8 @@
 	$execute = mysqli_query($link, $kueri_row);
 	
 	//Loop trough all events in table acara (SELECT * FROM acara)
-	$kueri_e = "SELECT * FROM acara WHERE id = $e_id AND push_sent = 1";
+	// $kueri_e = "SELECT * FROM acara WHERE id = $e_id AND push_sent = 0";
+	$kueri_e = "SELECT * FROM acara WHERE id = $e_id";
 	$execute_e = mysqli_query($link, $kueri_e);
 	while($row_e = mysqli_fetch_assoc($execute_e))
 	{

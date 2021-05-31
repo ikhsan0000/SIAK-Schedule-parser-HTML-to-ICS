@@ -24,7 +24,8 @@ require_once "config_database.php";
     <th>Hari</th>
     <th>waktu_mulai</th>
     <th>waktu_selesai</th>
-    <th>Sent</th>
+    <th>Mail Sent</th>
+    <th>Mail Sent</th>
     <th>Send Mail</th>
     <th>Send Push</th>
   </tr>
@@ -44,6 +45,7 @@ require_once "config_database.php";
       <td class="row-data"><?php echo $data['Waktu_mulai']; ?></td>
       <td class="row-data"><?php echo $data['Waktu_selesai']; ?></td>
       <td class="row-data"><?php if($data['Sent'] == 0){echo "FALSE";}else{echo "TRUE";}?></td>
+      <td class="row-data"><?php if($data['push_sent'] == 0){echo "FALSE";}else{echo "TRUE";}?></td>
       <td>
         <form action="send_one_event.php" method="POST">
         <button type="submit" name="id" value="<?php echo $data['id'];?>">Send !</button> <!-- ganti data yang diecho jadi ID series (blm ada di table)  -->
