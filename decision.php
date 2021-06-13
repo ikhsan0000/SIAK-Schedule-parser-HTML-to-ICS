@@ -2,39 +2,67 @@
 	$role = '';
 	include_once('config_database.php');
 	//cek role
-	$uploaded = $_FILES['jadwalsiak']['tmp_name'];
-	$content = file_get_contents($uploaded);
-	if($uploaded == NULL)
+	if(isset($_FILES['jadwalsiak']['tmp_name']))
 	{
-		header("Location:home.php");
+		$uploaded = $_FILES['jadwalsiak']['tmp_name'];
+		@$content = file_get_contents($uploaded);
 	}
-	elseif(strpos($content, 'title="Ganti Role">Mahasiswa') !== false)
+	elseif(isset($_POST['sourcesiak']))
 	{
-		$role = 'mahasiswa';
-	}
-	elseif(strpos($content, 'title="Ganti Role">Dosen') !== false)
-	{
-		$role = 'dosen';
+		$content = $_POST['sourcesiak'];
+		$uploaded = 1; //override uploaded
 	}
 
-	//Get the user name
-	if ($role == 'mahasiswa')
+	if(isset($uploaded))
 	{
-		include_once('output_mahasiswa.php');
-		include_once('download_page.php');
-	}
-	elseif ($role == 'dosen')
-	{
-		include_once('output_dosen.php');
-		include_once('download_page.php');
+		if($uploaded == NULL && $content == NULL)
+		{
+			echo '<script language="javascript">';
+			echo 'alert("Please select your file");';
+			echo 'window.location="home.php";';
+			echo '</script>';
+			echo "<script>window.location.href='home.php';</script>";
+		}
+		elseif(strpos($content, 'title="Ganti Role">Mahasiswa') !== false)
+		{
+			$role = 'mahasiswa';
+		}
+		elseif(strpos($content, 'title="Ganti Role">Dosen') !== false)
+		{
+			$role = 'dosen';
+		}
+	
+		//Get the user name
+		if ($role == 'mahasiswa')
+		{
+			include_once('output_mahasiswa.php');
+			include_once('download_page.php');
+		}
+		elseif ($role == 'dosen')
+		{
+			include_once('output_dosen.php');
+			include_once('download_page.php');
+		}
+		elseif (isset($_POST['sourcesiak']))
+		{
+			echo '<script language="javascript">';
+			echo 'alert("Invalid source");';
+			echo 'window.location="home.php";';
+			echo '</script>';
+			exit();
+		}
+		else
+		{
+			echo '<script language="javascript">';
+			echo 'alert("Invalid file");';
+			echo 'window.location="home.php";';
+			echo '</script>';
+			exit();
+		}
 	}
 	else
 	{
-		echo '<script language="javascript">';
-		echo 'alert("Please select your role");';
-		echo 'window.location="home.php";';
-		echo '</script>';
-		exit();
+		header("Location:home.php");
 	}
 ?>
 

@@ -80,3 +80,19 @@ Notes:
 - metric bisa diukur dari chrome dev tools
 - kuisioner min 30 recipient
 - at least 2 browser major supported
+
+31/5/2021
+
+Notes:
+- identifier dosen pakai fakultas+nama
+
+NOTES DEADLINE + DETAILS
+2 juli last submit
+9 juli last sidang
+
+setelah sidang akan diberikan note revisi lalu kirim kembali ke penguji hasil yang direvisi
+untuk revisi, kirim 2 file pdf, 1 clean, 1 highlight bagian revisi, clean untuk ditandatangani
+
+presentasi sidang ppt 20 mnt
+
++ buat format IEEE paper dari buku skripsi (in eng) submission pada saat revisi

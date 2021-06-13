@@ -1,28 +1,38 @@
 //Constants
 const staticCacheName = 'static';
-const assets = [
-    '/home.php',
-    '/app.js', 
-    'css/mystyle.css',
-];
+// const assets = [
+//     'home.php',
+//     'app.js', 
+//     'css/mystyle.css',
+//     'images/offline.png',
+//     'fallback_offline.html'
+// ];
 
 //install SW event
 self.addEventListener('install', e => 
 {
     console.log('SW installed');
     e.waitUntil(
-        caches.open(staticCacheName).then(cache =>{
+        caches.open(staticCacheName).then(async cache =>{
         console.log('caching . . .');
         cache.addAll(assets);
+        console.log('caching completed.');
         })
     );
 });
 
 //activate SW event
-
 self.addEventListener('activate', e =>
 {
-    console.log('SW has been activated');
+    e.waitUntil(
+        caches.keys().then(keys =>
+            {
+                return Promise.all(keys
+                    .filter(key => key !== staticCacheName)
+                    .map(key => caches.delete(key))
+                )
+            })
+    );
 });
 
 // fetch event
@@ -30,10 +40,11 @@ self.addEventListener('fetch', e =>
 {
     // console.log('fetch event', e);
     e.respondWith(
-        caches.match(e.request).then(cachesRespond =>{
-            return cachesRespond || fetch(e.request);
-        })
-    )
+        caches.match(e.request).then(cachesRespond =>
+        {
+            return cachesRespond || fetch(e.request)
+        }).catch(() => caches.match('fallback_offline.html'))
+    );
 });
 
 

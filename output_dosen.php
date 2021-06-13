@@ -7,24 +7,22 @@
 			
 	//upload form here
 	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES['jadwalsiak']['name']);
-	$uploaded = $_FILES['jadwalsiak']['tmp_name'];
 	
-	//error handling
-	if (@file_get_contents($uploaded) == NULL)
+	if(isset($_FILES['jadwalsiak']['tmp_name']))
 	{
-		echo '<script language="javascript">';
-		echo 'alert("Please insert your file");';
-		echo 'window.location="home.html";';
-		echo '</script>';
-		exit();
-	
+		$target_file = $target_dir . basename($_FILES['jadwalsiak']['name']);
+		$uploaded = $_FILES['jadwalsiak']['tmp_name'];
+		$file_extension = pathinfo($target_file, PATHINFO_EXTENSION);
+		$content = file_get_contents($uploaded);
+	}
+	//catch source if share_target
+	if (isset($_POST['sourcesiak']))
+	{
+		$content = $_POST['sourcesiak'];
 	}
 	
-	$file_extension = pathinfo($target_file, PATHINFO_EXTENSION);
-	$content = file_get_contents($uploaded);
 	
-	if(!in_array($file_extension, $extension))		//invalid format
+	if(isset($file_extension) && !in_array($file_extension, $extension))		//invalid format
 	{
 		
 		echo '<script language="javascript">';

@@ -190,7 +190,7 @@ function updateSubscriptionOnServer(subscription)
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 let deferredPrompt;
-var a2hsBtn = document.querySelector(".a2hs-download");
+var a2hsBtn = document.querySelector("#a2hs-download");
 a2hsBtn.style.display = "none";
 
 function showInstallPromotion()

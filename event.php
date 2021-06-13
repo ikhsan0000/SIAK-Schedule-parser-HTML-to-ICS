@@ -24,8 +24,10 @@
     <!-- NAVBAR START -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-expand-md">
         <div class="container-fluid">
-            <i class="bi bi-calendar-week nav-icon"></i>
-            <div class="logo-text">SchedUIe</div>
+            <a href="home.php" class="navbar-brand">
+            <img src="images/logo192.png" alt="Home" width="40" height="40" style="margin-bottom:5px">
+            <span class="logo-text">SchedUIe</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -51,9 +53,6 @@
                             <li><a class="dropdown-item disabled" href="#">Thanks for checking out!</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -70,7 +69,7 @@
             <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             
             <div class="main-program mt-4" id="main-program">
-                <form class="was-validated" action="insert_acara.php" method="POST" enctype="multipart/form-data">
+                <form id="eventForm" class="was-validated" action="insert_acara.php" method="POST" enctype="multipart/form-data">
                     <label for="org" class="form-label">Nama Organisasi</label>
                     <input type="text" id="org" name="org" class="form-control mb-3 mt-2" required>
                     
@@ -120,7 +119,7 @@
         <iframe class="video mb-3" width="560" height="315" src="https://www.youtube.com/embed/6ttCHrSzTK0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
           
-    <section class="about" id="about">
+    <!-- <section class="about" id="about">
         <h2 class="about-header">Developer's Profile</h2>
         <div class="row justify-content-center">
             <div class="col-md-auto">
@@ -142,7 +141,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     </div> <!-- CONTAINER DIV END --> 
@@ -183,7 +182,7 @@
 
         // LOADING
         var loadingBtn = '<span class="spinner-border spinner-border-sm" style="width: 20px; height: 20px;" role="status" aria-hidden="true"></span>&nbsp;&nbsp;Submitting...'
-        $("#submit").click(function(e)
+        $("#eventForm").submit(function(e)
         {
             $("#submit").attr('disabled', 'disabled');
             $("#submit").html(loadingBtn);

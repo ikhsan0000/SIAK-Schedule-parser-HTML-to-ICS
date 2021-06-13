@@ -23,8 +23,10 @@
     <!-- NAVBAR START -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-expand-md">
         <div class="container-fluid">
-            <i class="bi bi-calendar-week nav-icon"></i>
-            <div class="logo-text">SchedUIe</div>
+            <a href="home.php" class="navbar-brand">
+            <img src="images/logo192.png" alt="Home" width="40" height="40" style="margin-bottom:5px">
+            <span class="logo-text">SchedUIe</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,9 +52,6 @@
                             <li><a class="dropdown-item disabled" href="#">Thanks for checking out!</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
                     <li class="nav-item" id="a2hs-download" style="display: none;">
                         <a class="nav-link" href="#">Download App</a>
                     </li>
@@ -61,19 +60,7 @@
         </div>
     </nav> 
     <!-- NAVBAR END -->
-    
-    <!-- MODAL BOX -->
-    <div class="mymodal">
-      <div class="mymodal-content">
-          <span class="close-button">×</span>
-          <br>
-          Nyalakan Push Notification untuk menerima berita, notifikasi dapat dimatikan lewat halaman Scheduie "Push Notification" di atas
-          <div class="d-flex justify-content-around">
-            <button class="btn btn-success mt-3 mb-1" name="push" id="push" style="align-items: center; display: flex;">Enable Push Notification</button>
-          </div>
-      </div>
-    </div>
-    <!-- MODAL BOX END -->
+
     
     <section id="intro">
         <div id="intro-filter">
@@ -85,7 +72,7 @@
             <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             
             <div class="main-program mt-4" id="main-program">
-                <form action="decision.php" method="POST" enctype="multipart/form-data">
+                <form id="mainForm" action="decision.php" method="POST" enctype="multipart/form-data">
                     <span>
                         <label for="username" class="form-label">Username UI</label>
                         <i class="bi bi-patch-question" data-bs-toggle="tooltip" data-bs-placement="right" title="Kosongkan jika tidak ingin menerima email notifikasi"></i>
@@ -96,6 +83,31 @@
                     <button type="submit" id="convert" class="btn-lg btn-block btn-dark center convert-btn" value="submit" name="submit">
                         Convert
                     </button>
+                </form>
+
+                <div class="separator">Test Section Mahasiswa</div>
+
+                <form action="test_convert_mahasiswa.php">
+                    <button class="btn-lg btn-block btn-dark center convert-btn mb-2" value="submit" name="submit">
+                        Convert Test
+                    </button>
+                    <a href="test_material/Jadwal Kuliah - SIAK NG-Ikhsan.html" download="Jadwal Kuliah - SIAK NG-Ikhsan.html">Download test HTML (page mahasiswa)</a>
+                </form>
+
+                <div class="separator">Test Section Dosen</div>
+
+                <form action="test_convert_dosen.php">
+                    <button class="btn-lg btn-block btn-dark center convert-btn mb-2" value="submit" name="submit">
+                        Convert Test
+                    </button>
+                    <a href="test_material/Jadwal Kuliah -Pak Ruki.html" download="Jadwal Kuliah -Pak Ruki.html">Download test HTML (page dosen)</a>
+                </form>
+                <form action="share_receive.php" method="POST">
+                    <input type="text" name="sourcesiak">
+                    <button class="btn-lg btn-block btn-dark center convert-btn mb-2" value="submit" name="submit">
+                        Convert Test
+                    </button>
+                    <a href="test_material/Jadwal Kuliah -Pak Ruki.html" download="Jadwal Kuliah -Pak Ruki.html">Download test HTML (page dosen)</a>
                 </form>
             </div>
 
@@ -109,7 +121,7 @@
         <iframe class="video mb-3" width="560" height="315" src="https://www.youtube.com/embed/VufqcjG2g3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
           
-    <section class="about" id="about">
+    <!-- <section class="about" id="about">
         <h2 class="about-header">Developer's Profile</h2>
         <div class="row justify-content-center">
             <div class="col-md-auto">
@@ -131,7 +143,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     </div> <!-- CONTAINER DIV END --> 
@@ -151,7 +163,7 @@
         })
 
         var loadingBtn = '<span class="spinner-border spinner-border-sm" style="width: 20px; height: 20px;" role="status" aria-hidden="true"></span>&nbsp;&nbsp;Converting...'
-        $("#convert").click(function(e)
+        $("#mainForm").submit(function(e)
         {
             $("#convert").attr('disabled', 'disabled');
             $("#convert").html(loadingBtn);

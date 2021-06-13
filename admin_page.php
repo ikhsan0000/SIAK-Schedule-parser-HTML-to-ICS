@@ -27,7 +27,7 @@ require_once "config_database.php";
     <th>Mail Sent</th>
     <th>Mail Sent</th>
     <th>Send Mail</th>
-    <th>Send Push</th>
+    <th>Push Push</th>
   </tr>
   <?php
   $sql = "SELECT * FROM acara";
