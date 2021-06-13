@@ -102,13 +102,6 @@
                     </button>
                     <a href="test_material/Jadwal Kuliah -Pak Ruki.html" download="Jadwal Kuliah -Pak Ruki.html">Download test HTML (page dosen)</a>
                 </form>
-                <form action="share_receive.php" method="POST">
-                    <input type="text" name="sourcesiak">
-                    <button class="btn-lg btn-block btn-dark center convert-btn mb-2" value="submit" name="submit">
-                        Convert Test
-                    </button>
-                    <a href="test_material/Jadwal Kuliah -Pak Ruki.html" download="Jadwal Kuliah -Pak Ruki.html">Download test HTML (page dosen)</a>
-                </form>
             </div>
 
             
