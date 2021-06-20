@@ -35,7 +35,7 @@ else
 
 if(isset($nama_dosen))
 {
-    $sql = "SELECT * FROM subscriber WHERE ID = 0";
+    $sql = "SELECT * FROM subscriber WHERE Dosen_ID = $current_user";
     $result = mysqli_query($link, $sql);
 }
 else

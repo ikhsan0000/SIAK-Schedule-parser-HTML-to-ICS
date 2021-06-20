@@ -59,10 +59,11 @@
 
 		while($row2 = mysqli_fetch_assoc($execute))
 		{
-			if($row2['Dosen'] == 1)
+			if($row2['Dosen_ID'] != 0)
 			{
 				$true_flag = 1;
 				$nama_dosen = $row2['Nama'];
+				$current_user = $row2['Dosen_ID'];
 			}
 			else
 			{

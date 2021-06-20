@@ -55,9 +55,20 @@
 				//get name
 				$get_name_step_1 = explode('<a href="/main/Authentication/Status" title="Detail"><img style="vertical-align:bottom" src="/main-www/themes/img/icon/role2.png" class="png16" alt="person"/>', $content);
 				$get_name_step_2 = explode('<a href="/main/Authentication/ChangeRole?role=Dosen" title="Ganti Role">Dosen</a> ', $get_name_step_1[1]);
+				$get_faculty = explode('<div class="linfo" style="border-right:0">', $get_name_step_2[1]);
+				$get_faculty = $get_faculty[0];
+				echo strlen(strip_tags($get_faculty));
+				echo "<br>" . htmlentities($get_faculty);
+				$faculty_len = strlen(strip_tags($get_faculty)) - 38;
+				$faculty_fixed = "";
+				for($i=0; $i<$faculty_len; $i++)
+				{
+					$faculty_fixed .= $get_faculty[$i];
+				}
+				echo "<br>" . strlen($faculty_fixed);
+				echo "<br>" . htmlentities($faculty_fixed);
 				$name = substr($get_name_step_2[0],4,-10);
 				$name = strip_tags($name);
-				$tenonet ="";
 				$name_len = strlen($name);
 				$name_len = $name_len - 15; //remove html tags
 				$name_fixed = "";
@@ -88,7 +99,7 @@
 
 				//check already existing user
 				$already_exist = 0;
-				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE Nama = '$name'";
+				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE Dosen_ID = '$name $faculty_fixed'";
 				$query_check_execute = mysqli_query($link, $query_check_already_exist);
 				$row_check = mysqli_fetch_row($query_check_execute);
 				if($row_check[0] >= 1)
@@ -99,7 +110,7 @@
 				//QUERY KE TABLE USER_LIST
 				if($already_exist == 0)
 				{
-					$query_user_list = "INSERT INTO user_list (Nama, ID, Email, Dosen) VALUES ('$name', 0, NULL, '1')";
+					$query_user_list = "INSERT INTO user_list (Nama, ID, Email, Dosen_ID) VALUES ('$name', 0, NULL, '$name $faculty_fixed')";
 					mysqli_query($link, $query_user_list);
 				}
 				

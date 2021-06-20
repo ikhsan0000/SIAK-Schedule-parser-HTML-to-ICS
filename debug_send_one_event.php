@@ -10,7 +10,7 @@ require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 //Functoin PHPMailer
 //source: https://github.com/PHPMailer/PHPMailer
-function sendMail($recipient, $user_name, $event_name, $day, $description, $date, $start, $end)
+function sendMail($users_email, $event_name, $day, $description, $date, $start, $end)
 {
 
 
@@ -45,28 +45,20 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 	$mail->Subject = 'Notice Acara dari SchedUIe!';
 	$mail->Body = $content;
 	// $mail->AddAddress($recipient);
-	$mail->AddBCC('ikhsan.firdauz@ui.ac.id');
-	$mail->addBCC('galih.damar71@ui.ac.id');
-	$mail->addBCC('Achmad.faiz71@ui.ac.id');
-	$mail->addBCC('hizkia.william@ui.ac.id');
-	$mail->addBCC('Darrell.yonathan@ui.ac.id');
-	$mail->addBCC('Ananda.rizky71@ui.ac.id');
-	$mail->addBCC('geraldy.christanto@ui.ac.id');
-	$mail->addBCC('mohammad.khairi@ui.ac.id');
-	$mail->addBCC('alvin.genta@ui.ac.id');
-	$mail->addBCC('Bayu.satria71@ui.ac.id');
-	$mail->addBCC('gita.ayu73@ui.ac.id');
-	$mail->addBCC('anandwi.ghurran@ui.ac.id');
+	foreach($users_email as $email)
+	{
+		$mail->AddBCC($email);
+	}
+	$mail->AddBCC('ikhsanfirdauz@gmail.com');
 	$mail->Send();
 	echo "mail sent!";
-
 }
 
 	$e_id =  $_POST['id'];
 
 	$kueri_row = "SELECT * FROM user_list";
 	$execute = mysqli_query($link, $kueri_row);
-	
+	$eligible_users = array();
 	//Loop trough all events in table acara (SELECT * FROM acara)
 	$kueri_e = "SELECT * FROM acara WHERE id = $e_id AND sent = 0";
 	$execute_e = mysqli_query($link, $kueri_e);
@@ -136,6 +128,14 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 			$current_name = $row2['Nama'];
 			//get current user's email
 			$current_email = $row2['Email'];
+			if($current_email == "@ui.ac.id")	//if email empty, next user
+			{
+				continue;
+			}
+			if($row2['Dosen_ID'] !== "0")		//if role dosen, next user
+			{
+				continue;
+			}
 			$kueri_row2 = "SELECT a.id, b.nama, b.email, a.hari, a.waktu_mulai, a.waktu_selesai FROM jadwal a RIGHT JOIN user_list b ON a.id = b.id WHERE a.id = '$current_user' AND hari = '$hari_event'";
 			$execute2 = mysqli_query($link, $kueri_row2);
 			
@@ -221,8 +221,7 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 				echo $current_name;
 				echo " IS VALID TO SEND";
 				echo "<br>";
-				sendMail($current_email, $current_name, $nama_event, $hari_event, $e_deskripsi,
-				$tanggal_event, $e_mulai_final, $e_selesai_final);
+				array_push($eligible_users, $current_email);
 				echo "<br>";
 				echo "<br>";
 				//block test
@@ -238,8 +237,12 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 			}
 			
 		}
-		$kueri_update_sent = "UPDATE acara SET sent = 1 WHERE id = '$e_id'";
-		mysqli_query($link, $kueri_update_sent);
+		// sendMail($eligible_users,$nama_event, $hari_event, $e_deskripsi, $tanggal_event, $e_mulai_final, $e_selesai_final);
+		// $kueri_update_sent = "UPDATE acara SET sent = 1 WHERE id = '$e_id'";
+		// mysqli_query($link, $kueri_update_sent);
+
+		print_r($eligible_users);
+
 		//reset the pointer for pg_fetch user & user's subject
 		// pg_result_seek($execute,0);
 		// pg_result_seek($execute2,0);

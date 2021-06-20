@@ -67,8 +67,9 @@
     <div class="container">
             <h1 class="header-text">Welcome to SchedUIe</h1>
             <h3 class="subheader-text">SchedUIe adalah layanan web yang dibuat untuk civitas academica Universitas Indonesia. Website ini akan mengubah HTML jadwal <a href="https://academic.ui.ac.id/main/Authentication/" target="_blank"> SIAK</a> anda menjadi format yang dapat diupload ke <a href="https://calendar.google.com/calendar/" target="_blank">Google Calendar</a></h3>
-
-            </div>
+            
+        </div>
+        <a  class ="subheader-text" id="updateSW" style="text-align: center; cursor: pointer;">update available (refresh)</a>
             <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/4g2m41EbLgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             
             <div class="main-program mt-4" id="main-program">
@@ -85,15 +86,6 @@
                     </button>
                 </form>
 
-                <div class="separator">Test Section Mahasiswa</div>
-
-                <form action="test_convert_mahasiswa.php">
-                    <button class="btn-lg btn-block btn-dark center convert-btn mb-2" value="submit" name="submit">
-                        Convert Test
-                    </button>
-                    <a href="test_material/Jadwal Kuliah - SIAK NG-Ikhsan.html" download="Jadwal Kuliah - SIAK NG-Ikhsan.html">Download test HTML (page mahasiswa)</a>
-                </form>
-
                 <div class="separator">Test Section Dosen</div>
 
                 <form action="test_convert_dosen.php">
@@ -102,6 +94,16 @@
                     </button>
                     <a href="test_material/Jadwal Kuliah -Pak Ruki.html" download="Jadwal Kuliah -Pak Ruki.html">Download test HTML (page dosen)</a>
                 </form>
+               
+                <div class="separator">Test Section Mahasiswa</div>
+               
+                <form action="test_convert_mahasiswa.php">
+                    <button class="btn-lg btn-block btn-dark center convert-btn mb-2" value="submit" name="submit">
+                        Convert Test
+                    </button>
+                    <a href="test_material/Jadwal Kuliah - SIAK NG-Ikhsan.html" download="Jadwal Kuliah - SIAK NG-Ikhsan.html">Download test HTML (page mahasiswa)</a>
+                </form>
+                
             </div>
 
             

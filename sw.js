@@ -1,12 +1,12 @@
 //Constants
-const staticCacheName = 'static';
-// const assets = [
-//     'home.php',
-//     'app.js', 
-//     'css/mystyle.css',
-//     'images/offline.png',
-//     'fallback_offline.html'
-// ];
+const staticCacheName = 'static-v1';
+const assets = [
+    'home.php',
+    'app.js', 
+    'css/mystyle.css',
+    'images/offline.png',
+    'fallback_offline.html'
+];
 
 //install SW event
 self.addEventListener('install', e => 
@@ -26,12 +26,12 @@ self.addEventListener('activate', e =>
 {
     e.waitUntil(
         caches.keys().then(keys =>
-            {
-                return Promise.all(keys
-                    .filter(key => key !== staticCacheName)
-                    .map(key => caches.delete(key))
-                )
-            })
+        {
+            return Promise.all(keys
+                .filter(key => key !== staticCacheName)
+                .map(key => caches.delete(key))
+            )
+        })
     );
 });
 
@@ -42,7 +42,7 @@ self.addEventListener('fetch', e =>
     e.respondWith(
         caches.match(e.request).then(cachesRespond =>
         {
-            return cachesRespond || fetch(e.request)
+            return cachesRespond || fetch(e.request).then(console.log(e.request))
         }).catch(() => caches.match('fallback_offline.html'))
     );
 });

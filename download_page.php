@@ -57,7 +57,7 @@ if(empty($file))
                             Features
                         </a>
                         <ul class="dropdown-menu dropdown-menu-recolor" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#main-program">SIAK Calendar Converter</a></li>
+                            <li><a class="dropdown-item" href="home.php">SIAK Calendar Converter</a></li>
                             <li><a class="dropdown-item" href="event.php">Event Advertiser</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item disabled" href="#">Thanks for checking out!</a></li>

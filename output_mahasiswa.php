@@ -125,6 +125,11 @@
 					$query_user_list = "INSERT INTO user_list (Nama, ID, Email) VALUES ('$nama_mahasiswa', '$npm_final', '$user_name@ui.ac.id')";
 					mysqli_query($link, $query_user_list);
 				}
+				else
+				{
+					$query_delete = "DELETE FROM jadwal WHERE ID ='$npm_final'";
+					mysqli_query($link, $query_delete);
+				}
 				
 				
 				//Parsing everything here
@@ -145,8 +150,8 @@
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
-							//echo 'Mata Kuliah: '.$final_string[0].'<br/>';
-							//echo 'Ruang: '.$final_string[1].'<br/>';
+							// echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+							// echo 'Ruang: '.$final_string[1].'<br/>';
 							$jam_temp = $jam->item($inc)->nodeValue;
 							$f_jam = explode(' - ', $jam_temp);
 							$mulai = explode('.', $f_jam[0]);
@@ -178,8 +183,8 @@
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
-							//echo 'Mata Kuliah: '.$final_string[0].'<br/>';
-							//echo 'Ruang: '.$final_string[1].'<br/>';
+							// echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+							// echo 'Ruang: '.$final_string[1].'<br/>';
 							$jam_temp = $jam->item($inc)->nodeValue;
 							$f_jam = explode(' - ', $jam_temp);
 							$mulai = explode('.', $f_jam[0]);
@@ -289,8 +294,8 @@
 							$string = $matkul->item($inc)->nodeValue;
 							$final_string = explode ('Ruang:', $string);
 							$ruang = str_replace(' ', '', $final_string[1]);
-							//echo 'Mata Kuliah: '.$final_string[0].'<br/>';
-							//echo 'Ruang: '.$final_string[1].'<br/>';
+							// echo 'Mata Kuliah: '.$final_string[0].'<br/>';
+							// echo 'Ruang: '.$final_string[1].'<br/>';
 							$jam_temp = $jam->item($inc)->nodeValue;
 							$f_jam = explode(' - ', $jam_temp);
 							$mulai = explode('.', $f_jam[0]);
@@ -357,12 +362,10 @@
 
 						$_SESSION['npm_user'] = $npm_final;
 
-						// QUERY KE TABLE JADWAL
-						if($already_exist == 0)
-						{
-							$query_jadwal = "INSERT INTO jadwal VALUES ('$npm_final', '$query_hari', $mulai, $selesai, '$final_string[0]')";
-							mysqli_query($link, $query_jadwal);
-						}
+						$query_jadwal = "INSERT INTO jadwal VALUES ('$npm_final', '$query_hari', $mulai, $selesai, '$final_string[0]')";
+						mysqli_query($link, $query_jadwal);
+						
+						
 					}
 					
 						

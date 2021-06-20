@@ -1,7 +1,7 @@
 
 
 <?php
-
+	session_start();
 	//list file extenion here
 	include_once('config_database.php');
 	$extension = array('html','mhtml','htm');

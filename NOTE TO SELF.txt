@@ -1,7 +1,7 @@
 di app.js
 
 -PROBLEM-
-[28 -SOLVED-] navigator.serviceWorker.register('sw.js') -> navigator.serviceWorker.register('../sw.js')
+[line 28 -SOLVED-] navigator.serviceWorker.register('sw.js') -> navigator.serviceWorker.register('../sw.js')
 
 -EXPLAINATION-
 [28] karena bikin subfolder push, jadi sw error di root directory
@@ -26,24 +26,24 @@ Seminar/Skripsi Notes:
 8/3/2021
 
 sekarang:
-- Cookie masih error [DONE]
-- konfirmasi teknis popup modalbox
-- konfirmasi broadcast mail
+- Cookie masih error [SOLVED & DONE]
+- konfirmasi teknis popup modalbox [CHECKED]
+- konfirmasi broadcast mail [CHECKED]
 - progress automasi deteksi role dosen/mahasiswa [DONE]
 
 progress ke depan:
 - buat login untuk masuk ke admin page
   send mail & push
-- rapihkan mobile view
-- ganti datepicker dan timepicker
+- rapihkan mobile view [DONE]
+- ganti datepicker dan timepicker [DONE]
 
 Pertanyaan:
 - PHPmailer masih ada error dari API side
-  apa tidak apa apa?
+  apa tidak apa apa? [SOLVED]
 
 
 Notes:
-- PHPmailer buat alasannya mengapa hanya terbatas
+- PHPmailer buat alasannya mengapa hanya terbatas [CANCELED AND SOLVED]
   penerimanya, bisa ambil dari provider APInya
 
 
@@ -58,10 +58,10 @@ Notes:
 22/3/2021
 
 Notes:
-- Buat button baru untuk tiap event di admin_page.php untuk mengirim push notification ke penerima yang kosong pada jam tersebut
-- Rework Pop up notification agar hanya sekali munculkan
+- Buat button baru untuk tiap event di admin_page.php untuk mengirim push notification ke penerima yang kosong pada jam tersebut [DONE]
+- Rework Pop up notification agar hanya sekali munculkan [DONE]
 - (if possible) Hapus subscriber info saat pengguna unsubscribe/block push dari browser
-- Jika user dengan ID yang sama mengconvert jadwal lagi, replace info pada database
+- Jika user dengan ID yang sama mengconvert jadwal lagi, replace info pada database [DONE details in 6/13/2021]
 
 19/4/2021
 
@@ -73,18 +73,18 @@ Notes:
 3/5/2021
 
 Notes:
-- buat use case diagram (step step kemungkinan yg bisa user lakukan pada diagram tree)
-- list yang dapat mengakibatkan subscribe by id tidak terjadi
-- buat deskripsi saat prompt allow notification
+- buat use case diagram (step step kemungkinan yg bisa user lakukan pada diagram tree) 
+- list yang dapat mengakibatkan subscribe by id tidak terjadi [CANCELED & SOLVED]
+- buat deskripsi saat prompt allow notification [DONE]
 - tujuan studi literatur agar pembaca menyadari bahwa kita expert pada bidang itu (kita tau cutting edgenya) bahasan sub-bab per topik seperti paper x menggunakan offline caching seperti yang
 - metric bisa diukur dari chrome dev tools
 - kuisioner min 30 recipient
-- at least 2 browser major supported
+- at least 2 browser major supported [DONE]
 
 31/5/2021
 
 Notes:
-- identifier dosen pakai fakultas+nama
+- identifier dosen pakai fakultas+nama [DONE]
 
 NOTES DEADLINE + DETAILS
 2 juli last submit
@@ -96,3 +96,17 @@ untuk revisi, kirim 2 file pdf, 1 clean, 1 highlight bagian revisi, clean untuk 
 presentasi sidang ppt 20 mnt
 
 + buat format IEEE paper dari buku skripsi (in eng) submission pada saat revisi
+
+6/13/2021
+
+notes:
+- database table user_list Dosen_ID datatype changed int -> text
+- output_mahasiswa.php logic changed, delete jadwal if npm exist then write jadwal
+- output_dosen.php Dosen_ID changed from TRUE FALSE to name + faculty 
+- testing real-time ganti nama cache di sw.js ke v2 untuk update installed a2hs
+- update page receive share_target
+
+
+Pertanyaan
+- untuk jadwal dosen apakah perlu dicek juga/tidak perlu menerima notifikasi karena
+  event biasanya berhubungan dengan mahasiswa
