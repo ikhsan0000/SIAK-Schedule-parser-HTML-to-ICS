@@ -79,6 +79,12 @@
                     <label for="e_desc" class="form-label">Deskripsi Acara</label>
                     <textarea class="form-control mb-3 mt-2" id="e_desc" name="e_desc" placeholder="Deskripsikan acaranya.." style="height:200px" required></textarea>
 
+                    <label for="e_desc" class="form-label">Target Audience</label>
+                    <select class="form-select mb-3 mt-2" aria-label="--Select--" name="e_targetAudience">
+                        <option value="mahasiswa">Mahasiswa</option>
+                        <option value="umum">Umum</option>
+                    </select>
+
                     <label for="e_date" class="form-label">Tanggal Acara</label>
                     <div class="input-group mb-3 mt-2">
                         <div class="input-group-text"><i class="bi bi-calendar3"></i></div>
@@ -164,6 +170,7 @@
         $('.datepicker').datepicker({
         autoclose: true,
         todayHighlight: true,
+        startDate:'-0d',
         format: "dd-mm-yyyy"
         });
 

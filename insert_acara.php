@@ -2,7 +2,7 @@
 require_once "config_database.php";
 require_once "event.php";
 $posted = false;
-$organisasi = $nama_acara = $tanggal = $hari = $waktu_mulai = $waktu_selesai = $desc = '';
+$organisasi = $nama_acara = $tanggal = $hari = $waktu_mulai = $waktu_selesai = $desc = $target_audience = '';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     try 
@@ -14,6 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $hari = $_POST["hari"];
 		$waktu_mulai = $_POST["start_time"];
 		$waktu_selesai = $_POST["end_time"];
+		$target_audience = $_POST["e_targetAudience"];
 
 		
         if(strtotime($waktu_mulai) >= strtotime($waktu_selesai))
@@ -55,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				break;
 			}
 
-			$insert = "INSERT INTO acara (org, nama_acara, deskripsi, tanggal, hari, waktu_mulai, waktu_selesai, sent) VALUES ('$organisasi', '$nama_acara', '$desc', '$tanggal', '$hari', '$waktu_mulai', '$waktu_selesai', 0)";
+			$insert = "INSERT INTO acara (org, nama_acara, deskripsi, tanggal, hari, waktu_mulai, waktu_selesai, target_audience, sent) VALUES ('$organisasi', '$nama_acara', '$desc', '$tanggal', '$hari', '$waktu_mulai', '$waktu_selesai', '$target_audience', 0)";
 			mysqli_query($link, $insert);
 		
             echo ("<script>

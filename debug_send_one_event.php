@@ -129,7 +129,6 @@ function sendMail($users_email, $event_name, $day, $description, $date, $start, 
 			{
 				$current_user = $row2['Dosen_ID'];
 			}
-			echo $current_user . "<br>";
 			//get current user name
 			$current_name = $row2['Nama'];
 			//get current user's email

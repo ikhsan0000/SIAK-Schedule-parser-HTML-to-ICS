@@ -446,3 +446,74 @@ a.nostyle:visited {
     }
 
 }
+
+/* LOGIN PAGE */
+.login-card
+{
+    color: #32383f;
+    border-radius: 5px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    max-width: 400px;
+    max-height: 300px;
+    background-color: #fcfcfc;
+    box-shadow: rgba(94, 94, 255, 0.35) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.login-card label
+{
+    margin-left: 20px;
+}
+
+.login-title
+{
+    font-weight: 300;
+    font-size: 22pt;
+    text-align: center;
+    margin-top: -70px;
+}
+
+.login-card-content
+{
+    margin-top: 75px;
+}
+
+.login-my-form
+{
+    font-weight: 300;
+    background-color: #fefefe;
+    color: #242930;
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    border-radius: 0;
+    border: none;
+    border-bottom: #a59595 solid 2px;
+    transition: all .7s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+}
+
+.login-my-form:focus
+{
+    border: none;
+    background-color: #f5f5f5;
+    box-shadow: none;
+    border-bottom: #a59595 solid 2px;
+}
+
+.login-button
+{
+    color: #fefefe;
+    font-size: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    transition: all .7s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.login-button:hover
+{
+    color: #212529;
+}

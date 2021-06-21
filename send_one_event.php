@@ -2,14 +2,19 @@
 /* Attempt to connect to database */
 require_once "config_database.php";
 
-	require_once('phpmailer/PHPMailerAutoload.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+// require 'vendor/autoload.php';
+require 'phpmailer/src/Exception.php';
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
 //Functoin PHPMailer
-//source: https://github.com/PHPMailer/PHPMailer/tree/5.2-stable
-function sendMail($recipient, $user_name, $event_name, $day, $description, $date, $start, $end)
+//source: https://github.com/PHPMailer/PHPMailer
+function sendMail($users_email, $event_name, $day, $description, $date, $start, $end)
 {
 
 
-	$content = "Halo $user_name!<br>
+	$content = "Halo pengguna SchedUIe<br>
 				Kami dari SchedUIe mengajak anda untuk hadir dalam <br><br>
 				Acara : $event_name<br>
 				Deskripsi acara: $description<br>
@@ -23,35 +28,38 @@ function sendMail($recipient, $user_name, $event_name, $day, $description, $date
 	$mail->isSMTP();
 	$mail->SMTPDebug = 0;		//change value to 3 to debug, default 0
 	$mail->SMTPAuth = true;
-	$mail->SMPTSecure = 'ssl';
+	$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 	$mail->Host = 'smtp.gmail.com';
 	$mail->Mailer   = "smtp";
 	$mail->Port = '587';
+	// 1 = High, 2 = Medium, 3 = Low
+	$mail->Priority = 1;
+	// May set to "Urgent" or "Highest" rather than "High"
+	$mail->AddCustomHeader("X-MSMail-Priority: Highest");
+	// Not sure if Priority will also set the Importance header:
+	$mail->AddCustomHeader("Importance: Highest");
 	$mail->isHTML();
 	$mail->Username = 'scheduiebyigs@gmail.com';
 	$mail->Password = 'tekkom2017';			//change to password email
 	$mail->SetFrom('scheduiebyigs-no_reply@gmail.com');
-	$mail->Subject = 'Hello World!!';
+	$mail->Subject = 'Notice Acara dari SchedUIe!';
 	$mail->Body = $content;
-	$mail->AddAddress($recipient);
-
-
+	// $mail->AddAddress($recipient);
+	foreach($users_email as $email)
+	{
+		$mail->AddBCC($email);
+	}
+	$mail->AddBCC('ikhsanfirdauz@gmail.com');
 	$mail->Send();
 	echo "mail sent!";
-
-}
-
-function mail_log($link, $recipient, $user_name, $event_name, $day, $description, $date, $start, $end)
-{
-	$log_sql = "INSERT INTO email_log (recipient, user_name, event_name, day, description, date, start_time, end_time) VALUES ('$recipient', '$user_name', '$event_name', '$day', '$description', '$date', '$start', '$end')";
-	mysqli_query($link, $log_sql);
 }
 
 	$e_id =  $_POST['id'];
+	$target_audience = $_POST['targetAudienceMail'];
 
 	$kueri_row = "SELECT * FROM user_list";
 	$execute = mysqli_query($link, $kueri_row);
-	
+	$eligible_users = array();
 	//Loop trough all events in table acara (SELECT * FROM acara)
 	$kueri_e = "SELECT * FROM acara WHERE id = $e_id AND sent = 0";
 	$execute_e = mysqli_query($link, $kueri_e);
@@ -117,10 +125,22 @@ function mail_log($link, $recipient, $user_name, $event_name, $day, $description
 		{
 			//get current user NPM
 			$current_user = $row2['ID'];
+			if($row2['Dosen_ID'] !== "0")	//if dosen the current user = dosen ID
+			{
+				$current_user = $row2['Dosen_ID'];
+			}
 			//get current user name
 			$current_name = $row2['Nama'];
 			//get current user's email
 			$current_email = $row2['Email'];
+			if($current_email == "@ui.ac.id")	//if email empty, next user
+			{
+				continue;
+			}
+			if($row2['Dosen_ID'] !== "0" && $target_audience == "mahasiswa")		//if role dosen && target audience mahasiswa, next user
+			{
+				continue;
+			}
 			$kueri_row2 = "SELECT a.id, b.nama, b.email, a.hari, a.waktu_mulai, a.waktu_selesai FROM jadwal a RIGHT JOIN user_list b ON a.id = b.id WHERE a.id = '$current_user' AND hari = '$hari_event'";
 			$execute2 = mysqli_query($link, $kueri_row2);
 			
@@ -206,13 +226,7 @@ function mail_log($link, $recipient, $user_name, $event_name, $day, $description
 				echo $current_name;
 				echo " IS VALID TO SEND";
 				echo "<br>";
-				//!!!!!!!!!!! sending problem !!!!!!!!!!!!!!!!!!!!!!! uncomment below code to test
-				// sendMail($current_email, $current_name, $nama_event, $hari_event, $e_deskripsi,
-				// $tanggal_event, $e_mulai_final, $e_selesai_final);
-				if (!mail_log($link, $current_email, $current_name, $nama_event, $hari_event, $e_deskripsi, $tanggal_event, $e_mulai_final, $e_selesai_final)) {
-					echo("Error description: " . mysqli_error($link));
-				  }
-				mail_log($link, $current_email, $current_name, $nama_event, $hari_event, $e_deskripsi, $tanggal_event, $e_mulai_final, $e_selesai_final);
+				array_push($eligible_users, $current_email);
 				echo "<br>";
 				echo "<br>";
 				//block test
@@ -228,18 +242,18 @@ function mail_log($link, $recipient, $user_name, $event_name, $day, $description
 			}
 			
 		}
-		$kueri_update_sent = "UPDATE acara SET sent = 1 WHERE id = '$e_id'";
-		mysqli_query($link, $kueri_update_sent);
+		// sendMail($eligible_users,$nama_event, $hari_event, $e_deskripsi, $tanggal_event, $e_mulai_final, $e_selesai_final);
+		// $kueri_update_sent = "UPDATE acara SET sent = 1 WHERE id = '$e_id'";
+		// mysqli_query($link, $kueri_update_sent);
+
+		print_r($eligible_users);
+
 		//reset the pointer for pg_fetch user & user's subject
 		// pg_result_seek($execute,0);
 		// pg_result_seek($execute2,0);
 	}
 	echo "<br>";
-	echo '<script language="javascript">';
-	echo 'alert("Email Sent !");';
-	echo 'window.location="admin_page.php";';
-	echo '</script>';
-	exit();
+
 
 
 ?>

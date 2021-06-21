@@ -114,4 +114,6 @@ Pertanyaan
 ---------20/6/2021---------
 
 notes:
-- tambah 1 kolom di table event untuk menandakan target audience "mahasiswa" / "umum"
+- tambah 1 kolom di table event untuk menandakan target audience "mahasiswa" / "umum" [DONE]
+- handle push notif sesuai target audience dan jadwalnya [DONE]
+- handle email sesuai target audience dan jadwalnya

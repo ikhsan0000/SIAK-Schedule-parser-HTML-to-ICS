@@ -1,3 +1,40 @@
+<?php
+  session_start();
+  require_once 'config_database.php';
+  if(isset($_POST['logout']))
+  {
+      if($_POST['logout'] == "logout")
+      {
+          unset($_SESSION['login']);
+      }
+  }
+
+  if(isset($_SESSION['login']))
+  {
+    //auth
+  }
+  elseif(isset($_POST['loginUsername']) && isset($_POST['loginPassword']))
+  {
+    $sql = "SELECT * FROM login";
+    $result = mysqli_query($link, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $username = $_POST['loginUsername'];
+    $pass = $_POST['loginPassword'];
+    if($username == $row['username'] && password_verify($pass, $row['password']))
+    {
+      $_SESSION['login'] = "loggedin";
+    }
+    else
+    {
+      header("Location:login.php");
+    }
+  }
+  else
+  {
+    header("Location:login.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +50,6 @@ table, th, td {
 require_once "config_database.php";
 
 ?>
-
 <table style="width:100%">
   <tr>
 	<th>Id</th>
@@ -25,9 +61,9 @@ require_once "config_database.php";
     <th>waktu_mulai</th>
     <th>waktu_selesai</th>
     <th>Mail Sent</th>
-    <th>Mail Sent</th>
+    <th>Push Sent</th>
     <th>Send Mail</th>
-    <th>Push Push</th>
+    <th>Send Push</th>
   </tr>
   <?php
   $sql = "SELECT * FROM acara";
@@ -48,15 +84,17 @@ require_once "config_database.php";
       <td class="row-data"><?php if($data['push_sent'] == 0){echo "FALSE";}else{echo "TRUE";}?></td>
       <td>
         <form action="send_one_event.php" method="POST">
-        <button type="submit" name="id" value="<?php echo $data['id'];?>">Send !</button> <!-- ganti data yang diecho jadi ID series (blm ada di table)  -->
+        <input type="hidden" name="targetAudienceMail" value="<?php echo $data['Target_Audience'] ?>" readonly>
+        <button type="submit" name="id" value="<?php echo $data['id'];?>">Send !</button>
         </form>
       </td>
       <td>
         <form action="send_one_push.php" method="post">
-        <input type="hidden" id="namaAcara" name="namaAcara">
+        <!-- <input type="hidden" id="namaAcara" name="namaAcara">
         <input type="hidden" id="deskripsi" name="deskripsi">
         <input type="hidden" id="waktuMulai" name="waktuMulai">
-        <input type="hidden" id="waktuSelesai" name="waktuSelesai">
+        <input type="hidden" id="waktuSelesai" name="waktuSelesai"> -->
+        <input type="hidden" id="targetAudience" name="targetAudience" value="<?php echo $data['Target_Audience'] ?>" readonly>
         <button type="submit" class="btn-lg btn-block btn-dark" value="<?php echo $data['id'];?>" name="eIdPush" id="send-push" onclick="show()">Send Push</button>
         </form>
       </td>
@@ -71,9 +109,9 @@ require_once "config_database.php";
   ?>
 
 </table><br>
-	<form action="send_all_event.php" method="POST">
-	<button type="submit" >Send Email to All!</button>
-	</form>
+<form action="admin_page.php" method="POST">
+  <button name="logout" value="logout">Log out</button>
+</form>
 
   <script src="app.js">
   </script>
@@ -97,10 +135,10 @@ require_once "config_database.php";
       document.cookie = "waktuMulai=" + waktuMulai + ";expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
       document.cookie = "waktuSelesai=" + waktuSelesai + ";expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
 
-      document.getElementById("namaAcara").value = acara; 
-      document.getElementById("deskripsi").value = deskripsi; 
-      document.getElementById("waktuMulai").value = waktuMulai; 
-      document.getElementById("waktuSelesai").value = waktuSelesai; 
+      // document.getElementById("namaAcara").value = acara; 
+      // document.getElementById("deskripsi").value = deskripsi; 
+      // document.getElementById("waktuMulai").value = waktuMulai; 
+      // document.getElementById("waktuSelesai").value = waktuSelesai; 
       console.log(acara);
     }
   </script>
