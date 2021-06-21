@@ -55,6 +55,7 @@ function sendMail($users_email, $event_name, $day, $description, $date, $start, 
 }
 
 	$e_id =  $_POST['id'];
+	$target_audience = $_POST['targetAudienceMail'];
 
 	$kueri_row = "SELECT * FROM user_list";
 	$execute = mysqli_query($link, $kueri_row);
@@ -124,6 +125,11 @@ function sendMail($users_email, $event_name, $day, $description, $date, $start, 
 		{
 			//get current user NPM
 			$current_user = $row2['ID'];
+			if($row2['Dosen_ID'] !== "0")	//if dosen the current user = dosen ID
+			{
+				$current_user = $row2['Dosen_ID'];
+			}
+			echo $current_user . "<br>";
 			//get current user name
 			$current_name = $row2['Nama'];
 			//get current user's email
@@ -132,7 +138,7 @@ function sendMail($users_email, $event_name, $day, $description, $date, $start, 
 			{
 				continue;
 			}
-			if($row2['Dosen_ID'] !== "0")		//if role dosen, next user
+			if($row2['Dosen_ID'] !== "0" && $target_audience == "mahasiswa")		//if role dosen && target audience mahasiswa, next user
 			{
 				continue;
 			}

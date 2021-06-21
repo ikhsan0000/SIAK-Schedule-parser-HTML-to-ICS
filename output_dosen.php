@@ -129,7 +129,7 @@
 					mysqli_query($link, $query_delete);
 					$query_delete = "DELETE FROM user_list WHERE ID ='$dosen_ID'";
 					mysqli_query($link, $query_delete);
-					$query_user_list = "INSERT INTO user_list (Nama, ID, Email) VALUES ('$nama_mahasiswa', '$dosen_ID', '$user_name@ui.ac.id')";
+					$query_user_list = "INSERT INTO user_list (Nama, ID, Email, Dosen_ID) VALUES ('$name', 0, '$user_name@ui.ac.id', '$dosen_ID')";
 					mysqli_query($link, $query_user_list);
 				}
 				

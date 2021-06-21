@@ -48,7 +48,8 @@ require_once "config_database.php";
       <td class="row-data"><?php if($data['push_sent'] == 0){echo "FALSE";}else{echo "TRUE";}?></td>
       <td>
         <form action="debug_send_one_event.php" method="POST">
-        <button type="submit" name="id" value="<?php echo $data['id'];?>">Send !</button> <!-- ganti data yang diecho jadi ID series (blm ada di table)  -->
+        <input type="hidden" name="targetAudienceMail" value="<?php echo $data['Target_Audience'] ?>" readonly>
+        <button type="submit" name="id" value="<?php echo $data['id'];?>">Send !</button>
         </form>
       </td>
       <td>
