@@ -21,6 +21,10 @@ function urlB64ToUint8Array(base64String)
     return outputArray;
 }
 
+// if ('Notification' in window && navigator.serviceWorker) {
+//     // Display the UI to let the user toggle notifications
+//   }
+
 
 if('serviceWorker' in navigator && 'PushManager' in window) //check browser support SW
 {
@@ -61,15 +65,7 @@ if('serviceWorker' in navigator && 'PushManager' in window) //check browser supp
         .catch((err) => console.log('SW not registered', err));
 }
 
-//SW cache force refresh
 
-if(document.querySelector("#updateSW") !== null)
-{
-    document.querySelector("#updateSW").addEventListener('click', e =>
-    {
-    
-    })
-}
 
 function initializeIU()
 {
@@ -126,20 +122,27 @@ function updatePushButton()
 
 function subscribeUser()
 {
-    const applicationServerKey = urlB64ToUint8Array(publicKey);
-    swRegisteration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: applicationServerKey
-    })
-    .then(function(subscription){
-        console.log('User is subscribed');
-        updateSubscriptionOnServer(subscription);
-        isSubscribed = true;
-        updatePushButton();
-    })
-    .catch(function(err){
-        console.log('failed to subscribe user', err),
-        updatePushButton();
+    $(document).ready(function()
+    {
+        console.log("subs-ing...")
+        navigator.serviceWorker.ready.then(function()
+        {
+            const applicationServerKey = urlB64ToUint8Array(publicKey);
+            swRegisteration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: applicationServerKey
+            })
+            .then(function(subscription){
+                console.log('User is subscribed');
+                updateSubscriptionOnServer(subscription);
+                isSubscribed = true;
+                updatePushButton();
+            })
+            .catch(function(err){
+                console.log('failed to subscribe user', err),
+                updatePushButton();
+            });
+        })
     });
 }
 

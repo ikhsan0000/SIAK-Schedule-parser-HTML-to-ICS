@@ -2,12 +2,21 @@
 <?php 
 
     require_once "config_database.php";
+	require 'push/vendor/autoload.php';
+	use Minishlink\WebPush\WebPush;
+	use Minishlink\WebPush\Subscription;
+
 
     $e_id =  $_POST['eIdPush'];
+	$target_audience = $_POST['targetAudience'];
 
+	$kueri_subsriber = "SELECT * FROM subscriber";
 	$kueri_row = "SELECT * FROM user_list";
+	$execute_subscriber = mysqli_query($link, $kueri_subsriber);
 	$execute = mysqli_query($link, $kueri_row);
-	
+
+	$subscriptions = [];
+
 	//Loop trough all events in table acara (SELECT * FROM acara)
 	// $kueri_e = "SELECT * FROM acara WHERE id = $e_id AND push_sent = 0";
 	$kueri_e = "SELECT * FROM acara WHERE id = $e_id";
@@ -54,9 +63,165 @@
 		$e_selesai_fixed = str_split($e_selesai_fixed);
 		$e_selesai_final = $e_selesai_fixed[0].$e_selesai_fixed[1].":".$e_selesai_fixed[2].$e_selesai_fixed[3];
 		
-		
-		//Loop trough all users in table user_list (SELECT * FROM user_list) for all Events
 
+		while($row_sub = mysqli_fetch_assoc($execute_subscriber))
+		{
+			if(is_numeric($row_sub['ID']))
+			{
+				$current_user = $row_sub['ID'];
+				//mahasiswa
+				//cari jadwal dengan NPM = $current_user
+				$kueri_row2 = "SELECT a.id, b.nama, b.email, a.hari, a.waktu_mulai, a.waktu_selesai FROM jadwal a RIGHT JOIN user_list b ON a.id = b.id WHERE a.id = '$current_user' AND hari = '$hari_event'";
+				$execute2 = mysqli_query($link, $kueri_row2);
+				//apply intersection algorithm
+				//Loop trough all subject for current user to get time information for every subject, get from JOINED table user_list & jadwal ($kueri_row2)
+				//if true_flag turned 0, then intersect is detected
+				$true_flag = 1;
+
+				while($row3 = mysqli_fetch_row($execute2))
+				{
+					$hari_matkul = $row3[3];
+					//get current subject's day
+					$k_mulai = $row3[4];
+					//get current subject's start time
+					$k_selesai= $row3[5];
+					//get current subject's end time
+					
+					echo "hari: ";
+					echo $hari_matkul;
+					echo "<br>";
+					echo "jam mulai: ";
+					echo $row3[4];
+					echo "<br>";
+					echo "jam selesai: ";
+					echo $row3[5];
+					echo "<br>";
+					
+					//flag to determine if any of the user's subject is intersect with the event's time
+					$flag_passed = 0;
+
+					
+					//the intersect detection logic
+					if($e_mulai < $k_mulai && $e_selesai < $k_mulai)
+					{
+						if($e_mulai < $k_selesai && $e_selesai < $k_selesai)
+						{
+							$flag_passed = 1;
+						}
+						else
+						{
+							$true_flag = 0;
+						}
+							
+					}
+					elseif($e_mulai > $k_mulai && $e_selesai > $k_mulai)
+					{
+						if($e_mulai > $k_selesai && $e_selesai > $k_selesai)
+						{
+							$flag_passed = 1;
+						}
+						else
+						{
+							$true_flag = 0;
+						}
+					}
+					else
+					{
+						$true_flag = 0;
+					}
+				}
+				echo "after check true_flag = " . $true_flag;
+
+				if($true_flag == 1)
+				{
+					//push current user to $subscriptions[]
+					$endpoints = '{"endpoint":"'. $row_sub['endpoints'] .'","expirationTime":null,"keys":{"auth":"' . $row_sub['auth'] . '","p256dh":"' . $row_sub['p256dh'] . '"}}';
+					$subscriptions[] = Subscription::create(json_decode($endpoints, true));
+
+				}
+
+			}
+			else
+			{
+				if($target_audience == "mahasiswa")
+				{
+					continue;
+				}
+				$current_user = $row_sub['ID'];
+				$kueri_row2 = "SELECT a.id, b.nama, b.email, a.hari, a.waktu_mulai, a.waktu_selesai FROM jadwal a RIGHT JOIN user_list b ON a.id = b.id WHERE a.id = '$current_user' AND hari = '$hari_event'";
+				$execute2 = mysqli_query($link, $kueri_row2);
+				//apply intersection algorithm
+				//Loop trough all subject for current user to get time information for every subject, get from JOINED table user_list & jadwal ($kueri_row2)
+				//if true_flag turned 0, then intersect is detected
+				$true_flag = 1;
+
+				while($row3 = mysqli_fetch_row($execute2))
+				{
+					$hari_matkul = $row3[3];
+					//get current subject's day
+					$k_mulai = $row3[4];
+					//get current subject's start time
+					$k_selesai= $row3[5];
+					//get current subject's end time
+					
+					echo "hari: ";
+					echo $hari_matkul;
+					echo "<br>";
+					echo "jam mulai: ";
+					echo $row3[4];
+					echo "<br>";
+					echo "jam selesai: ";
+					echo $row3[5];
+					echo "<br>";
+					
+					//flag to determine if any of the user's subject is intersect with the event's time
+					$flag_passed = 0;
+
+					
+					//the intersect detection logic
+					if($e_mulai < $k_mulai && $e_selesai < $k_mulai)
+					{
+						if($e_mulai < $k_selesai && $e_selesai < $k_selesai)
+						{
+							$flag_passed = 1;
+						}
+						else
+						{
+							$true_flag = 0;
+						}
+							
+					}
+					elseif($e_mulai > $k_mulai && $e_selesai > $k_mulai)
+					{
+						if($e_mulai > $k_selesai && $e_selesai > $k_selesai)
+						{
+							$flag_passed = 1;
+						}
+						else
+						{
+							$true_flag = 0;
+						}
+					}
+					else
+					{
+						$true_flag = 0;
+					}
+				}
+				echo "after check true_flag = " . $true_flag;
+
+				if($true_flag == 1)
+				{
+					//push current user to $subscriptions[]
+					$endpoints = '{"endpoint":"'. $row_sub['endpoints'] .'","expirationTime":null,"keys":{"auth":"' . $row_sub['auth'] . '","p256dh":"' . $row_sub['p256dh'] . '"}}';
+					$subscriptions[] = Subscription::create(json_decode($endpoints, true));
+
+				}
+
+			}
+		}
+
+		//Loop trough all users in table user_list (SELECT * FROM user_list) for all Events
+		/* DEPRECATED
 		while($row2 = mysqli_fetch_assoc($execute))
 		{
 			if($row2['Dosen_ID'] != 0)
@@ -166,11 +331,11 @@
 				//block test
 			}
 			
-		}
+		}*/
+		include "push/pushAction.php";
 		$kueri_update_sent = "UPDATE acara SET push_sent = 1 WHERE id = '$e_id'";
 		mysqli_query($link, $kueri_update_sent);
 		//reset the pointer for pg_fetch user & user's subject
-		// pg_result_seek($execute,0);
-		// pg_result_seek($execute2,0);
+
 	}
 ?>

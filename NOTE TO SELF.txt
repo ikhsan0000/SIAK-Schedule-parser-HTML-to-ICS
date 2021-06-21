@@ -23,7 +23,7 @@ Seminar/Skripsi Notes:
 7. Hasil bab 4 bisa dibuat dalam survey dengan contoh apakah user ingin mendownload .apk, 
    jika tidak maka PWA memang bisa menjadi alternatif, atau space maupun speed akses 
 
-8/3/2021
+---------8/3/2021---------
 
 sekarang:
 - Cookie masih error [SOLVED & DONE]
@@ -47,7 +47,7 @@ Notes:
   penerimanya, bisa ambil dari provider APInya
 
 
-15/3/2021
+---------15/3/2021---------
 
 Notes:
 - Ganti PHPMailer jadi database log_email dengan mensimulasikan email yg terkirim menjadi masuk ke table log_email
@@ -55,7 +55,7 @@ Notes:
 - Hapus page push message ke publik, pindah jadi admin only
 - Satu satunya cara user subscribe hanya dengan popup modal
 
-22/3/2021
+---------22/3/2021---------
 
 Notes:
 - Buat button baru untuk tiap event di admin_page.php untuk mengirim push notification ke penerima yang kosong pada jam tersebut [DONE]
@@ -70,7 +70,7 @@ Notes:
 - Bab 4 jadi bab 3 yang sebelumnya
 - Bab 5 eksperimen, hasil, dan desain kuisioner
 
-3/5/2021
+---------3/5/2021---------
 
 Notes:
 - buat use case diagram (step step kemungkinan yg bisa user lakukan pada diagram tree) 
@@ -81,7 +81,7 @@ Notes:
 - kuisioner min 30 recipient
 - at least 2 browser major supported [DONE]
 
-31/5/2021
+---------31/5/2021---------
 
 Notes:
 - identifier dosen pakai fakultas+nama [DONE]
@@ -97,7 +97,7 @@ presentasi sidang ppt 20 mnt
 
 + buat format IEEE paper dari buku skripsi (in eng) submission pada saat revisi
 
-6/13/2021
+---------13/6/2021---------
 
 notes:
 - database table user_list Dosen_ID datatype changed int -> text
@@ -106,7 +106,12 @@ notes:
 - testing real-time ganti nama cache di sw.js ke v2 untuk update installed a2hs
 - update page receive share_target
 
-
 Pertanyaan
 - untuk jadwal dosen apakah perlu dicek juga/tidak perlu menerima notifikasi karena
   event biasanya berhubungan dengan mahasiswa
+
+
+---------20/6/2021---------
+
+notes:
+- tambah 1 kolom di table event untuk menandakan target audience "mahasiswa" / "umum"

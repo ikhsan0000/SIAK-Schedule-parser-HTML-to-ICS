@@ -53,10 +53,11 @@ require_once "config_database.php";
       </td>
       <td>
         <form action="send_one_push.php" method="post">
-        <input type="hidden" id="namaAcara" name="namaAcara">
+        <!-- <input type="hidden" id="namaAcara" name="namaAcara">
         <input type="hidden" id="deskripsi" name="deskripsi">
         <input type="hidden" id="waktuMulai" name="waktuMulai">
-        <input type="hidden" id="waktuSelesai" name="waktuSelesai">
+        <input type="hidden" id="waktuSelesai" name="waktuSelesai"> -->
+        <input type="hidden" id="targetAudience" name="targetAudience" value="<?php echo $data['Target_Audience'] ?>" readonly>
         <button type="submit" class="btn-lg btn-block btn-dark" value="<?php echo $data['id'];?>" name="eIdPush" id="send-push" onclick="show()">Send Push</button>
         </form>
       </td>
@@ -97,10 +98,10 @@ require_once "config_database.php";
       document.cookie = "waktuMulai=" + waktuMulai + ";expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
       document.cookie = "waktuSelesai=" + waktuSelesai + ";expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
 
-      document.getElementById("namaAcara").value = acara; 
-      document.getElementById("deskripsi").value = deskripsi; 
-      document.getElementById("waktuMulai").value = waktuMulai; 
-      document.getElementById("waktuSelesai").value = waktuSelesai; 
+      // document.getElementById("namaAcara").value = acara; 
+      // document.getElementById("deskripsi").value = deskripsi; 
+      // document.getElementById("waktuMulai").value = waktuMulai; 
+      // document.getElementById("waktuSelesai").value = waktuSelesai; 
       console.log(acara);
     }
   </script>

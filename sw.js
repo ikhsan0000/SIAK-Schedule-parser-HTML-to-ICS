@@ -1,5 +1,5 @@
 //Constants
-const staticCacheName = 'static-v1';
+const staticCacheName = 'static-v6';
 const assets = [
     'home.php',
     'app.js', 

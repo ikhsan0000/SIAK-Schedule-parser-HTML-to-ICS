@@ -182,15 +182,29 @@ if(empty($file))
     closeButton.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
 
-    $(document).ready(function(){
+    $(downloadButton).css("opacity", 0.5);
+    $(downloadButton).css("pointer-events", "none");
+    downloadButton.textContent = "please wait.."
+
+    window.onload = function() 
+    { 
+        // $(downloadButton).prop("disabled", false);
+        downloadButton.textContent = "Download Here"
+        $(downloadButton).css("pointer-events", "");
+        $(downloadButton).css("opacity", 1);
+
         downloadButton.addEventListener("click", function(event) {
-        if(modalShown === undefined)
-        {
-            modal.classList.toggle("show-modal");
-            document.cookie = "modal=shown;expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
-        }
+            navigator.serviceWorker.ready.then(function()
+            {
+                if(modalShown === undefined)
+                {
+                    modal.classList.toggle("show-modal");
+                    document.cookie = "modal=shown;expires=Fri, 31 Dec 9999 23:59:59 GMT;secure";
+                }
+            });
         });
-    });
+    };
+        
     </script>
 </body>
 </html>

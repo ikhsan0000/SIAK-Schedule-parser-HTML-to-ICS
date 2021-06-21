@@ -2,6 +2,7 @@
 
 <?php
 	//list file extenion here
+	session_start();
 	$extension = array('html','mhtml','htm');
 
 			
@@ -57,16 +58,16 @@
 				$get_name_step_2 = explode('<a href="/main/Authentication/ChangeRole?role=Dosen" title="Ganti Role">Dosen</a> ', $get_name_step_1[1]);
 				$get_faculty = explode('<div class="linfo" style="border-right:0">', $get_name_step_2[1]);
 				$get_faculty = $get_faculty[0];
-				echo strlen(strip_tags($get_faculty));
-				echo "<br>" . htmlentities($get_faculty);
+				// echo strlen(strip_tags($get_faculty));
+				// echo "<br>" . htmlentities($get_faculty);
 				$faculty_len = strlen(strip_tags($get_faculty)) - 38;
 				$faculty_fixed = "";
 				for($i=0; $i<$faculty_len; $i++)
 				{
 					$faculty_fixed .= $get_faculty[$i];
 				}
-				echo "<br>" . strlen($faculty_fixed);
-				echo "<br>" . htmlentities($faculty_fixed);
+				// echo "<br>" . strlen($faculty_fixed);
+				// echo "<br>" . htmlentities($faculty_fixed);
 				$name = substr($get_name_step_2[0],4,-10);
 				$name = strip_tags($name);
 				$name_len = strlen($name);
@@ -76,6 +77,14 @@
 				{
 					$name_fixed .= $name[$i];
 				}
+
+				//get user name
+				if(isset($_POST['e_name']))
+				{
+					$user_name = $_POST['e_name'];
+				}
+				
+
 				//create file handling here
 				$file = 'Calender_SIAK'.$name_fixed.'.ics';
 				$handle = fopen("ics/".$file,'w') or die('Cannot open file: '.$file);
@@ -99,7 +108,8 @@
 
 				//check already existing user
 				$already_exist = 0;
-				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE Dosen_ID = '$name $faculty_fixed'";
+				$dosen_ID = $name . " " . $faculty_fixed;
+				$query_check_already_exist = "SELECT COUNT(1) FROM user_list WHERE Dosen_ID = '$dosen_ID'";
 				$query_check_execute = mysqli_query($link, $query_check_already_exist);
 				$row_check = mysqli_fetch_row($query_check_execute);
 				if($row_check[0] >= 1)
@@ -110,9 +120,19 @@
 				//QUERY KE TABLE USER_LIST
 				if($already_exist == 0)
 				{
-					$query_user_list = "INSERT INTO user_list (Nama, ID, Email, Dosen_ID) VALUES ('$name', 0, NULL, '$name $faculty_fixed')";
+					$query_user_list = "INSERT INTO user_list (Nama, ID, Email, Dosen_ID) VALUES ('$name', 0, '$user_name@ui.ac.id', '$dosen_ID')";
 					mysqli_query($link, $query_user_list);
 				}
+				else
+				{
+					$query_delete = "DELETE FROM jadwal WHERE ID ='$dosen_ID'";
+					mysqli_query($link, $query_delete);
+					$query_delete = "DELETE FROM user_list WHERE ID ='$dosen_ID'";
+					mysqli_query($link, $query_delete);
+					$query_user_list = "INSERT INTO user_list (Nama, ID, Email) VALUES ('$nama_mahasiswa', '$dosen_ID', '$user_name@ui.ac.id')";
+					mysqli_query($link, $query_user_list);
+				}
+				
 				
 				foreach ($important_content as $i)
 				{
@@ -251,11 +271,16 @@
 									
 								}
 								$ruang_b_final = str_replace(' ','', $ruang_b);
-								// echo '<strong>'.$hari.'</strong>'.'</br>';
-								// echo 'Mata Kuliah: '.$judul.'</br>';
-								// echo 'Ruang: '.$ruang_b_final.'</br>';
-								// echo 'Waktu: '.$jam_final_b.'</br></br></br>';
-								
+								// echo $judul . "<br>";
+								// echo $hari . "<br>";
+								// echo $mulai . strlen($mulai) . "<br>";
+								// echo $selesai . "<br>";
+								// echo '<br>';
+
+								$query_jadwal = "INSERT INTO jadwal (ID, Hari, Waktu_mulai, Waktu_selesai, Nama_matkul) VALUES ('$dosen_ID', '$hari', '$mulai', '$selesai', '$judul')";
+								mysqli_query($link, $query_jadwal);
+								mysqli_error($link);
+
 								//block write file
 								fwrite($handle,	'BEGIN:VEVENT'."\n".
 												'DTSTART;TZID=Indian/Christmas:20191028T'.$mulai.'00'."\n".
@@ -1028,9 +1053,14 @@
 							}	
 							
 						}
-						
-						
-						// echo '</br>';	//break for each subject iteration (multiple days)
+						$query_jadwal = "INSERT INTO jadwal (ID, Hari, Waktu_mulai, Waktu_selesai, Nama_matkul) VALUES ('$dosen_ID', '$hari', '$mulai', '$selesai', '$judul')";
+						mysqli_query($link, $query_jadwal);
+						// echo $judul . "<br>";
+						// echo $hari . "<br>";
+						// echo $mulai . "<br>";
+						// echo $selesai . "<br>";
+						// echo '<br>';
+							//break for each subject iteration (multiple days)
 					}
 					
 					else				// 1 subject only 1 day
@@ -1116,19 +1146,32 @@
 											'END:VEVENT'."\n"
 							   );
 						
-						// echo '<strong>'.$hari.'</strong>'.'</br>';
-						// echo 'Mata Kuliah: '.$judul.'</br>';
-						// echo 'Ruang: '.$ruang_final.'</br>';
-						// echo 'Waktu: '.$jam_temp4[0].'-'.$jam_temp4[1].'</br></br>';
+						
+						// echo $judul . "<br>";
+						// echo $hari . "<br>";
+						// echo $mulai . "<br>";
+						// echo $selesai . "<br>";
+						// echo '<br>';
+						$query_jadwal = "INSERT INTO jadwal (ID, Hari, Waktu_mulai, Waktu_selesai, Nama_matkul) VALUES ('$dosen_ID', '$hari', '$mulai', '$selesai', '$judul')";
+						mysqli_query($link, $query_jadwal);
 						
 					}
+					
 					// echo '</br>';		//break for each subject iteration (one day)
 					$pointer = $pointer + 9; 	//next matkul, each have 9 lines including the whitespace
 					
 					
 				}
-				
+			$_SESSION['npm_user'] = $dosen_ID;
 			fwrite($handle,	'END:VCALENDAR');
+			if(!isset($_COOKIE['visitor'])) 
+			{
+				setcookie(
+					"visitor",	//Cookie name
+					"already",	//Cookie value
+					time() + (10 * 365 * 24 * 60 * 60) //10 Years
+					);
+			} 
 			}
 			
 			else										//SIAK html but wrong page
@@ -1151,17 +1194,11 @@
 		}
 	
 	}
+	
 	if (file_exists($file)) 
 		{
 			//Create cookie to save that this user already used this web
-			if(!isset($_COOKIE['visitor'])) 
-			{
-				setcookie(
-					"visitor",	//Cookie name
-					"already",	//Cookie value
-					time() + (10 * 365 * 24 * 60 * 60) //10 Years
-				  );
-			} 
+			
 
 			// header('Content-Description: File Transfer');
 			// header('Content-Type: application/octet-stream');

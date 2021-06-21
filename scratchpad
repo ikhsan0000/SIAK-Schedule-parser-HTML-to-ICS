@@ -1,0 +1,27 @@
+-----push message by target audience algorithm (apply in send_one_push.php)-------
+
+for current event do:
+select subsriber
+is ID numeric
+	if(yes)
+	{
+		run schedule intersection algorithm
+		role = "mahasiswa"
+	}
+	if(no)
+	{
+		run schedule intersection algorithm
+		role = "dosen"
+	}
+if(role == dosen && no intersection detected && even_target == "umum")
+{
+	get endpoints by current dosen_id
+	parse enpoints
+	push to $subscription[] 	
+}
+if(role == mahasiswa && no intersection detected)
+{
+	get enpoints by NPM
+	parse endpoints
+	push to $subscription[]
+}

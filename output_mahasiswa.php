@@ -129,6 +129,12 @@
 				{
 					$query_delete = "DELETE FROM jadwal WHERE ID ='$npm_final'";
 					mysqli_query($link, $query_delete);
+
+					// to ensure if the user try to input the email
+					$query_delete = "DELETE FROM user_list WHERE ID ='$npm_final'";
+					mysqli_query($link, $query_delete);
+					$query_user_list = "INSERT INTO user_list (Nama, ID, Email) VALUES ('$nama_mahasiswa', '$npm_final', '$user_name@ui.ac.id')";
+					mysqli_query($link, $query_user_list);
 				}
 				
 				

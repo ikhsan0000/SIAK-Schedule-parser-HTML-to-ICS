@@ -33,24 +33,26 @@ else
 // $waktuMulai = $_POST['waktuMulai'];
 // $waktuSelesai = $_POST['waktuSelesai'];
 
-if(isset($nama_dosen))
-{
-    $sql = "SELECT * FROM subscriber WHERE Dosen_ID = $current_user";
-    $result = mysqli_query($link, $sql);
-}
-else
-{
-    $sql = "SELECT * FROM subscriber WHERE ID = $current_user";
-    $result = mysqli_query($link, $sql);
-}
+// DEPRACATED
+// if(isset($nama_dosen))
+// {
+//     $sql = "SELECT * FROM subscriber WHERE Dosen_ID = $current_user";
+//     $result = mysqli_query($link, $sql);
+// }
+// else
+// {
+//     $sql = "SELECT * FROM subscriber WHERE ID = $current_user";
+//     $result = mysqli_query($link, $sql);
+// }
 
-$subscriptions = [];
+// $subscriptions = [];
 
-while($row = mysqli_fetch_assoc($result))
-{
-    $endpoints = '{"endpoint":"'. $row['endpoints'] .'","expirationTime":null,"keys":{"auth":"' . $row['auth'] . '","p256dh":"' . $row['p256dh'] . '"}}';
-    $subscriptions[] = Subscription::create(json_decode($endpoints, true));
-}
+// DEPRACATED
+// while($row = mysqli_fetch_assoc($result))
+// {
+//     $endpoints = '{"endpoint":"'. $row['endpoints'] .'","expirationTime":null,"keys":{"auth":"' . $row['auth'] . '","p256dh":"' . $row['p256dh'] . '"}}';
+//     $subscriptions[] = Subscription::create(json_decode($endpoints, true));
+// }
 
 $payload = $namaAcara .' mulai jam '. $waktuMulai . ' - ' . $waktuSelesai;
 
