@@ -1,3 +1,5 @@
+###### Please Refer to "Skripsi" Branch to see the latest update
+
 # SchedUIe
 Created by Galih Damar Jati, Ikhsan Firdauz, and Achmad Faiz Siraj
 
