@@ -19,7 +19,7 @@ In order to run and/or develop this program, you need to setup the required envi
 8. Run XAMPP and start the Apache and MySQL module.
 9. Type http://localhost/SchedUIe/ on your browser URL bar.
 10. Below is the expected output on your browser.
-![home](images/Home.png)
+![home](images/home.png)
 
 
 
