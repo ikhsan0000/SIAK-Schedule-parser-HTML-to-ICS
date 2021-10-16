@@ -2,22 +2,21 @@
 Created by Galih Damar Jati, Ikhsan Firdauz, and Achmad Faiz Siraj
 
 ## Description
-SchedUIe is a web-based application SIAK HTML schedule parser and converter to ICS. This application parses a SIAK HTML page for important components and then converts it into ICS that is uploadable to Google Calendar. SchedUIe also has an event feature in which users can input an event description they held. SchedUIe will sent an email notification about the event to other SchedUIe users eligible to attend the event.
+SchedUIe is a web-based application SIAK HTML schedule parser and converter to ICS. This application parses a SIAK HTML page for important components and then converts it into ICS that could be imported to Google Calendar and simillar calendar apps. SchedUIe also has an event feature in which users can input an event description they held. SchedUIe will sent an email notification and push notification for those who subscribe about the event to other SchedUIe users eligible to attend the event.
 
 Programs used: XAMPP
 
-Based on: HTML5, PHP, CSS, JavaScript, and PostgreSQL 10.10
+Based on: HTML5, PHP, CSS, JavaScript, and MySQL
 
 ## Installation
 In order to run and/or develop this program, you need to setup the required environment first. Below are the steps:
 1. Install XAMPP that supports PHP5 or above (e.g XAMPP v3.2.4).
-2. Install PostgreSQL version 10.10 or above.
-3. Create the required database and tables in PostgreSQL (refer to [database.txt](Database.txt))
+3. Create the required database and tables in MySQL (refer to [database.txt](Database.txt))
 4. Adjust the database name, username, and password on [config_database.php](config_database.php).
 5. Navigate to local directory of XAMPP (the default directory is C:\xampp\htdocs).
 6. Make a new folder and name it "SchedUIe".
 7. Download all the files in this repository into the SchedUIe folder.
-8. Run XAMPP and start the Apache module.
+8. Run XAMPP and start the Apache and MySQL module.
 9. Type http://localhost/SchedUIe/ on your browser URL bar.
 10. Below is the expected output on your browser.
 ![home](images/Home.png)
